@@ -1,0 +1,22 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: AuctionV2
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL}
+    name: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+#    show-sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+server:
+  port: 6769
+
