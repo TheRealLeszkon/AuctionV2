@@ -2,23 +2,28 @@ package com.michael.AuctionV2.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "games")
+@Table(name = "teams")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Data
-public class Game { //TODO add fields here to add game constrains and presets
+public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer setId;
-    @Column(unique = true)
+    @Column(nullable = false)
+    private Integer gameId;
     private String name;
-    private BigDecimal initialBalance;
-    private GameStatus status;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private IPLAssociation association;
+    private BigDecimal balance;
+    private Integer points;
 }

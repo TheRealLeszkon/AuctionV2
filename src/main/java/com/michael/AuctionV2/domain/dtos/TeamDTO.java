@@ -1,0 +1,23 @@
+package com.michael.AuctionV2.domain.dtos;
+
+import com.michael.AuctionV2.domain.entities.IPLAssociation;
+import jakarta.persistence.Column;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class TeamDTO {
+    private Integer id;
+    private Integer gameId;
+    private String name;
+    private IPLAssociation association;
+    private BigDecimal balance;
+    private Integer points;
+}

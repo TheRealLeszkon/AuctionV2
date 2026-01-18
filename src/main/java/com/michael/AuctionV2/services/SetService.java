@@ -2,6 +2,7 @@ package com.michael.AuctionV2.services;
 
 import com.michael.AuctionV2.domain.dtos.SetPlayerDTO;
 import com.michael.AuctionV2.domain.entities.Player;
+import com.michael.AuctionV2.domain.entities.PlayerType;
 import com.michael.AuctionV2.domain.entities.Set;
 import com.michael.AuctionV2.domain.entities.SetPlayer;
 import com.michael.AuctionV2.domain.entities.keys.SetPlayerId;
@@ -65,7 +66,12 @@ public class SetService {
         return savedResults;
     }
     public List<SetPlayer> findAllPlayersOfSet(Integer setId){
-        return setPlayersRepository.findAllByIdSetId(setId);
+        return setPlayersRepository.findAllByIdSetIdOrderByOrder(setId);
     }
-
+//    public List<Player> findPlayerBySetAndPlayerType(Integer setId, PlayerType playerType){
+//        playerService.findAllOfPlayerType()
+//    }
+    public SetPlayer findPlayerDetailsInSetById(SetPlayerId playerId){
+        return setPlayersRepository.findById(playerId).orElseThrow(() -> new IllegalArgumentException("No player of ID:"+playerId.getPlayerId()+" exists in set of ID:"+playerId.getPlayerId() +"! [CRITICAL ERROR: Player in set mismatch]"));
+    }
 }

@@ -13,10 +13,17 @@ spring:
       ddl-auto: create-drop
 #    show-sql: true
     defer-datasource-initialization: true
-  sql:
-    init:
-      mode: always
-
+#  sql:
+#    init:
+#      mode: always
 server:
   port: 6769
+#Logs all incoming requests
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          servlet:
+            DispatcherServlet: DEBUG
 

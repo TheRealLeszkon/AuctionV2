@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface SetPlayersRepository extends JpaRepository<SetPlayer, SetPlayerId> {
-    public List<SetPlayer> findAllByIdSetId(Integer setId);
+    public List<SetPlayer> findAllByIdSetIdOrderByOrder(Integer setId);
 }

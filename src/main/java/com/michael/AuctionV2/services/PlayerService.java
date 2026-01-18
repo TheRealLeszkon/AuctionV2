@@ -93,4 +93,5 @@ public class PlayerService {
     public Player findPlayerById(Integer playerId) {
         return playerRepository.findById(playerId).orElseThrow(() -> new IllegalArgumentException("No Player of ID: "+playerId+" exists in DB!"));
     }
+
 }

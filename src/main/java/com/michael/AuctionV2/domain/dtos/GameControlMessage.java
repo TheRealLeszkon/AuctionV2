@@ -1,20 +1,18 @@
 package com.michael.AuctionV2.domain.dtos;
 
+import com.michael.AuctionV2.domain.entities.GameCommand;
 import com.michael.AuctionV2.domain.entities.GameStatus;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.mapstruct.Named;
-
-import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GameDTO {
-    private Integer id;
-    private Integer setId;
-    private String name;
-    private BigDecimal initialBalance;
-    private GameStatus status;
+@Builder
+public class GameControlMessage {
+    private String message;
+    private String command;
+    private GameStatus gameStatus;
 }
