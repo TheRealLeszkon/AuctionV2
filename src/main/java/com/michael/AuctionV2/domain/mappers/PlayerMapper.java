@@ -17,5 +17,6 @@ public interface PlayerMapper {
 
     @Mapping(source = "batsmenStats",target = "batsmanStatsDTO",qualifiedByName = "batStatDTOMap")
     @Mapping(source = "bowlerStats",target = "bowlerStatsDTO",qualifiedByName = "bowStatDTOMap")
+    @Mapping(source = "allRounderStats",target = "allRounderStatsDTO", qualifiedByName = "rounderStatDTOMap")
     PlayerDTO toDTO(Player player);
 }

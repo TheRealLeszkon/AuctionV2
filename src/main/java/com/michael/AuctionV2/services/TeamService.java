@@ -54,4 +54,12 @@ public class TeamService {
         return  teamRepository.findAllByGameId(gameId);
     }
 
+    public void updateTeamForPurchase(Team team,BigDecimal amount,Integer points){
+        if(team.getBalance().compareTo(amount)<0){
+            throw new IllegalArgumentException("The team "+team.getAssociation()+" has insufficient funds to purchase this player! Current team balance : "+team.getBalance());
+        }
+        team.setBalance(team.getBalance().subtract(amount));
+        team.setPoints(team.getPoints()+points);
+    }
+
 }

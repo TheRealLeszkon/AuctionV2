@@ -1,13 +1,11 @@
 package com.michael.AuctionV2.controllers;
 
+import com.michael.AuctionV2.domain.dtos.PurchaseConfirmation;
 import com.michael.AuctionV2.domain.dtos.*;
 import com.michael.AuctionV2.domain.entities.*;
+import com.michael.AuctionV2.domain.entities.keys.AuctionedPlayerId;
 import com.michael.AuctionV2.domain.entities.keys.SetPlayerId;
-import com.michael.AuctionV2.domain.mappers.GameMapper;
-import com.michael.AuctionV2.domain.mappers.PlayerMapper;
-import com.michael.AuctionV2.domain.mappers.SetPlayerMapper;
-import com.michael.AuctionV2.domain.mappers.TeamMapper;
-import com.michael.AuctionV2.repositories.GameRepository;
+import com.michael.AuctionV2.domain.mappers.*;
 import com.michael.AuctionV2.services.GameService;
 import com.michael.AuctionV2.services.PlayerService;
 import com.michael.AuctionV2.services.SetService;
@@ -17,10 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,32 +24,42 @@ public class GameController {
     //Preview and start
     private final SetService setService;
     private final PlayerService playerService;
+
     private final PlayerMapper playerMapper;
     private final SetPlayerMapper setPlayerMapper;
+
     private final GameService gameService;
     private final GameMapper gameMapper;
+
     private final TeamService teamService;
     private final TeamMapper teamMapper;
 
+    private final AllRounderStatsMapper allRounderStatsMapper;
+    private final BatsmanStatsMapper batsmanStatsMapper;
+    private final BowlerStatsMapper bowlerStatsMapper;
+
 
     @GetMapping("/{id}/preview")
-    public List<CompletePlayerDTO> showPlayerPreview(@PathVariable("id") Integer gameId){ //TODO Replace setId by GameID the fetch setId from game
+    public List<CompletePlayer> showPlayerPreview(@PathVariable("id") Integer gameId){ //TODO Replace setId by GameID the fetch setId from game
         Integer setId =gameService.findById(gameId).getSetId();
-        List<CompletePlayerDTO> completePlayerData =
-                setService.findAllPlayersOfSet(setId)
-                        .stream()
-                        .map(setPlayer -> {
-                            SetPlayerDTO setPlayerDTO = setPlayerMapper.toDTO(setPlayer);
-
-                            PlayerDTO playerDTO = playerMapper.toDTO(
-                                    playerService.findPlayerById(
-                                            setPlayer.getId().getPlayerId()
-                                    )
-                            );
-
-                            return new CompletePlayerDTO(playerDTO, setPlayerDTO);
-                        })
-                        .toList();
+        List<CompletePlayer> completePlayerData = setService.findAllPlayersOfSet(setId).stream().map(
+                playerDetails ->{
+                    Player playerBioData =playerService.findPlayerById(playerDetails.getId().getPlayerId());
+                    return CompletePlayer.builder()
+                            .id(playerBioData.getId())
+                            .name(playerBioData.getName())
+                            .imageLink(playerBioData.getImageLink())
+                            .type(playerBioData.getType())
+                            .batsmanStats(batsmanStatsMapper.toDTO(playerBioData.getBatsmenStats()))
+                            .bowlerStats(bowlerStatsMapper.toDTO(playerBioData.getBowlerStats()))
+                            .allRounderStats(allRounderStatsMapper.toDTO(playerBioData.getAllRounderStats()))
+                            .setId(setId)
+                            .price(playerDetails.getPrice())
+                            .points(playerDetails.getPoints())
+                            .order(playerDetails.getOrder())
+                            .build();
+                }
+        ).toList();
         return completePlayerData;
     }
 
@@ -78,8 +83,6 @@ public class GameController {
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(controlMessage.getCommand()+" is not a command! Did you mean "+GameCommand.START+"?");
         }
-
-
 
 
         Game game =gameService.InitializeGame(gameId);
@@ -115,8 +118,8 @@ public class GameController {
         IPLAssociation teamAssociation =IPLAssociation.valueOf(association.toUpperCase());
         return teamMapper.toDTO(teamService.getTeamOfAssociationInGame(gameId,teamAssociation));
     }
-    @GetMapping("/{id}/auction/{playerType}")
-    public List<CompletePlayerDTO> getAllPlayersOfType(@PathVariable("id")Integer gameId,@PathVariable("playerType") String playerType){
+    @GetMapping("/{id}/players/{playerType}")
+    public List<CompletePlayer> getAllPlayersOfType(@PathVariable("id")Integer gameId,@PathVariable("playerType") String playerType){
         Game game =gameService.findById(gameId);
         if(game.getStatus()!=GameStatus.ACTIVE){
             throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
@@ -127,17 +130,70 @@ public class GameController {
             throw new IllegalArgumentException("Non existent player type in URL! Example player types: BATSMAN,BOWLER,....");
         }
         PlayerType typeRequested =PlayerType.valueOf(playerType.toUpperCase());
-        List<Player> playerSet = setService.findAllPlayersOfSet(game.getSetId()).stream()
-                .map(player -> playerService.findPlayerById(player.getId().getPlayerId()))
+        List<CompletePlayer> requestedPlayers = setService.findAllPlayersOfSet(game.getSetId()).stream()
+                .map(playerDetails -> {
+                    Player playerBioData = playerService.findPlayerById(playerDetails.getId().getPlayerId());
+                    return CompletePlayer.builder()
+                            .id(playerBioData.getId())
+                            .name(playerBioData.getName())
+                            .imageLink(playerBioData.getImageLink())
+                            .type(playerBioData.getType())
+                            .batsmanStats(batsmanStatsMapper.toDTO(playerBioData.getBatsmenStats()))
+                            .bowlerStats(bowlerStatsMapper.toDTO(playerBioData.getBowlerStats()))
+                            .allRounderStats(allRounderStatsMapper.toDTO(playerBioData.getAllRounderStats()))
+                            .setId(playerDetails.getId().getSetId())
+                            .price(playerDetails.getPrice())
+                            .points(playerDetails.getPoints())
+                            .order(playerDetails.getOrder())
+                            .build();
+                })
                 .filter(player -> player.getType()==typeRequested)
                 .toList();
-        List<CompletePlayerDTO> result = playerSet.stream().map(player -> {
-            SetPlayer setPlayer = setService.findPlayerDetailsInSetById(new SetPlayerId(game.getSetId(),player.getId()));
-            return new CompletePlayerDTO(
-                    playerMapper.toDTO(player),
-                    setPlayerMapper.toDTO(setPlayer)
-            );
-        }).toList();
-        return result;
+
+
+        return requestedPlayers;
+    }
+
+    @GetMapping("/{id}/players")
+    public List<CompletePlayer> getAllPlayersOfType(@PathVariable("id")Integer gameId){
+        Game game =gameService.findById(gameId);
+        if(game.getStatus()!=GameStatus.ACTIVE){
+            throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
+        }
+        List<CompletePlayer> requestedPlayers = setService.findAllPlayersOfSet(game.getSetId()).stream()
+                .map(playerDetails -> {
+                    Player playerBioData = playerService.findPlayerById(playerDetails.getId().getPlayerId());
+                    return CompletePlayer.builder()
+                            .id(playerBioData.getId())
+                            .name(playerBioData.getName())
+                            .imageLink(playerBioData.getImageLink())
+                            .type(playerBioData.getType())
+                            .batsmanStats(batsmanStatsMapper.toDTO(playerBioData.getBatsmenStats()))
+                            .bowlerStats(bowlerStatsMapper.toDTO(playerBioData.getBowlerStats()))
+                            .allRounderStats(allRounderStatsMapper.toDTO(playerBioData.getAllRounderStats()))
+                            .setId(playerDetails.getId().getSetId())
+                            .price(playerDetails.getPrice())
+                            .points(playerDetails.getPoints())
+                            .order(playerDetails.getOrder())
+                            .build();
+                })
+                .toList();
+        return requestedPlayers;
+    }
+    @PostMapping("/{id}/purchase")
+    public PurchaseConfirmation purchaseAuctionedPlayers(@PathVariable("id")Integer gameId,@RequestBody PurchaseRequest purchaseRequest){
+        try{
+            IPLAssociation.valueOf(purchaseRequest.getTeamAssociation().toUpperCase());
+        }catch (IllegalArgumentException ex){
+            throw new IllegalArgumentException("The Association/Team name in the url is Incorrect! Try in this format: LSG,CSK,DC...");
+        }
+        IPLAssociation association =IPLAssociation.valueOf(purchaseRequest.getTeamAssociation().toUpperCase());
+        AuctionedPlayer auctionedPlayer =gameService.purchasePlayerForTeam(
+                gameId,
+                purchaseRequest.getPlayerId(),
+                association,
+                purchaseRequest.getFinalBid()
+        );
+        return new PurchaseConfirmation(PlayerStatus.SOLD,association,auctionedPlayer.getSoldPrice());
     }
 }
