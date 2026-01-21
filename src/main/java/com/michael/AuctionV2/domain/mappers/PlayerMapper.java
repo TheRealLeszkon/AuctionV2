@@ -10,13 +10,13 @@ import org.mapstruct.Mapping;
         uses = {BatsmanStatsMapper.class,AllRounderStatsMapper.class,BowlerStatsMapper.class}
 )
 public interface PlayerMapper {
-    @Mapping(source = "batsmanStatsDTO", target = "batsmenStats", qualifiedByName = "batStatMap")
-    @Mapping(source = "bowlerStatsDTO",target = "bowlerStats",qualifiedByName = "bowStatMap")
-    @Mapping(source = "allRounderStatsDTO",target = "allRounderStats", qualifiedByName = "rounderStatMap")
+    @Mapping(source = "batsmanStats", target = "batsmenStats", qualifiedByName = "batStatMap")
+    @Mapping(source = "bowlerStats",target = "bowlerStats",qualifiedByName = "bowStatMap")
+    @Mapping(source = "allRounderStats",target = "allRounderStats", qualifiedByName = "rounderStatMap")
     Player fromDTO(PlayerDTO playerDTO);
 
-    @Mapping(source = "batsmenStats",target = "batsmanStatsDTO",qualifiedByName = "batStatDTOMap")
-    @Mapping(source = "bowlerStats",target = "bowlerStatsDTO",qualifiedByName = "bowStatDTOMap")
-    @Mapping(source = "allRounderStats",target = "allRounderStatsDTO", qualifiedByName = "rounderStatDTOMap")
+    @Mapping(source = "batsmenStats",target = "batsmanStats",qualifiedByName = "batStatDTOMap")
+    @Mapping(source = "bowlerStats",target = "bowlerStats",qualifiedByName = "bowStatDTOMap")
+    @Mapping(source = "allRounderStats",target = "allRounderStats", qualifiedByName = "rounderStatDTOMap")
     PlayerDTO toDTO(Player player);
 }

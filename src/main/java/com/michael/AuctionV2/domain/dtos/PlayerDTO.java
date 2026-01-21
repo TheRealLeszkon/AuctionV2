@@ -10,7 +10,7 @@ public class PlayerDTO {
     private String imageLink;
     private PlayerType type;
     private Boolean isForeign;
-    private BatsmanStatsDTO batsmanStatsDTO;
-    private BowlerStatsDTO bowlerStatsDTO;
-    private AllRounderStatsDTO allRounderStatsDTO;
+    private BatsmanStatsDTO batsmanStats;
+    private BowlerStatsDTO bowlerStats;
+    private AllRounderStatsDTO allRounderStats;
 }

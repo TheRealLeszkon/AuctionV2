@@ -7,9 +7,14 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "rahul.jpg",
     "type": "BATSMAN",
     "isForeign": false,
-    "batsmanStatsDTO": { "runs": 4500, "matches": 130, "battingAvg": 45.3, "strikeRate": 88.1 },
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": null
+    "batsmanStats": {
+      "runs": 4500,
+      "matches": 130,
+      "battingAvg": 45.3,
+      "strikeRate": 88.1
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
   },
   {
     "id": null,
@@ -17,9 +22,14 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "gill.jpg",
     "type": "BATSMAN",
     "isForeign": false,
-    "batsmanStatsDTO": { "runs": 2900, "matches": 85, "battingAvg": 42.7, "strikeRate": 92.4 },
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": null
+    "batsmanStats": {
+      "runs": 2900,
+      "matches": 85,
+      "battingAvg": 42.7,
+      "strikeRate": 92.4
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
   },
   {
     "id": null,
@@ -27,9 +37,14 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "warner.jpg",
     "type": "BATSMAN",
     "isForeign": true,
-    "batsmanStatsDTO": { "runs": 6000, "matches": 160, "battingAvg": 41.2, "strikeRate": 95.6 },
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": null
+    "batsmanStats": {
+      "runs": 6000,
+      "matches": 160,
+      "battingAvg": 41.2,
+      "strikeRate": 95.6
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
   },
   {
     "id": null,
@@ -37,9 +52,14 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "babar.jpg",
     "type": "BATSMAN",
     "isForeign": true,
-    "batsmanStatsDTO": { "runs": 5000, "matches": 150, "battingAvg": 48.9, "strikeRate": 86.3 },
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": null
+    "batsmanStats": {
+      "runs": 5000,
+      "matches": 150,
+      "battingAvg": 48.9,
+      "strikeRate": 86.3
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
   },
   {
     "id": null,
@@ -47,20 +67,29 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "sky.jpg",
     "type": "BATSMAN",
     "isForeign": false,
-    "batsmanStatsDTO": { "runs": 2800, "matches": 95, "battingAvg": 38.6, "strikeRate": 104.2 },
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": null
+    "batsmanStats": {
+      "runs": 2800,
+      "matches": 95,
+      "battingAvg": 38.6,
+      "strikeRate": 104.2
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
   },
-
   {
     "id": null,
     "name": "Mohammed Shami",
     "imageLink": "shami.jpg",
     "type": "BOWLER",
     "isForeign": false,
-    "batsmanStatsDTO": null,
-    "bowlerStatsDTO": { "wickets": 190, "matches": 105, "bowlingAvg": 25.3, "economy": 5.6 },
-    "allRounderStatsDTO": null
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 190,
+      "matches": 105,
+      "bowlingAvg": 25.3,
+      "economy": 5.6
+    },
+    "allRounderStats": null
   },
   {
     "id": null,
@@ -68,9 +97,14 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "rashid.jpg",
     "type": "BOWLER",
     "isForeign": true,
-    "batsmanStatsDTO": null,
-    "bowlerStatsDTO": { "wickets": 170, "matches": 95, "bowlingAvg": 18.4, "economy": 4.9 },
-    "allRounderStatsDTO": null
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 170,
+      "matches": 95,
+      "bowlingAvg": 18.4,
+      "economy": 4.9
+    },
+    "allRounderStats": null
   },
   {
     "id": null,
@@ -78,9 +112,14 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "boult.jpg",
     "type": "BOWLER",
     "isForeign": true,
-    "batsmanStatsDTO": null,
-    "bowlerStatsDTO": { "wickets": 190, "matches": 120, "bowlingAvg": 24.1, "economy": 5.3 },
-    "allRounderStatsDTO": null
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 190,
+      "matches": 120,
+      "bowlingAvg": 24.1,
+      "economy": 5.3
+    },
+    "allRounderStats": null
   },
   {
     "id": null,
@@ -88,9 +127,14 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "chahal.jpg",
     "type": "BOWLER",
     "isForeign": false,
-    "batsmanStatsDTO": null,
-    "bowlerStatsDTO": { "wickets": 210, "matches": 145, "bowlingAvg": 21.8, "economy": 5.1 },
-    "allRounderStatsDTO": null
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 210,
+      "matches": 145,
+      "bowlingAvg": 21.8,
+      "economy": 5.1
+    },
+    "allRounderStats": null
   },
   {
     "id": null,
@@ -98,20 +142,29 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "shaheen.jpg",
     "type": "BOWLER",
     "isForeign": true,
-    "batsmanStatsDTO": null,
-    "bowlerStatsDTO": { "wickets": 115, "matches": 65, "bowlingAvg": 22.6, "economy": 5.8 },
-    "allRounderStatsDTO": null
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 115,
+      "matches": 65,
+      "bowlingAvg": 22.6,
+      "economy": 5.8
+    },
+    "allRounderStats": null
   },
-
   {
     "id": null,
     "name": "Rishabh Pant",
     "imageLink": "pant.jpg",
     "type": "WICKET_KEEPER",
     "isForeign": false,
-    "batsmanStatsDTO": { "runs": 2800, "matches": 90, "battingAvg": 34.5, "strikeRate": 98.7 },
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": null
+    "batsmanStats": {
+      "runs": 2800,
+      "matches": 90,
+      "battingAvg": 34.5,
+      "strikeRate": 98.7
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
   },
   {
     "id": null,
@@ -119,9 +172,14 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "buttler.jpg",
     "type": "WICKET_KEEPER",
     "isForeign": true,
-    "batsmanStatsDTO": { "runs": 4200, "matches": 150, "battingAvg": 40.1, "strikeRate": 102.4 },
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": null
+    "batsmanStats": {
+      "runs": 4200,
+      "matches": 150,
+      "battingAvg": 40.1,
+      "strikeRate": 102.4
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
   },
   {
     "id": null,
@@ -129,9 +187,14 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "qdk.jpg",
     "type": "WICKET_KEEPER",
     "isForeign": true,
-    "batsmanStatsDTO": { "runs": 5100, "matches": 155, "battingAvg": 44.8, "strikeRate": 96.2 },
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": null
+    "batsmanStats": {
+      "runs": 5100,
+      "matches": 155,
+      "battingAvg": 44.8,
+      "strikeRate": 96.2
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
   },
   {
     "id": null,
@@ -139,9 +202,14 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "ishan.jpg",
     "type": "WICKET_KEEPER",
     "isForeign": false,
-    "batsmanStatsDTO": { "runs": 2500, "matches": 85, "battingAvg": 32.9, "strikeRate": 99.5 },
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": null
+    "batsmanStats": {
+      "runs": 2500,
+      "matches": 85,
+      "battingAvg": 32.9,
+      "strikeRate": 99.5
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
   },
   {
     "id": null,
@@ -149,20 +217,29 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "samson.jpg",
     "type": "WICKET_KEEPER",
     "isForeign": false,
-    "batsmanStatsDTO": { "runs": 3000, "matches": 110, "battingAvg": 36.4, "strikeRate": 92.3 },
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": null
+    "batsmanStats": {
+      "runs": 3000,
+      "matches": 110,
+      "battingAvg": 36.4,
+      "strikeRate": 92.3
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
   },
-
   {
     "id": null,
     "name": "Hardik Pandya",
     "imageLink": "hardik.jpg",
     "type": "ALL_ROUNDER",
     "isForeign": false,
-    "batsmanStatsDTO": null,
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": { "runs": 2300, "wickets": 80, "matches": 100, "strikeRate": 98.4 }
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 2300,
+      "economy": 6.8,
+      "matches": 100,
+      "strikeRate": 98.4
+    }
   },
   {
     "id": null,
@@ -170,9 +247,14 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "jadeja.jpg",
     "type": "ALL_ROUNDER",
     "isForeign": false,
-    "batsmanStatsDTO": null,
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": { "runs": 2600, "wickets": 190, "matches": 140, "strikeRate": 87.6 }
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 2600,
+      "economy": 4.9,
+      "matches": 140,
+      "strikeRate": 87.6
+    }
   },
   {
     "id": null,
@@ -180,9 +262,14 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "maxwell.jpg",
     "type": "ALL_ROUNDER",
     "isForeign": true,
-    "batsmanStatsDTO": null,
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": { "runs": 3800, "wickets": 85, "matches": 160, "strikeRate": 102.3 }
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 3800,
+      "economy": 6.4,
+      "matches": 160,
+      "strikeRate": 102.3
+    }
   },
   {
     "id": null,
@@ -190,9 +277,14 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "shakib.jpg",
     "type": "ALL_ROUNDER",
     "isForeign": true,
-    "batsmanStatsDTO": null,
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": { "runs": 4500, "wickets": 280, "matches": 210, "strikeRate": 89.4 }
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 4500,
+      "economy": 4.5,
+      "matches": 210,
+      "strikeRate": 89.4
+    }
   },
   {
     "id": null,
@@ -200,11 +292,17 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "stoinis.jpg",
     "type": "ALL_ROUNDER",
     "isForeign": true,
-    "batsmanStatsDTO": null,
-    "bowlerStatsDTO": null,
-    "allRounderStatsDTO": { "runs": 3100, "wickets": 65, "matches": 120, "strikeRate": 96.8 }
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 3100,
+      "economy": 6.7,
+      "matches": 120,
+      "strikeRate": 96.8
+    }
   }
-]'
+]
+'
 curl --location 'localhost:6769/set' \
 --header 'Content-Type: application/json' \
 --data '{
