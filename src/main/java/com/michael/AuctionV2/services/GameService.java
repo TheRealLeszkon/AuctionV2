@@ -1,11 +1,13 @@
 package com.michael.AuctionV2.services;
 
+import com.michael.AuctionV2.domain.dtos.PurchasedPlayer;
 import com.michael.AuctionV2.domain.entities.*;
 import com.michael.AuctionV2.domain.entities.keys.AuctionedPlayerId;
 import com.michael.AuctionV2.domain.entities.keys.SetPlayerId;
 import com.michael.AuctionV2.repositories.AuctionedPlayerRepository;
 import com.michael.AuctionV2.repositories.GameRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,11 +17,13 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class GameService {
     private final GameRepository gameRepository;
     private final TeamService teamService;
     private final AuctionedPlayerRepository auctionedPlayerRepository;
     private final  SetService setService;
+    private final PlayerService playerService;
     public Game createGame(Game game){
         return gameRepository.save(game);
     }
@@ -82,17 +86,33 @@ public class GameService {
         }
         SetPlayer playerDetails =setService.findPlayerDetailsInSetById(new SetPlayerId(game.getSetId(),playerId));
         Team team = teamService.getTeamOfAssociationInGame(gameId,teamAssociation);
-        teamService.updateTeamForPurchase(team,bidAmount,playerDetails.getPoints());
 
+        teamService.updateTeamForPurchase(team,bidAmount,playerDetails.getPoints());
+        foundPlayer.setTeamId(team.getId());
         foundPlayer.setSoldPrice(bidAmount);
         foundPlayer.setPlayerStatus(PlayerStatus.SOLD);
         return foundPlayer;
     }
 
-    //        if(foundPlayer.isPresent()){
-//            if(foundPlayer.get().getPlayerStatus()==PlayerStatus.SOLD){
-//                throw new IllegalArgumentException("Can't buy player who was already sold!");
-//            }
-//        }
+    public List<PurchasedPlayer> getTeamPurchases(Team team,Game game){
+        Integer setId =game.getSetId();
+        List<AuctionedPlayer> auctionPlayers = auctionedPlayerRepository.findByTeamId(team.getId());
+        List<PurchasedPlayer> teamPurchases = auctionPlayers.stream()
+                .map(purchaseEntry ->{
+                    Integer playerId =purchaseEntry.getAuctionedPlayerId().getPlayerId();
+                    Player playerBioData = playerService.findPlayerById(playerId);
+                    SetPlayer playerGameData = setService.findPlayerDetailsInSetById(new SetPlayerId(setId,playerId));
+                    log.info("{} was fetched!",playerBioData.getName());
+                    return new PurchasedPlayer(
+                        playerBioData.getName(),
+                            playerBioData.getType(),
+                            purchaseEntry.getSoldPrice(),
+                            playerGameData.getPoints()
+                    );
+                }).toList();
+//        log.info(""teamPurchases.size());
+        return teamPurchases;
+    }
+
 
 }

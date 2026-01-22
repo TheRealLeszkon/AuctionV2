@@ -19,6 +19,13 @@ public class Game { //TODO add fields here to add game constrains and presets
     private Integer setId;
     @Column(unique = true)
     private String name;
-    private BigDecimal initialBalance;
     private GameStatus status;
+    //Game Constraints
+    private BigDecimal initialBalance;
+    private Integer playersPerTeam;
+    private Integer batsmenPerTeam;
+    private Integer bowlersPerTeam;
+    private Integer allRounderTeam;
+    private Integer unCappedPerTeam;
+
 }

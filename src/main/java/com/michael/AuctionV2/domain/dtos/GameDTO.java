@@ -15,6 +15,13 @@ public class GameDTO {
     private Integer id;
     private Integer setId;
     private String name;
-    private BigDecimal initialBalance;
     private GameStatus status;
+
+    //Game Constraints
+    private BigDecimal initialBalance;
+    private Integer playersPerTeam;
+    private Integer batsmenPerTeam;
+    private Integer bowlersPerTeam;
+    private Integer allRounderTeam;
+    private Integer unCappedPerTeam;
 }

@@ -118,6 +118,14 @@ public class GameController {
         IPLAssociation teamAssociation =IPLAssociation.valueOf(association.toUpperCase());
         return teamMapper.toDTO(teamService.getTeamOfAssociationInGame(gameId,teamAssociation));
     }
+
+    @GetMapping("/{id}/team/{association}/purchases")
+    public List<PurchasedPlayer> showAllTeamPurchases(@PathVariable("id") Integer gameId,@PathVariable("association") String association){
+        Game game = gameService.findById(gameId);
+        IPLAssociation teamAssociation= IPLAssociation.valueOf(association.toUpperCase()); // add error checking later
+        Team team = teamService.getTeamOfAssociationInGame(gameId,teamAssociation);
+        return gameService.getTeamPurchases(team,game);
+    }
     @GetMapping("/{id}/players/{playerType}")
     public List<CompletePlayer> getAllPlayersOfType(@PathVariable("id")Integer gameId,@PathVariable("playerType") String playerType){
         Game game =gameService.findById(gameId);
@@ -194,6 +202,9 @@ public class GameController {
                 association,
                 purchaseRequest.getFinalBid()
         );
+
         return new PurchaseConfirmation(PlayerStatus.SOLD,association,auctionedPlayer.getSoldPrice());
     }
+
+
 }
