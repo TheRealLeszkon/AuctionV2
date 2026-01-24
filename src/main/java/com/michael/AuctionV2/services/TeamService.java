@@ -113,4 +113,46 @@ public class TeamService {
 
     }
 
+    public Team findTeamById(Integer teamId) {
+        return teamRepository.findById(teamId).orElseThrow(() -> new IllegalArgumentException("Team not found!"));
+    }
+    public void reduceTeamPlayerCounts(Team team,Player playerBioDetails) {
+        if (team.getPlayerCount() <= 0) {
+            throw new IllegalStateException("Team doesn't have any purchases to refund!");
+        }
+
+        if(playerBioDetails.getIsUncapped()){
+            if (team.getUncappedCount() <= 0) {
+                throw new IllegalStateException("Uncapped count already zero");
+            }
+            team.setUncappedCount(team.getUncappedCount()-1);
+        }
+        switch(playerBioDetails.getType()){
+            case BATSMAN ->{
+                if (team.getBatsmanCount() <= 0) {
+                    throw new IllegalStateException("Batsman count already zero");
+                }
+                team.setBatsmanCount(team.getBatsmanCount() -1);
+            }
+            case WICKET_KEEPER -> {
+                if (team.getWicketKeeperCount() <= 0) {
+                    throw new IllegalStateException("Wicket keeper count already zero");
+                }
+                team.setWicketKeeperCount(team.getWicketKeeperCount()-1);
+            }
+            case ALL_ROUNDER -> {
+                if (team.getAllRounderCount() <= 0) {
+                    throw new IllegalStateException("All Rounder count already zero");
+                }
+                team.setAllRounderCount(team.getAllRounderCount()-1);
+            }
+            case BOWLER -> {
+                if (team.getBowlerCount() <= 0) {
+                    throw new IllegalStateException("Bowler count already zero");
+                }
+                team.setBowlerCount(team.getBowlerCount()-1);
+            }
+        }
+        team.setPlayerCount(team.getPlayerCount()-1);
+    }
 }

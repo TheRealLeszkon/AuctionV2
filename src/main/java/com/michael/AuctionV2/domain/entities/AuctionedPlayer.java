@@ -19,6 +19,7 @@ public class AuctionedPlayer {
     @EmbeddedId
     private AuctionedPlayerId auctionedPlayerId;
     private Integer teamId;
+    @Enumerated(EnumType.STRING)
     private PlayerStatus playerStatus;
     private BigDecimal soldPrice;
 }

@@ -1,6 +1,7 @@
 package com.michael.AuctionV2.services;
 
 import com.michael.AuctionV2.domain.dtos.PurchasedPlayer;
+import com.michael.AuctionV2.domain.dtos.RefundConfirmation;
 import com.michael.AuctionV2.domain.entities.*;
 import com.michael.AuctionV2.domain.entities.keys.AuctionedPlayerId;
 import com.michael.AuctionV2.domain.entities.keys.SetPlayerId;
@@ -80,9 +81,11 @@ public class GameService {
         if (foundPlayer.getPlayerStatus() == PlayerStatus.SOLD) {
             throw new IllegalStateException("Player already sold");
         }
-        if (foundPlayer.getPlayerStatus() != PlayerStatus.FOR_SALE) {
-            throw new IllegalStateException("Player is not available for sale");
+        if (foundPlayer.getPlayerStatus() != PlayerStatus.FOR_SALE
+                && foundPlayer.getPlayerStatus() != PlayerStatus.UNSOLD) {
+            throw new IllegalStateException("Player is not available for purchase");
         }
+
 
         SetPlayer playerDetails =setService.findPlayerDetailsInSetById(new SetPlayerId(game.getSetId(),playerId));
         if(bidAmount.compareTo( playerDetails.getPrice())<0){
@@ -129,5 +132,37 @@ public class GameService {
                             .build();
                 }).toList();
         return teamPurchases;
+    }
+
+    @Transactional
+    public RefundConfirmation refundPlayer(Integer gameId,Integer playerId){
+        Game game = findById(gameId);
+        if(game.getStatus()!=GameStatus.ACTIVE){
+            throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
+        }
+        AuctionedPlayer purchaseRecord= auctionedPlayerRepository.findById(new AuctionedPlayerId(game.getId(),playerId))
+                .orElseThrow(() ->new IllegalStateException("No such player registered in auction!"));
+        if(purchaseRecord.getPlayerStatus()!=PlayerStatus.SOLD){
+            throw new IllegalStateException("Not sold players can't be refunded!");
+        }
+        if (purchaseRecord.getTeamId() == null) {
+            throw new IllegalStateException("Refund failed: player is not owned by any team");
+        }
+
+        SetPlayer playerGameDetails = setService.findPlayerDetailsInSetById(new SetPlayerId(game.getSetId(), playerId));
+        Player playerBioDetails = playerService.findPlayerById(playerId);
+        Team team =teamService.findTeamById(purchaseRecord.getTeamId());
+        team.setBalance(team.getBalance().add(purchaseRecord.getSoldPrice()));
+        team.setPoints(team.getPoints() -playerGameDetails.getPoints());
+        teamService.reduceTeamPlayerCounts(team,playerBioDetails);
+
+        purchaseRecord.setTeamId(null);
+        purchaseRecord.setSoldPrice(null);
+        purchaseRecord.setPlayerStatus(PlayerStatus.UNSOLD);
+        return new RefundConfirmation(
+                playerBioDetails.getName(),
+                purchaseRecord.getPlayerStatus(),
+                "Refund was successful!"
+        );
     }
 }
