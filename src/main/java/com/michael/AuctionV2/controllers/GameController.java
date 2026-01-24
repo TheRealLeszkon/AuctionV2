@@ -153,6 +153,7 @@ public class GameController {
         List<CompletePlayer> requestedPlayers = setService.findAllPlayersOfSet(game.getSetId()).stream()
                 .map(playerDetails -> {
                     Player playerBioData = playerService.findPlayerById(playerDetails.getId().getPlayerId());
+                    PlayerStatus playerStatus = gameService.getPlayerStatusInGame(playerBioData.getId(),game);
                     return CompletePlayer.builder()
                             .id(playerBioData.getId())
                             .name(playerBioData.getName())
@@ -168,6 +169,7 @@ public class GameController {
                             .price(playerDetails.getPrice())
                             .points(playerDetails.getPoints())
                             .order(playerDetails.getOrder())
+                            .status(playerStatus)
                             .build();
                 })
                 .filter(player -> player.getType()==typeRequested)
@@ -186,6 +188,7 @@ public class GameController {
         List<CompletePlayer> requestedPlayers = setService.findAllPlayersOfSet(game.getSetId()).stream()
                 .map(playerDetails -> {
                     Player playerBioData = playerService.findPlayerById(playerDetails.getId().getPlayerId());
+                    PlayerStatus playerStatus = gameService.getPlayerStatusInGame(playerBioData.getId(),game);
                     return CompletePlayer.builder()
                             .id(playerBioData.getId())
                             .name(playerBioData.getName())
@@ -201,6 +204,7 @@ public class GameController {
                             .price(playerDetails.getPrice())
                             .points(playerDetails.getPoints())
                             .order(playerDetails.getOrder())
+                            .status(playerStatus)
                             .build();
                 })
                 .toList();

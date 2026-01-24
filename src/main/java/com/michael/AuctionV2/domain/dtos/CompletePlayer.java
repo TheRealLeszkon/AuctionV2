@@ -1,9 +1,6 @@
 package com.michael.AuctionV2.domain.dtos;
 
-import com.michael.AuctionV2.domain.entities.AllRounderStats;
-import com.michael.AuctionV2.domain.entities.BatsmanStats;
-import com.michael.AuctionV2.domain.entities.BowlerStats;
-import com.michael.AuctionV2.domain.entities.PlayerType;
+import com.michael.AuctionV2.domain.entities.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,5 +27,6 @@ public class CompletePlayer {
     private BigDecimal price;
     private Integer points;
     private Integer order;
+    private PlayerStatus status;
 
 }

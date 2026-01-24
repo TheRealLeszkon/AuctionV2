@@ -165,4 +165,13 @@ public class GameService {
                 "Refund was successful!"
         );
     }
+
+    public PlayerStatus getPlayerStatusInGame(Integer playerId, Game game) {
+        AuctionedPlayer auctionRecord =findAuctionedPlayerById(new AuctionedPlayerId(game.getId(),playerId));
+        return auctionRecord.getPlayerStatus();
+    }
+    public AuctionedPlayer findAuctionedPlayerById(AuctionedPlayerId auctionedPlayerId){
+        return  auctionedPlayerRepository.findById(auctionedPlayerId)
+                .orElseThrow(() -> new IllegalStateException("Player not registered in game!"));
+    }
 }
