@@ -223,7 +223,7 @@ public class GameController {
 
         return new PurchaseConfirmation(PlayerStatus.SOLD,association,auctionedPlayer.getSoldPrice());
     }
-    @PostMapping("/{id}/refunds")
+    @PostMapping("/{id}/refund")
     public RefundConfirmation refundPurchase(@PathVariable("id") Integer gameId,@RequestBody RefundRequest refundRequest) {
         return gameService.refundPlayer(gameId, refundRequest.getPlayerId());
     }
