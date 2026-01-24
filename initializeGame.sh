@@ -7,6 +7,9 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "rahul.jpg",
     "type": "BATSMAN",
     "isForeign": false,
+    "isUncapped": true,
+    "isLegend": false,
+    "country": "IND",
     "batsmanStats": {
       "runs": 4500,
       "matches": 130,
@@ -22,6 +25,9 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "gill.jpg",
     "type": "BATSMAN",
     "isForeign": false,
+    "isUncapped": true,
+    "isLegend": false,
+    "country": "IND",
     "batsmanStats": {
       "runs": 2900,
       "matches": 85,
@@ -37,6 +43,9 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "warner.jpg",
     "type": "BATSMAN",
     "isForeign": true,
+    "isUncapped": false,
+    "isLegend": true,
+    "country": "AUS",
     "batsmanStats": {
       "runs": 6000,
       "matches": 160,
@@ -52,6 +61,9 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "babar.jpg",
     "type": "BATSMAN",
     "isForeign": true,
+    "isUncapped": false,
+    "isLegend": true,
+    "country": "PAK",
     "batsmanStats": {
       "runs": 5000,
       "matches": 150,
@@ -67,6 +79,9 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "sky.jpg",
     "type": "BATSMAN",
     "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
     "batsmanStats": {
       "runs": 2800,
       "matches": 95,
@@ -82,12 +97,15 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "shami.jpg",
     "type": "BOWLER",
     "isForeign": false,
+    "isUncapped": false,
+    "isLegend": true,
+    "country": "IND",
     "batsmanStats": null,
     "bowlerStats": {
       "wickets": 190,
       "matches": 105,
-      "bowlingAvg": 25.3,
-      "economy": 5.6
+      "economy": 5.6,
+      "bestFigure": "6/56"
     },
     "allRounderStats": null
   },
@@ -97,12 +115,15 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "rashid.jpg",
     "type": "BOWLER",
     "isForeign": true,
+    "isUncapped": false,
+    "isLegend": true,
+    "country": "AFG",
     "batsmanStats": null,
     "bowlerStats": {
       "wickets": 170,
       "matches": 95,
-      "bowlingAvg": 18.4,
-      "economy": 4.9
+      "economy": 4.9,
+      "bestFigure": "7/18"
     },
     "allRounderStats": null
   },
@@ -112,12 +133,15 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "boult.jpg",
     "type": "BOWLER",
     "isForeign": true,
+    "isUncapped": false,
+    "isLegend": true,
+    "country": "NZ",
     "batsmanStats": null,
     "bowlerStats": {
       "wickets": 190,
       "matches": 120,
-      "bowlingAvg": 24.1,
-      "economy": 5.3
+      "economy": 5.3,
+      "bestFigure": "5/17"
     },
     "allRounderStats": null
   },
@@ -127,12 +151,15 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "chahal.jpg",
     "type": "BOWLER",
     "isForeign": false,
+    "isUncapped": false,
+    "isLegend": true,
+    "country": "IND",
     "batsmanStats": null,
     "bowlerStats": {
       "wickets": 210,
       "matches": 145,
-      "bowlingAvg": 21.8,
-      "economy": 5.1
+      "economy": 5.1,
+      "bestFigure": "6/42"
     },
     "allRounderStats": null
   },
@@ -142,12 +169,15 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "shaheen.jpg",
     "type": "BOWLER",
     "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "PAK",
     "batsmanStats": null,
     "bowlerStats": {
       "wickets": 115,
       "matches": 65,
-      "bowlingAvg": 22.6,
-      "economy": 5.8
+      "economy": 5.8,
+      "bestFigure": "6/35"
     },
     "allRounderStats": null
   },
@@ -157,6 +187,9 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "pant.jpg",
     "type": "WICKET_KEEPER",
     "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
     "batsmanStats": {
       "runs": 2800,
       "matches": 90,
@@ -172,6 +205,9 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "buttler.jpg",
     "type": "WICKET_KEEPER",
     "isForeign": true,
+    "isUncapped": false,
+    "isLegend": true,
+    "country": "ENG",
     "batsmanStats": {
       "runs": 4200,
       "matches": 150,
@@ -187,6 +223,9 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "qdk.jpg",
     "type": "WICKET_KEEPER",
     "isForeign": true,
+    "isUncapped": false,
+    "isLegend": true,
+    "country": "SA",
     "batsmanStats": {
       "runs": 5100,
       "matches": 155,
@@ -202,6 +241,9 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "ishan.jpg",
     "type": "WICKET_KEEPER",
     "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
     "batsmanStats": {
       "runs": 2500,
       "matches": 85,
@@ -217,6 +259,9 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "samson.jpg",
     "type": "WICKET_KEEPER",
     "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
     "batsmanStats": {
       "runs": 3000,
       "matches": 110,
@@ -232,13 +277,16 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "hardik.jpg",
     "type": "ALL_ROUNDER",
     "isForeign": false,
+    "isUncapped": false,
+    "isLegend": true,
+    "country": "IND",
     "batsmanStats": null,
     "bowlerStats": null,
     "allRounderStats": {
       "runs": 2300,
-      "economy": 6.8,
       "matches": 100,
-      "strikeRate": 98.4
+      "strikeRate": 98.4,
+      "wickets": 75
     }
   },
   {
@@ -247,13 +295,16 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "jadeja.jpg",
     "type": "ALL_ROUNDER",
     "isForeign": false,
+    "isUncapped": false,
+    "isLegend": true,
+    "country": "IND",
     "batsmanStats": null,
     "bowlerStats": null,
     "allRounderStats": {
       "runs": 2600,
-      "economy": 4.9,
       "matches": 140,
-      "strikeRate": 87.6
+      "strikeRate": 87.6,
+      "wickets": 180
     }
   },
   {
@@ -262,13 +313,16 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "maxwell.jpg",
     "type": "ALL_ROUNDER",
     "isForeign": true,
+    "isUncapped": false,
+    "isLegend": true,
+    "country": "AUS",
     "batsmanStats": null,
     "bowlerStats": null,
     "allRounderStats": {
       "runs": 3800,
-      "economy": 6.4,
       "matches": 160,
-      "strikeRate": 102.3
+      "strikeRate": 102.3,
+      "wickets": 95
     }
   },
   {
@@ -277,13 +331,16 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "shakib.jpg",
     "type": "ALL_ROUNDER",
     "isForeign": true,
+    "isUncapped": false,
+    "isLegend": true,
+    "country": "BAN",
     "batsmanStats": null,
     "bowlerStats": null,
     "allRounderStats": {
       "runs": 4500,
-      "economy": 4.5,
       "matches": 210,
-      "strikeRate": 89.4
+      "strikeRate": 89.4,
+      "wickets": 310
     }
   },
   {
@@ -292,13 +349,16 @@ curl --location 'localhost:6769/players/bulk' \
     "imageLink": "stoinis.jpg",
     "type": "ALL_ROUNDER",
     "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AUS",
     "batsmanStats": null,
     "bowlerStats": null,
     "allRounderStats": {
       "runs": 3100,
-      "economy": 6.7,
       "matches": 120,
-      "strikeRate": 96.8
+      "strikeRate": 96.8,
+      "wickets": 85
     }
   }
 ]
@@ -341,5 +401,11 @@ curl --location 'localhost:6769/game' \
 --data '{
     "setId":1,
     "name":"Mike'\''s Game",
-    "initialBalance":10000000
+    "initialBalance":10000000,
+    "playersPerTeam":12,
+    "batsmenPerTeam":4,
+    "bowlersPerTeam":4,
+    "allRounderPerTeam":3,
+    "wicketKeeperPerTeam":1,
+    "unCappedPerTeam":1
 }'

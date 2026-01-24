@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "cricketers")
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Player {
@@ -21,6 +20,9 @@ public class Player {
     @Enumerated(EnumType.STRING)
     private PlayerType type;
     private Boolean isForeign;
+    private Boolean isUncapped;
+    private Boolean isLegend;
+    private String country;
 
     @OneToOne(mappedBy = "player",cascade = CascadeType.ALL)
     private BatsmanStats batsmenStats;

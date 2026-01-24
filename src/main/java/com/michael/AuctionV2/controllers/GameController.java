@@ -50,6 +50,9 @@ public class GameController {
                             .name(playerBioData.getName())
                             .imageLink(playerBioData.getImageLink())
                             .type(playerBioData.getType())
+                            .isLegend(playerBioData.getIsLegend())
+                            .isUncapped(playerBioData.getIsUncapped())
+                            .country(playerBioData.getCountry())
                             .batsmanStats(batsmanStatsMapper.toDTO(playerBioData.getBatsmenStats()))
                             .bowlerStats(bowlerStatsMapper.toDTO(playerBioData.getBowlerStats()))
                             .allRounderStats(allRounderStatsMapper.toDTO(playerBioData.getAllRounderStats()))
@@ -122,7 +125,16 @@ public class GameController {
     @GetMapping("/{id}/team/{association}/purchases")
     public List<PurchasedPlayer> showAllTeamPurchases(@PathVariable("id") Integer gameId,@PathVariable("association") String association){
         Game game = gameService.findById(gameId);
-        IPLAssociation teamAssociation= IPLAssociation.valueOf(association.toUpperCase()); // add error checking later
+        if(game.getStatus()!=GameStatus.ACTIVE){
+            throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
+        }
+        try{
+            IPLAssociation.valueOf(association.toUpperCase());
+        }catch (IllegalArgumentException ex){
+            throw new IllegalArgumentException("The Association/Team name in the url is Incorrect! Try in this format: LSG,CSK,DC...");
+        }
+
+        IPLAssociation teamAssociation= IPLAssociation.valueOf(association.toUpperCase());
         Team team = teamService.getTeamOfAssociationInGame(gameId,teamAssociation);
         return gameService.getTeamPurchases(team,game);
     }
@@ -146,6 +158,9 @@ public class GameController {
                             .name(playerBioData.getName())
                             .imageLink(playerBioData.getImageLink())
                             .type(playerBioData.getType())
+                            .isLegend(playerBioData.getIsLegend())
+                            .isUncapped(playerBioData.getIsUncapped())
+                            .country(playerBioData.getCountry())
                             .batsmanStats(batsmanStatsMapper.toDTO(playerBioData.getBatsmenStats()))
                             .bowlerStats(bowlerStatsMapper.toDTO(playerBioData.getBowlerStats()))
                             .allRounderStats(allRounderStatsMapper.toDTO(playerBioData.getAllRounderStats()))
@@ -176,6 +191,9 @@ public class GameController {
                             .name(playerBioData.getName())
                             .imageLink(playerBioData.getImageLink())
                             .type(playerBioData.getType())
+                            .isLegend(playerBioData.getIsLegend())
+                            .isUncapped(playerBioData.getIsUncapped())
+                            .country(playerBioData.getCountry())
                             .batsmanStats(batsmanStatsMapper.toDTO(playerBioData.getBatsmenStats()))
                             .bowlerStats(bowlerStatsMapper.toDTO(playerBioData.getBowlerStats()))
                             .allRounderStats(allRounderStatsMapper.toDTO(playerBioData.getAllRounderStats()))

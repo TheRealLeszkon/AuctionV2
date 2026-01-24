@@ -16,16 +16,19 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 public class CompletePlayer {
-    Integer id;
-    String name;
-    String imageLink;
-    PlayerType type;
-    BatsmanStatsDTO batsmanStats;
-    BowlerStatsDTO bowlerStats;
-    AllRounderStatsDTO allRounderStats;
-    Integer setId;
-    BigDecimal price;
-    Integer points;
-    Integer order;
+    private Integer id;
+    private String name;
+    private String imageLink;
+    private PlayerType type;
+    private Boolean isUncapped;
+    private Boolean isLegend;
+    private String country;
+    private BatsmanStatsDTO batsmanStats;
+    private BowlerStatsDTO bowlerStats;
+    private AllRounderStatsDTO allRounderStats;
+    private Integer setId;
+    private BigDecimal price;
+    private Integer points;
+    private Integer order;
 
 }

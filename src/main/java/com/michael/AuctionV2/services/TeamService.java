@@ -1,9 +1,6 @@
 package com.michael.AuctionV2.services;
 
-import com.michael.AuctionV2.domain.entities.Game;
-import com.michael.AuctionV2.domain.entities.GameStatus;
-import com.michael.AuctionV2.domain.entities.IPLAssociation;
-import com.michael.AuctionV2.domain.entities.Team;
+import com.michael.AuctionV2.domain.entities.*;
 import com.michael.AuctionV2.repositories.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -41,6 +38,12 @@ public class TeamService {
                                 .name(value)
                                 .gameId(game.getId())
                                 .points(0)
+                                .playerCount(0)
+                                .allRounderCount(0)
+                                .batsmanCount(0)
+                                .bowlerCount(0)
+                                .wicketKeeperCount(0)
+                                .uncappedCount(0)
                                 .balance(game.getInitialBalance())
                                 .build()
                 ));
@@ -60,6 +63,54 @@ public class TeamService {
         }
         team.setBalance(team.getBalance().subtract(amount));
         team.setPoints(team.getPoints()+points);
+    }
+    public void checkConstraintsAndUpdateTeamCounts(
+            Team team, PlayerType playerType,boolean isUncapped,Game game
+
+    ){
+        Integer maxPlayerCount = game.getPlayersPerTeam();
+        Integer maxAllRounderCount =game.getAllRounderPerTeam();
+        Integer maxBatsmanCount =game.getBatsmenPerTeam();
+        Integer maxBowlerCount =game.getBowlersPerTeam();
+        Integer maxWicketKeeperCount =game.getWicketKeeperPerTeam();
+        Integer maxUncappedCount =game.getUnCappedPerTeam();
+        if(team.getPlayerCount()>=maxPlayerCount){
+            throw new IllegalStateException("Maximum number of players Reached!");
+        }
+        if(isUncapped){
+            if(team.getUncappedCount()>=maxUncappedCount){
+                throw new IllegalStateException("Maximum number of uncapped Players Reached!");
+            }
+        }
+        switch (playerType){
+            case BATSMAN ->{
+                if (team.getBatsmanCount()>=maxBatsmanCount){
+                    throw new IllegalStateException("Maximum number of batsmen already reached!");
+                }
+                team.setBatsmanCount(team.getBatsmanCount()+1);
+            }
+            case BOWLER ->{
+                if(team.getBowlerCount()>=maxBowlerCount){
+                    throw  new IllegalStateException("Maximum number of bowlers already reached!");
+                }
+                team.setBowlerCount(team.getBowlerCount()+1);
+            }
+            case ALL_ROUNDER ->{
+                if(team.getAllRounderCount()>= maxAllRounderCount){
+                    throw new IllegalStateException("Maximum number of all rounders already reached!");
+                }
+                team.setAllRounderCount(team.getAllRounderCount()+1);
+            }
+            case WICKET_KEEPER ->{
+                if(team.getWicketKeeperCount()>=maxWicketKeeperCount){
+                    throw new IllegalStateException("Maximum number of wicket keepers already reached!");
+                }
+                team.setWicketKeeperCount(team.getWicketKeeperCount()+1);
+            }
+        }
+        if(isUncapped) team.setUncappedCount(team.getUncappedCount()+1);
+        team.setPlayerCount(team.getPlayerCount()+1);
+
     }
 
 }

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class AllRounderStatsDTO {
     private Integer runs;
-    private BigDecimal economy;
+    private Integer wickets;
     private Integer matches;
     private BigDecimal strikeRate;
 }

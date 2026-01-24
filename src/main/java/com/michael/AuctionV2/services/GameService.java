@@ -64,6 +64,7 @@ public class GameService {
     }
     @Transactional
     public AuctionedPlayer purchasePlayerForTeam(Integer gameId,Integer playerId, IPLAssociation teamAssociation, BigDecimal bidAmount){
+        //General Checks
         Game game =findById(gameId);
         if(game.getStatus()!=GameStatus.ACTIVE){
             throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
@@ -75,19 +76,32 @@ public class GameService {
         //Check if player already sold
         AuctionedPlayerId auctionedPlayerId =new AuctionedPlayerId(gameId,playerId);
         AuctionedPlayer foundPlayer =auctionedPlayerRepository.findById(auctionedPlayerId)
-                .orElseThrow(() -> new IllegalStateException("Player not in set!"));
-
-
+                .orElseThrow(() -> new IllegalStateException("Player not registered for auction!"));
         if (foundPlayer.getPlayerStatus() == PlayerStatus.SOLD) {
             throw new IllegalStateException("Player already sold");
         }
         if (foundPlayer.getPlayerStatus() != PlayerStatus.FOR_SALE) {
             throw new IllegalStateException("Player is not available for sale");
         }
+
         SetPlayer playerDetails =setService.findPlayerDetailsInSetById(new SetPlayerId(game.getSetId(),playerId));
+        if(bidAmount.compareTo( playerDetails.getPrice())<0){
+            throw new IllegalStateException("Can't sell player below base price!");
+        }
+
+        Player playerBioDetails = playerService.findPlayerById(playerDetails.getId().getPlayerId());
         Team team = teamService.getTeamOfAssociationInGame(gameId,teamAssociation);
 
+        // final updates
+        teamService.checkConstraintsAndUpdateTeamCounts(
+                team,
+                playerBioDetails.getType(),
+                playerBioDetails.getIsUncapped(),
+                game
+        );
         teamService.updateTeamForPurchase(team,bidAmount,playerDetails.getPoints());
+
+
         foundPlayer.setTeamId(team.getId());
         foundPlayer.setSoldPrice(bidAmount);
         foundPlayer.setPlayerStatus(PlayerStatus.SOLD);
@@ -103,16 +117,17 @@ public class GameService {
                     Player playerBioData = playerService.findPlayerById(playerId);
                     SetPlayer playerGameData = setService.findPlayerDetailsInSetById(new SetPlayerId(setId,playerId));
                     log.info("{} was fetched!",playerBioData.getName());
-                    return new PurchasedPlayer(
-                        playerBioData.getName(),
-                            playerBioData.getType(),
-                            purchaseEntry.getSoldPrice(),
-                            playerGameData.getPoints()
-                    );
+                    log.info("{} <- legend status",playerBioData.getIsLegend());
+                    return PurchasedPlayer.builder()
+                            .playerType(playerBioData.getType())
+                            .name(playerBioData.getName())
+                            .boughtFor(purchaseEntry.getSoldPrice())
+                            .points(playerGameData.getPoints())
+                            .isLegend(playerBioData.getIsLegend())
+                            .isForeign(playerBioData.getIsForeign())
+                            .isUncapped(playerBioData.getIsUncapped())
+                            .build();
                 }).toList();
-//        log.info(""teamPurchases.size());
         return teamPurchases;
     }
-
-
 }
