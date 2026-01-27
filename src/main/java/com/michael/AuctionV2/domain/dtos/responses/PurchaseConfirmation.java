@@ -1,4 +1,4 @@
-package com.michael.AuctionV2.domain.dtos;
+package com.michael.AuctionV2.domain.dtos.responses;
 
 import com.michael.AuctionV2.domain.entities.IPLAssociation;
 import com.michael.AuctionV2.domain.entities.PlayerStatus;
@@ -11,8 +11,8 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PurchaseRequest {
-    private Integer playerId;
-    private String teamAssociation;
-    private BigDecimal  finalBid;
+public class PurchaseConfirmation {
+    private PlayerStatus playerStatus;
+    private IPLAssociation soldTo;
+    private BigDecimal soldFor;
 }

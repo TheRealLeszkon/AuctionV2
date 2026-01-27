@@ -1,4 +1,4 @@
-package com.michael.AuctionV2.domain.dtos;
+package com.michael.AuctionV2.domain.dtos.responses;
 
 import com.michael.AuctionV2.domain.entities.PlayerType;
 import lombok.AllArgsConstructor;

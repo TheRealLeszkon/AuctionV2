@@ -1,10 +1,12 @@
 package com.michael.AuctionV2.controllers;
 
-import com.michael.AuctionV2.domain.dtos.PurchaseConfirmation;
+import com.michael.AuctionV2.domain.dtos.responses.*;
 import com.michael.AuctionV2.domain.dtos.*;
+import com.michael.AuctionV2.domain.dtos.requests.PurchaseRequest;
+import com.michael.AuctionV2.domain.dtos.requests.RefundRequest;
+import com.michael.AuctionV2.domain.dtos.websocket.WSEvent;
+import com.michael.AuctionV2.domain.dtos.websocket.WebSocketEvent;
 import com.michael.AuctionV2.domain.entities.*;
-import com.michael.AuctionV2.domain.entities.keys.AuctionedPlayerId;
-import com.michael.AuctionV2.domain.entities.keys.SetPlayerId;
 import com.michael.AuctionV2.domain.mappers.*;
 import com.michael.AuctionV2.services.GameService;
 import com.michael.AuctionV2.services.PlayerService;
@@ -13,8 +15,10 @@ import com.michael.AuctionV2.services.TeamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
 import java.util.List;
 
 @RestController
@@ -123,7 +127,7 @@ public class GameController {
     }
 
     @GetMapping("/{id}/team/{association}/purchases")
-    public List<PurchasedPlayer> showAllTeamPurchases(@PathVariable("id") Integer gameId,@PathVariable("association") String association){
+    public List<PurchasedPlayer> showAllTeamPurchases(@PathVariable("id") Integer gameId, @PathVariable("association") String association){
         Game game = gameService.findById(gameId);
         if(game.getStatus()!=GameStatus.ACTIVE){
             throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
@@ -218,17 +222,16 @@ public class GameController {
             throw new IllegalArgumentException("The Association/Team name in the url is Incorrect! Try in this format: LSG,CSK,DC...");
         }
         IPLAssociation association =IPLAssociation.valueOf(purchaseRequest.getTeamAssociation().toUpperCase());
-        AuctionedPlayer auctionedPlayer =gameService.purchasePlayerForTeam(
+        PurchasedPlayer purchasedPlayer =gameService.purchasePlayerForTeam(
                 gameId,
                 purchaseRequest.getPlayerId(),
                 association,
                 purchaseRequest.getFinalBid()
         );
-
-        return new PurchaseConfirmation(PlayerStatus.SOLD,association,auctionedPlayer.getSoldPrice());
+        return new PurchaseConfirmation(PlayerStatus.SOLD,association,purchasedPlayer.getBoughtFor());
     }
     @PostMapping("/{id}/refund")
-    public RefundConfirmation refundPurchase(@PathVariable("id") Integer gameId,@RequestBody RefundRequest refundRequest) {
+    public RefundConfirmation refundPurchase(@PathVariable("id") Integer gameId, @RequestBody RefundRequest refundRequest) {
         return gameService.refundPlayer(gameId, refundRequest.getPlayerId());
     }
 

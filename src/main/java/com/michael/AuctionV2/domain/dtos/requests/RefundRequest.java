@@ -1,4 +1,4 @@
-package com.michael.AuctionV2.domain.dtos;
+package com.michael.AuctionV2.domain.dtos.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

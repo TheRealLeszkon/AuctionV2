@@ -1,6 +1,5 @@
-package com.michael.AuctionV2.domain.dtos;
+package com.michael.AuctionV2.domain.dtos.responses;
 
-import com.michael.AuctionV2.domain.entities.GameCommand;
 import com.michael.AuctionV2.domain.entities.GameStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

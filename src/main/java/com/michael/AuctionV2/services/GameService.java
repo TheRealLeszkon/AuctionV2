@@ -1,20 +1,25 @@
 package com.michael.AuctionV2.services;
 
-import com.michael.AuctionV2.domain.dtos.PurchasedPlayer;
-import com.michael.AuctionV2.domain.dtos.RefundConfirmation;
+import com.michael.AuctionV2.domain.dtos.TeamDTO;
+import com.michael.AuctionV2.domain.dtos.responses.PurchasedPlayer;
+import com.michael.AuctionV2.domain.dtos.responses.RefundConfirmation;
+import com.michael.AuctionV2.domain.dtos.websocket.WSEvent;
+import com.michael.AuctionV2.domain.dtos.websocket.WebSocketEvent;
 import com.michael.AuctionV2.domain.entities.*;
 import com.michael.AuctionV2.domain.entities.keys.AuctionedPlayerId;
 import com.michael.AuctionV2.domain.entities.keys.SetPlayerId;
+import com.michael.AuctionV2.domain.mappers.TeamMapper;
 import com.michael.AuctionV2.repositories.AuctionedPlayerRepository;
 import com.michael.AuctionV2.repositories.GameRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +27,8 @@ import java.util.Optional;
 public class GameService {
     private final GameRepository gameRepository;
     private final TeamService teamService;
+    private final TeamMapper teamMapper;
+    private final SimpMessagingTemplate messagingTemplate;
     private final AuctionedPlayerRepository auctionedPlayerRepository;
     private final  SetService setService;
     private final PlayerService playerService;
@@ -64,7 +71,7 @@ public class GameService {
         return auctionedPlayerRepository.save(auctionedPlayer);
     }
     @Transactional
-    public AuctionedPlayer purchasePlayerForTeam(Integer gameId,Integer playerId, IPLAssociation teamAssociation, BigDecimal bidAmount){
+    public PurchasedPlayer purchasePlayerForTeam(Integer gameId,Integer playerId, IPLAssociation teamAssociation, BigDecimal bidAmount){
         //General Checks
         Game game =findById(gameId);
         if(game.getStatus()!=GameStatus.ACTIVE){
@@ -108,7 +115,27 @@ public class GameService {
         foundPlayer.setTeamId(team.getId());
         foundPlayer.setSoldPrice(bidAmount);
         foundPlayer.setPlayerStatus(PlayerStatus.SOLD);
-        return foundPlayer;
+
+        PurchasedPlayer purchasedPlayer =PurchasedPlayer.builder()
+                .name(playerBioDetails.getName())
+                .playerType(playerBioDetails.getType())
+                .boughtFor(bidAmount)
+                .points(playerDetails.getPoints())
+                .isForeign(playerBioDetails.getIsForeign())
+                .isLegend(playerBioDetails.getIsLegend())
+                .isUncapped(playerBioDetails.getIsUncapped())
+                .build();
+        String teamPurchaseUpdatesDestination ="/topic/game/"+gameId+"/purchases/"+teamAssociation;
+        messagingTemplate.convertAndSend(
+                teamPurchaseUpdatesDestination,
+                new WebSocketEvent<PurchasedPlayer>(WSEvent.PURCHASE, Instant.now(),purchasedPlayer)
+        );
+        String teamUpdatesDestination ="/topic/game/"+gameId+"/team/"+teamAssociation;
+        messagingTemplate.convertAndSend(
+                teamUpdatesDestination,
+                new WebSocketEvent<TeamDTO>(WSEvent.TEAM_UPDATE,Instant.now(),teamMapper.toDTO(team))
+        );
+        return purchasedPlayer;
     }
 
     public List<PurchasedPlayer> getTeamPurchases(Team team,Game game){
@@ -159,11 +186,22 @@ public class GameService {
         purchaseRecord.setTeamId(null);
         purchaseRecord.setSoldPrice(null);
         purchaseRecord.setPlayerStatus(PlayerStatus.UNSOLD);
-        return new RefundConfirmation(
+        RefundConfirmation confirmation =new RefundConfirmation(
                 playerBioDetails.getName(),
                 purchaseRecord.getPlayerStatus(),
                 "Refund was successful!"
         );
+        String teamRefundUpdatesDestination = "/topic/game/"+gameId+"/refunds/"+team.getAssociation(); // send to "/topic/test" for testing
+        messagingTemplate.convertAndSend(
+                teamRefundUpdatesDestination,
+                new WebSocketEvent<RefundConfirmation>(WSEvent.REFUND,Instant.now(),confirmation)
+        );
+        String teamUpdatesDestination ="/topic/game/"+gameId+"/team/"+team.getAssociation();
+        messagingTemplate.convertAndSend(
+                teamUpdatesDestination,
+                new WebSocketEvent<TeamDTO>(WSEvent.TEAM_UPDATE,Instant.now(),teamMapper.toDTO(team))
+        );
+        return confirmation;
     }
 
     public PlayerStatus getPlayerStatusInGame(Integer playerId, Game game) {
