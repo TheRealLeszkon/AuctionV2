@@ -1,6 +1,6 @@
 package com.michael.AuctionV2.domain.dtos.responses;
 
-import com.michael.AuctionV2.domain.entities.PlayerStatus;
+import com.michael.AuctionV2.domain.entities.enums.PlayerStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

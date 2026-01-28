@@ -1,16 +1,23 @@
 package com.michael.AuctionV2.services;
 
 import com.michael.AuctionV2.domain.dtos.TeamDTO;
+import com.michael.AuctionV2.domain.dtos.responses.GameLog;
 import com.michael.AuctionV2.domain.dtos.responses.PurchasedPlayer;
 import com.michael.AuctionV2.domain.dtos.responses.RefundConfirmation;
 import com.michael.AuctionV2.domain.dtos.websocket.WSEvent;
 import com.michael.AuctionV2.domain.dtos.websocket.WebSocketEvent;
 import com.michael.AuctionV2.domain.entities.*;
+import com.michael.AuctionV2.domain.entities.enums.GameStatus;
+import com.michael.AuctionV2.domain.entities.enums.IPLAssociation;
+import com.michael.AuctionV2.domain.entities.enums.PlayerStatus;
+import com.michael.AuctionV2.domain.entities.enums.TransactionType;
 import com.michael.AuctionV2.domain.entities.keys.AuctionedPlayerId;
 import com.michael.AuctionV2.domain.entities.keys.SetPlayerId;
+import com.michael.AuctionV2.domain.mappers.GameLogMapper;
 import com.michael.AuctionV2.domain.mappers.TeamMapper;
 import com.michael.AuctionV2.repositories.AuctionedPlayerRepository;
 import com.michael.AuctionV2.repositories.GameRepository;
+import com.michael.AuctionV2.repositories.GameTransactionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -30,7 +37,9 @@ public class GameService {
     private final TeamMapper teamMapper;
     private final SimpMessagingTemplate messagingTemplate;
     private final AuctionedPlayerRepository auctionedPlayerRepository;
+    private final GameTransactionRepository transactionRepository;
     private final  SetService setService;
+    private final GameLogMapper gameLogMapper;
     private final PlayerService playerService;
     public Game createGame(Game game){
         return gameRepository.save(game);
@@ -48,7 +57,7 @@ public class GameService {
     @Transactional
     public Game InitializeGame(Integer gameId){
         Game game = findById(gameId);
-        if(game.getStatus()==GameStatus.ACTIVE){
+        if(game.getStatus()== GameStatus.ACTIVE){
             throw new IllegalStateException("Game ID: "+gameId+" Game Name: "+game.getName()+ " is already active! Can't Initialize Active game!");
         }
         game.setStatus(GameStatus.ACTIVE);
@@ -71,7 +80,7 @@ public class GameService {
         return auctionedPlayerRepository.save(auctionedPlayer);
     }
     @Transactional
-    public PurchasedPlayer purchasePlayerForTeam(Integer gameId,Integer playerId, IPLAssociation teamAssociation, BigDecimal bidAmount){
+    public PurchasedPlayer purchasePlayerForTeam(Integer gameId, Integer playerId, IPLAssociation teamAssociation, BigDecimal bidAmount){
         //General Checks
         Game game =findById(gameId);
         if(game.getStatus()!=GameStatus.ACTIVE){
@@ -125,6 +134,17 @@ public class GameService {
                 .isLegend(playerBioDetails.getIsLegend())
                 .isUncapped(playerBioDetails.getIsUncapped())
                 .build();
+
+        transactionRepository.save(
+                GameTransaction.builder()
+                        .game(game)
+                        .player(playerBioDetails)
+                        .team(team)
+                        .amount(bidAmount)
+                        .playerStatus(PlayerStatus.SOLD)
+                        .type(TransactionType.PURCHASE)
+                        .build()
+        );
         String teamPurchaseUpdatesDestination ="/topic/game/"+gameId+"/purchases/"+teamAssociation;
         messagingTemplate.convertAndSend(
                 teamPurchaseUpdatesDestination,
@@ -182,7 +202,7 @@ public class GameService {
         team.setBalance(team.getBalance().add(purchaseRecord.getSoldPrice()));
         team.setPoints(team.getPoints() -playerGameDetails.getPoints());
         teamService.reduceTeamPlayerCounts(team,playerBioDetails);
-
+        BigDecimal refundedAmount = purchaseRecord.getSoldPrice();
         purchaseRecord.setTeamId(null);
         purchaseRecord.setSoldPrice(null);
         purchaseRecord.setPlayerStatus(PlayerStatus.UNSOLD);
@@ -190,6 +210,17 @@ public class GameService {
                 playerBioDetails.getName(),
                 purchaseRecord.getPlayerStatus(),
                 "Refund was successful!"
+        );
+
+        transactionRepository.save(
+                GameTransaction.builder()
+                        .game(game)
+                        .player(playerBioDetails)
+                        .team(team)
+                        .type(TransactionType.REFUND)
+                        .playerStatus(PlayerStatus.UNSOLD)
+                        .amount(refundedAmount)
+                .build()
         );
         String teamRefundUpdatesDestination = "/topic/game/"+gameId+"/refunds/"+team.getAssociation(); // send to "/topic/test" for testing
         messagingTemplate.convertAndSend(
@@ -211,5 +242,14 @@ public class GameService {
     public AuctionedPlayer findAuctionedPlayerById(AuctionedPlayerId auctionedPlayerId){
         return  auctionedPlayerRepository.findById(auctionedPlayerId)
                 .orElseThrow(() -> new IllegalStateException("Player not registered in game!"));
+    }
+
+    public List<GameLog> getAllGameLogs(Integer gameId){
+        Game game = findById(gameId);
+        if(game.getStatus()!=GameStatus.ACTIVE){
+            throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
+        }
+        List<GameTransaction> allTransactions = transactionRepository.findAllGameTransactionByGameIdOrderByIdDesc(gameId);
+        return allTransactions.stream().map(gameLogMapper::toDTO).toList();
     }
 }

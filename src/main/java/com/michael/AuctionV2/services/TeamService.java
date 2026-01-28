@@ -1,13 +1,13 @@
 package com.michael.AuctionV2.services;
 
 import com.michael.AuctionV2.domain.entities.*;
+import com.michael.AuctionV2.domain.entities.enums.IPLAssociation;
+import com.michael.AuctionV2.domain.entities.enums.PlayerType;
 import com.michael.AuctionV2.repositories.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -65,7 +65,7 @@ public class TeamService {
         team.setPoints(team.getPoints()+points);
     }
     public void checkConstraintsAndUpdateTeamCounts(
-            Team team, PlayerType playerType,boolean isUncapped,Game game
+            Team team, PlayerType playerType, boolean isUncapped, Game game
 
     ){
         Integer maxPlayerCount = game.getPlayersPerTeam();

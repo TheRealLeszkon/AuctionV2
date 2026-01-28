@@ -1,6 +1,7 @@
 package com.michael.AuctionV2.services;
 
 import com.michael.AuctionV2.domain.entities.*;
+import com.michael.AuctionV2.domain.entities.enums.PlayerType;
 import com.michael.AuctionV2.repositories.AllRounderStatsRepository;
 import com.michael.AuctionV2.repositories.BatsmanStatsRepository;
 import com.michael.AuctionV2.repositories.BowlerStatsRepository;
@@ -11,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.michael.AuctionV2.domain.entities.PlayerType.*;
 
 @Service
 @RequiredArgsConstructor

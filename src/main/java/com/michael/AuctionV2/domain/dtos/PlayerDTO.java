@@ -1,6 +1,6 @@
 package com.michael.AuctionV2.domain.dtos;
 
-import com.michael.AuctionV2.domain.entities.PlayerType;
+import com.michael.AuctionV2.domain.entities.enums.PlayerType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

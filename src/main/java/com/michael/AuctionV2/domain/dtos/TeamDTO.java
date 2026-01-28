@@ -1,7 +1,6 @@
 package com.michael.AuctionV2.domain.dtos;
 
-import com.michael.AuctionV2.domain.entities.IPLAssociation;
-import jakarta.persistence.Column;
+import com.michael.AuctionV2.domain.entities.enums.IPLAssociation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

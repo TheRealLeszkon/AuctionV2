@@ -4,9 +4,8 @@ import com.michael.AuctionV2.domain.dtos.responses.*;
 import com.michael.AuctionV2.domain.dtos.*;
 import com.michael.AuctionV2.domain.dtos.requests.PurchaseRequest;
 import com.michael.AuctionV2.domain.dtos.requests.RefundRequest;
-import com.michael.AuctionV2.domain.dtos.websocket.WSEvent;
-import com.michael.AuctionV2.domain.dtos.websocket.WebSocketEvent;
 import com.michael.AuctionV2.domain.entities.*;
+import com.michael.AuctionV2.domain.entities.enums.*;
 import com.michael.AuctionV2.domain.mappers.*;
 import com.michael.AuctionV2.services.GameService;
 import com.michael.AuctionV2.services.PlayerService;
@@ -15,10 +14,8 @@ import com.michael.AuctionV2.services.TeamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Instant;
 import java.util.List;
 
 @RestController
@@ -233,6 +230,11 @@ public class GameController {
     @PostMapping("/{id}/refund")
     public RefundConfirmation refundPurchase(@PathVariable("id") Integer gameId, @RequestBody RefundRequest refundRequest) {
         return gameService.refundPlayer(gameId, refundRequest.getPlayerId());
+    }
+
+    @GetMapping("{id}/audit")
+    public List<GameLog> auditLogs(@PathVariable("id") Integer gameId){
+        return gameService.getAllGameLogs(gameId);
     }
 
 

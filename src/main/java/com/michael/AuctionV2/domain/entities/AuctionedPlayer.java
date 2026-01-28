@@ -1,5 +1,6 @@
 package com.michael.AuctionV2.domain.entities;
 
+import com.michael.AuctionV2.domain.entities.enums.PlayerStatus;
 import com.michael.AuctionV2.domain.entities.keys.AuctionedPlayerId;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

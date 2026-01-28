@@ -1,8 +1,5 @@
 package com.michael.AuctionV2.services;
 
-import com.michael.AuctionV2.domain.dtos.SetPlayerDTO;
-import com.michael.AuctionV2.domain.entities.Player;
-import com.michael.AuctionV2.domain.entities.PlayerType;
 import com.michael.AuctionV2.domain.entities.Set;
 import com.michael.AuctionV2.domain.entities.SetPlayer;
 import com.michael.AuctionV2.domain.entities.keys.SetPlayerId;

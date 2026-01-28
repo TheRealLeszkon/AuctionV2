@@ -1,10 +1,9 @@
 package com.michael.AuctionV2.domain.dtos;
 
-import com.michael.AuctionV2.domain.entities.GameStatus;
+import com.michael.AuctionV2.domain.entities.enums.GameStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.mapstruct.Named;
 
 import java.math.BigDecimal;
 

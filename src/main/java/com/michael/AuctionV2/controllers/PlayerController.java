@@ -1,21 +1,17 @@
 package com.michael.AuctionV2.controllers;
 
 import com.michael.AuctionV2.domain.dtos.PlayerDTO;
-import com.michael.AuctionV2.domain.entities.AllRounderStats;
-import com.michael.AuctionV2.domain.entities.BowlerStats;
 import com.michael.AuctionV2.domain.entities.Player;
-import com.michael.AuctionV2.domain.entities.PlayerType;
+import com.michael.AuctionV2.domain.entities.enums.PlayerType;
 import com.michael.AuctionV2.domain.mappers.PlayerMapper;
 import com.michael.AuctionV2.services.PlayerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Map;
 
