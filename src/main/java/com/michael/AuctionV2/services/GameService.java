@@ -256,7 +256,7 @@ public class GameService {
 
     public void broadcastCurrentBid(BidRequest request,Integer gameId){
         Game game = findById(gameId);
-        String bidingDestination = "/game/"+gameId+"/bids";
+        String bidingDestination = "/topic/game/"+gameId+"/bids";
         if(game.getStatus()!=GameStatus.ACTIVE){
             WebSocketEvent<String> errorMessage = new WebSocketEvent<String>(
                     WSEvent.ERROR,

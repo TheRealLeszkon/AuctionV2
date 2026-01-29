@@ -1,0 +1,989 @@
+[
+  {
+    "setId": 1,
+    "playerId": 1,
+    "points": 1660,
+    "price": 2.0,
+    "order": 1
+  },
+  {
+    "setId": 1,
+    "playerId": 2,
+    "points": 1067,
+    "price": 2.0,
+    "order": 2
+  },
+  {
+    "setId": 1,
+    "playerId": 3,
+    "points": 1115,
+    "price": 2.0,
+    "order": 3
+  },
+  {
+    "setId": 1,
+    "playerId": 4,
+    "points": 957,
+    "price": 2.0,
+    "order": 4
+  },
+  {
+    "setId": 1,
+    "playerId": 5,
+    "points": 1235,
+    "price": 2.0,
+    "order": 5
+  },
+  {
+    "setId": 1,
+    "playerId": 6,
+    "points": 1115,
+    "price": 2.0,
+    "order": 6
+  },
+  {
+    "setId": 1,
+    "playerId": 7,
+    "points": 944,
+    "price": 2.0,
+    "order": 7
+  },
+  {
+    "setId": 1,
+    "playerId": 8,
+    "points": 971,
+    "price": 2.0,
+    "order": 8
+  },
+  {
+    "setId": 1,
+    "playerId": 9,
+    "points": 850,
+    "price": 2.0,
+    "order": 9
+  },
+  {
+    "setId": 1,
+    "playerId": 10,
+    "points": 957,
+    "price": 2.0,
+    "order": 10
+  },
+  {
+    "setId": 1,
+    "playerId": 11,
+    "points": 1398,
+    "price": 2.0,
+    "order": 11
+  },
+  {
+    "setId": 1,
+    "playerId": 12,
+    "points": 1197,
+    "price": 2.0,
+    "order": 12
+  },
+  {
+    "setId": 1,
+    "playerId": 13,
+    "points": 1018,
+    "price": 2.0,
+    "order": 13
+  },
+  {
+    "setId": 1,
+    "playerId": 14,
+    "points": 1183,
+    "price": 2.0,
+    "order": 14
+  },
+  {
+    "setId": 1,
+    "playerId": 15,
+    "points": 1230,
+    "price": 2.0,
+    "order": 15
+  },
+  {
+    "setId": 1,
+    "playerId": 16,
+    "points": 1081,
+    "price": 2.0,
+    "order": 16
+  },
+  {
+    "setId": 1,
+    "playerId": 17,
+    "points": 941,
+    "price": 2.0,
+    "order": 17
+  },
+  {
+    "setId": 1,
+    "playerId": 18,
+    "points": 789,
+    "price": 2.0,
+    "order": 18
+  },
+  {
+    "setId": 1,
+    "playerId": 19,
+    "points": 838,
+    "price": 2.0,
+    "order": 19
+  },
+  {
+    "setId": 1,
+    "playerId": 20,
+    "points": 1004,
+    "price": 1.0,
+    "order": 20
+  },
+  {
+    "setId": 1,
+    "playerId": 21,
+    "points": 757,
+    "price": 1.5,
+    "order": 21
+  },
+  {
+    "setId": 1,
+    "playerId": 22,
+    "points": 864,
+    "price": 0.5,
+    "order": 22
+  },
+  {
+    "setId": 1,
+    "playerId": 23,
+    "points": 933,
+    "price": 0.5,
+    "order": 23
+  },
+  {
+    "setId": 1,
+    "playerId": 24,
+    "points": 812,
+    "price": 2.0,
+    "order": 24
+  },
+  {
+    "setId": 1,
+    "playerId": 25,
+    "points": 905,
+    "price": 2.0,
+    "order": 25
+  },
+  {
+    "setId": 1,
+    "playerId": 26,
+    "points": 1052,
+    "price": 2.0,
+    "order": 26
+  },
+  {
+    "setId": 1,
+    "playerId": 27,
+    "points": 905,
+    "price": 1.0,
+    "order": 27
+  },
+  {
+    "setId": 1,
+    "playerId": 28,
+    "points": 767,
+    "price": 1.0,
+    "order": 28
+  },
+  {
+    "setId": 1,
+    "playerId": 29,
+    "points": 699,
+    "price": 2.0,
+    "order": 29
+  },
+  {
+    "setId": 1,
+    "playerId": 30,
+    "points": 769,
+    "price": 0.5,
+    "order": 30
+  },
+  {
+    "setId": 1,
+    "playerId": 31,
+    "points": 930,
+    "price": 1.0,
+    "order": 31
+  },
+  {
+    "setId": 1,
+    "playerId": 32,
+    "points": 811,
+    "price": 1.0,
+    "order": 32
+  },
+  {
+    "setId": 1,
+    "playerId": 33,
+    "points": 784,
+    "price": 0.5,
+    "order": 33
+  },
+  {
+    "setId": 1,
+    "playerId": 34,
+    "points": 861,
+    "price": 0.5,
+    "order": 34
+  },
+  {
+    "setId": 1,
+    "playerId": 35,
+    "points": 803,
+    "price": 1.0,
+    "order": 35
+  },
+  {
+    "setId": 1,
+    "playerId": 36,
+    "points": 871,
+    "price": 0.2,
+    "order": 36
+  },
+  {
+    "setId": 1,
+    "playerId": 37,
+    "points": 724,
+    "price": 0.5,
+    "order": 37
+  },
+  {
+    "setId": 1,
+    "playerId": 38,
+    "points": 894,
+    "price": 1.0,
+    "order": 38
+  },
+  {
+    "setId": 1,
+    "playerId": 39,
+    "points": 858,
+    "price": 2.0,
+    "order": 39
+  },
+  {
+    "setId": 1,
+    "playerId": 40,
+    "points": 871,
+    "price": 1.0,
+    "order": 40
+  },
+  {
+    "setId": 1,
+    "playerId": 41,
+    "points": 685,
+    "price": 0.5,
+    "order": 41
+  },
+  {
+    "setId": 1,
+    "playerId": 42,
+    "points": 9205,
+    "price": 2.0,
+    "order": 42
+  },
+  {
+    "setId": 1,
+    "playerId": 43,
+    "points": 6677,
+    "price": 2.0,
+    "order": 43
+  },
+  {
+    "setId": 1,
+    "playerId": 44,
+    "points": 3724,
+    "price": 2.0,
+    "order": 44
+  },
+  {
+    "setId": 1,
+    "playerId": 45,
+    "points": 3277,
+    "price": 2.0,
+    "order": 45
+  },
+  {
+    "setId": 1,
+    "playerId": 46,
+    "points": 9946,
+    "price": 2.0,
+    "order": 46
+  },
+  {
+    "setId": 1,
+    "playerId": 47,
+    "points": 7572,
+    "price": 2.0,
+    "order": 47
+  },
+  {
+    "setId": 1,
+    "playerId": 48,
+    "points": 11090,
+    "price": 2.0,
+    "order": 48
+  },
+  {
+    "setId": 1,
+    "playerId": 49,
+    "points": 4437,
+    "price": 2.0,
+    "order": 49
+  },
+  {
+    "setId": 1,
+    "playerId": 50,
+    "points": 5981,
+    "price": 2.0,
+    "order": 50
+  },
+  {
+    "setId": 1,
+    "playerId": 51,
+    "points": 5331,
+    "price": 2.0,
+    "order": 51
+  },
+  {
+    "setId": 1,
+    "playerId": 52,
+    "points": 2884,
+    "price": 2.0,
+    "order": 52
+  },
+  {
+    "setId": 1,
+    "playerId": 53,
+    "points": 5139,
+    "price": 2.0,
+    "order": 53
+  },
+  {
+    "setId": 1,
+    "playerId": 54,
+    "points": 7182,
+    "price": 2.0,
+    "order": 54
+  },
+  {
+    "setId": 1,
+    "playerId": 55,
+    "points": 7339,
+    "price": 2.0,
+    "order": 55
+  },
+  {
+    "setId": 1,
+    "playerId": 56,
+    "points": 5475,
+    "price": 2.0,
+    "order": 56
+  },
+  {
+    "setId": 1,
+    "playerId": 57,
+    "points": 2992,
+    "price": 2.0,
+    "order": 57
+  },
+  {
+    "setId": 1,
+    "playerId": 58,
+    "points": 5048,
+    "price": 2.0,
+    "order": 58
+  },
+  {
+    "setId": 1,
+    "playerId": 59,
+    "points": 2376,
+    "price": 2.0,
+    "order": 59
+  },
+  {
+    "setId": 1,
+    "playerId": 60,
+    "points": 2438,
+    "price": 2.0,
+    "order": 60
+  },
+  {
+    "setId": 1,
+    "playerId": 61,
+    "points": 4875,
+    "price": 2.0,
+    "order": 61
+  },
+  {
+    "setId": 1,
+    "playerId": 62,
+    "points": 4470,
+    "price": 1.5,
+    "order": 62
+  },
+  {
+    "setId": 1,
+    "playerId": 63,
+    "points": 2058,
+    "price": 1.0,
+    "order": 63
+  },
+  {
+    "setId": 1,
+    "playerId": 64,
+    "points": 3287,
+    "price": 2.0,
+    "order": 64
+  },
+  {
+    "setId": 1,
+    "playerId": 65,
+    "points": 3373,
+    "price": 2.0,
+    "order": 65
+  },
+  {
+    "setId": 1,
+    "playerId": 66,
+    "points": 4832,
+    "price": 1.0,
+    "order": 66
+  },
+  {
+    "setId": 1,
+    "playerId": 67,
+    "points": 3786,
+    "price": 1.0,
+    "order": 67
+  },
+  {
+    "setId": 1,
+    "playerId": 68,
+    "points": 4572,
+    "price": 1.0,
+    "order": 68
+  },
+  {
+    "setId": 1,
+    "playerId": 69,
+    "points": 1800,
+    "price": 1.0,
+    "order": 69
+  },
+  {
+    "setId": 1,
+    "playerId": 70,
+    "points": 1622,
+    "price": 1.0,
+    "order": 70
+  },
+  {
+    "setId": 1,
+    "playerId": 71,
+    "points": 925,
+    "price": 0.5,
+    "order": 71
+  },
+  {
+    "setId": 1,
+    "playerId": 72,
+    "points": 2570,
+    "price": 1.0,
+    "order": 72
+  },
+  {
+    "setId": 1,
+    "playerId": 73,
+    "points": 1871,
+    "price": 0.5,
+    "order": 73
+  },
+  {
+    "setId": 1,
+    "playerId": 74,
+    "points": 3635,
+    "price": 2.0,
+    "order": 74
+  },
+  {
+    "setId": 1,
+    "playerId": 75,
+    "points": 735,
+    "price": 0.5,
+    "order": 75
+  },
+  {
+    "setId": 1,
+    "playerId": 76,
+    "points": 4367,
+    "price": 1.5,
+    "order": 76
+  },
+  {
+    "setId": 1,
+    "playerId": 77,
+    "points": 850,
+    "price": 0.2,
+    "order": 77
+  },
+  {
+    "setId": 1,
+    "playerId": 78,
+    "points": 1834,
+    "price": 1.0,
+    "order": 78
+  },
+  {
+    "setId": 1,
+    "playerId": 79,
+    "points": 2009,
+    "price": 2.0,
+    "order": 79
+  },
+  {
+    "setId": 1,
+    "playerId": 80,
+    "points": 518,
+    "price": 0.5,
+    "order": 80
+  },
+  {
+    "setId": 1,
+    "playerId": 81,
+    "points": 1809,
+    "price": 1.0,
+    "order": 81
+  },
+  {
+    "setId": 1,
+    "playerId": 82,
+    "points": 8280,
+    "price": 2.0,
+    "order": 82
+  },
+  {
+    "setId": 1,
+    "playerId": 83,
+    "points": 3826,
+    "price": 2.0,
+    "order": 83
+  },
+  {
+    "setId": 1,
+    "playerId": 84,
+    "points": 7549,
+    "price": 2.0,
+    "order": 84
+  },
+  {
+    "setId": 1,
+    "playerId": 85,
+    "points": 705,
+    "price": 1.5,
+    "order": 85
+  },
+  {
+    "setId": 1,
+    "playerId": 86,
+    "points": 1053,
+    "price": 2.0,
+    "order": 86
+  },
+  {
+    "setId": 1,
+    "playerId": 87,
+    "points": 6728,
+    "price": 2.0,
+    "order": 87
+  },
+  {
+    "setId": 1,
+    "playerId": 88,
+    "points": 1683,
+    "price": 2.0,
+    "order": 88
+  },
+  {
+    "setId": 1,
+    "playerId": 89,
+    "points": 476,
+    "price": 1.0,
+    "order": 89
+  },
+  {
+    "setId": 1,
+    "playerId": 90,
+    "points": 798,
+    "price": 1.5,
+    "order": 90
+  },
+  {
+    "setId": 1,
+    "playerId": 91,
+    "points": 2095,
+    "price": 2.0,
+    "order": 91
+  },
+  {
+    "setId": 1,
+    "playerId": 92,
+    "points": 5665,
+    "price": 2.0,
+    "order": 92
+  },
+  {
+    "setId": 1,
+    "playerId": 93,
+    "points": 5675,
+    "price": 2.0,
+    "order": 93
+  },
+  {
+    "setId": 1,
+    "playerId": 94,
+    "points": 3556,
+    "price": 2.0,
+    "order": 94
+  },
+  {
+    "setId": 1,
+    "playerId": 95,
+    "points": 7841,
+    "price": 2.0,
+    "order": 95
+  },
+  {
+    "setId": 1,
+    "playerId": 96,
+    "points": 2373,
+    "price": 2.0,
+    "order": 96
+  },
+  {
+    "setId": 1,
+    "playerId": 97,
+    "points": 726,
+    "price": 2.0,
+    "order": 97
+  },
+  {
+    "setId": 1,
+    "playerId": 98,
+    "points": 1959,
+    "price": 2.0,
+    "order": 98
+  },
+  {
+    "setId": 1,
+    "playerId": 99,
+    "points": 4248,
+    "price": 2.0,
+    "order": 99
+  },
+  {
+    "setId": 1,
+    "playerId": 100,
+    "points": 2782,
+    "price": 2.0,
+    "order": 100
+  },
+  {
+    "setId": 1,
+    "playerId": 101,
+    "points": 1101,
+    "price": 1.5,
+    "order": 101
+  },
+  {
+    "setId": 1,
+    "playerId": 102,
+    "points": 764,
+    "price": 2.0,
+    "order": 102
+  },
+  {
+    "setId": 1,
+    "playerId": 103,
+    "points": 1228,
+    "price": 2.0,
+    "order": 103
+  },
+  {
+    "setId": 1,
+    "playerId": 104,
+    "points": 1853,
+    "price": 2.0,
+    "order": 104
+  },
+  {
+    "setId": 1,
+    "playerId": 105,
+    "points": 2036,
+    "price": 1.0,
+    "order": 105
+  },
+  {
+    "setId": 1,
+    "playerId": 106,
+    "points": 762,
+    "price": 0.5,
+    "order": 106
+  },
+  {
+    "setId": 1,
+    "playerId": 107,
+    "points": 447,
+    "price": 1.0,
+    "order": 107
+  },
+  {
+    "setId": 1,
+    "playerId": 108,
+    "points": 1721,
+    "price": 1.0,
+    "order": 108
+  },
+  {
+    "setId": 1,
+    "playerId": 109,
+    "points": 360,
+    "price": 0.5,
+    "order": 109
+  },
+  {
+    "setId": 1,
+    "playerId": 110,
+    "points": 1205,
+    "price": 0.5,
+    "order": 110
+  },
+  {
+    "setId": 1,
+    "playerId": 111,
+    "points": 995,
+    "price": 2.0,
+    "order": 111
+  },
+  {
+    "setId": 1,
+    "playerId": 112,
+    "points": 2320,
+    "price": 0.5,
+    "order": 112
+  },
+  {
+    "setId": 1,
+    "playerId": 113,
+    "points": 820,
+    "price": 0.5,
+    "order": 113
+  },
+  {
+    "setId": 1,
+    "playerId": 114,
+    "points": 4607,
+    "price": 2.0,
+    "order": 114
+  },
+  {
+    "setId": 1,
+    "playerId": 115,
+    "points": 806,
+    "price": 1.0,
+    "order": 115
+  },
+  {
+    "setId": 1,
+    "playerId": 116,
+    "points": 1677,
+    "price": 1.0,
+    "order": 116
+  },
+  {
+    "setId": 1,
+    "playerId": 117,
+    "points": 879,
+    "price": 1.0,
+    "order": 117
+  },
+  {
+    "setId": 1,
+    "playerId": 118,
+    "points": 600,
+    "price": 1.0,
+    "order": 118
+  },
+  {
+    "setId": 1,
+    "playerId": 119,
+    "points": 852,
+    "price": 1.0,
+    "order": 119
+  },
+  {
+    "setId": 1,
+    "playerId": 120,
+    "points": 780,
+    "price": 0.5,
+    "order": 120
+  },
+  {
+    "setId": 1,
+    "playerId": 121,
+    "points": 2353,
+    "price": 2.0,
+    "order": 121
+  },
+  {
+    "setId": 1,
+    "playerId": 122,
+    "points": 1260,
+    "price": 2.0,
+    "order": 122
+  },
+  {
+    "setId": 1,
+    "playerId": 123,
+    "points": 1124,
+    "price": 2.0,
+    "order": 123
+  },
+  {
+    "setId": 1,
+    "playerId": 124,
+    "points": 973,
+    "price": 2.0,
+    "order": 124
+  },
+  {
+    "setId": 1,
+    "playerId": 125,
+    "points": 949,
+    "price": 2.0,
+    "order": 125
+  },
+  {
+    "setId": 1,
+    "playerId": 126,
+    "points": 1057,
+    "price": 2.0,
+    "order": 126
+  },
+  {
+    "setId": 1,
+    "playerId": 127,
+    "points": 842,
+    "price": 1.0,
+    "order": 127
+  },
+  {
+    "setId": 1,
+    "playerId": 128,
+    "points": 824,
+    "price": 1.0,
+    "order": 128
+  },
+  {
+    "setId": 1,
+    "playerId": 129,
+    "points": 790,
+    "price": 1.0,
+    "order": 129
+  },
+  {
+    "setId": 1,
+    "playerId": 130,
+    "points": 852,
+    "price": 0.5,
+    "order": 130
+  },
+  {
+    "setId": 1,
+    "playerId": 131,
+    "points": 1339,
+    "price": 2.0,
+    "order": 131
+  },
+  {
+    "setId": 1,
+    "playerId": 132,
+    "points": 1392,
+    "price": 2.0,
+    "order": 132
+  },
+  {
+    "setId": 1,
+    "playerId": 133,
+    "points": 975,
+    "price": 2.0,
+    "order": 133
+  },
+  {
+    "setId": 1,
+    "playerId": 134,
+    "points": 1038,
+    "price": 1.0,
+    "order": 134
+  },
+  {
+    "setId": 1,
+    "playerId": 135,
+    "points": 985,
+    "price": 2.0,
+    "order": 135
+  },
+  {
+    "setId": 1,
+    "playerId": 136,
+    "points": 970,
+    "price": 2.0,
+    "order": 136
+  },
+  {
+    "setId": 1,
+    "playerId": 137,
+    "points": 1003,
+    "price": 2.0,
+    "order": 137
+  },
+  {
+    "setId": 1,
+    "playerId": 138,
+    "points": 959,
+    "price": 2.0,
+    "order": 138
+  },
+  {
+    "setId": 1,
+    "playerId": 139,
+    "points": 812,
+    "price": 2.0,
+    "order": 139
+  },
+  {
+    "setId": 1,
+    "playerId": 140,
+    "points": 824,
+    "price": 1.0,
+    "order": 140
+  },
+  {
+    "setId": 1,
+    "playerId": 141,
+    "points": 770,
+    "price": 0.5,
+    "order": 141
+  }
+]

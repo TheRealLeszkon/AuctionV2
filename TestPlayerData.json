@@ -1,0 +1,2540 @@
+[
+  {
+    "id": null,
+    "name": "Virat Kohli",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Virat%20Kohli.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 8661,
+      "matches": 267,
+      "battingAvg": 39.55,
+      "strikeRate": 132.86
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Ruturaj Gaikwad",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Ruturaj%20Gaikwad.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 2502,
+      "matches": 71,
+      "battingAvg": 40.35,
+      "strikeRate": 138.0
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Sai Sudharsan",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Sai%20Sudharsan.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 1793,
+      "matches": 40,
+      "battingAvg": 49.81,
+      "strikeRate": 145.9
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Tilak Varma",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/N%20Tilak%20Varma.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 1499,
+      "matches": 54,
+      "battingAvg": 37.48,
+      "strikeRate": 144.41
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Faf du Plessis",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Faf%20Du%20Plessis.png",
+    "type": "BATSMAN",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SA",
+    "batsmanStats": {
+      "runs": 4773,
+      "matches": 154,
+      "battingAvg": 35.1,
+      "strikeRate": 135.8
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Shreyas Iyer",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Shreyas%20Iyer.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 3731,
+      "matches": 133,
+      "battingAvg": 34.23,
+      "strikeRate": 133.35
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Kane Williamson",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Kane%20Williamson.png",
+    "type": "BATSMAN",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "NZ",
+    "batsmanStats": {
+      "runs": 2128,
+      "matches": 79,
+      "battingAvg": 35.47,
+      "strikeRate": 125.6
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Travis Head",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Travis%20Head.png",
+    "type": "BATSMAN",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AUS",
+    "batsmanStats": {
+      "runs": 1146,
+      "matches": 38,
+      "battingAvg": 34.73,
+      "strikeRate": 170.0
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Rinku Singh",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Rinku%20Singh.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 1099,
+      "matches": 59,
+      "battingAvg": 30.53,
+      "strikeRate": 145.2
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Shashank Singh",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Shashank%20Singh.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 773,
+      "matches": 41,
+      "battingAvg": 40.68,
+      "strikeRate": 157.76
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Rohit Sharma",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Rohit%20Sharma.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 7046,
+      "matches": 272,
+      "battingAvg": 29.73,
+      "strikeRate": 132.1
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Shubman Gill",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Shubman%20Gill.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 3866,
+      "matches": 118,
+      "battingAvg": 39.45,
+      "strikeRate": 138.72
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Yashasvi Jaiswal",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Yashasvi%20Jaiswal.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 2166,
+      "matches": 67,
+      "battingAvg": 34.38,
+      "strikeRate": 152.86
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Ajinkya Rahane",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Ajinkya%20Rahane.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 5032,
+      "matches": 198,
+      "battingAvg": 30.5,
+      "strikeRate": 125.0
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Surya Kumar Yadav",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Surya%20Kumar%20Yadav.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 4311,
+      "matches": 166,
+      "battingAvg": 35.34,
+      "strikeRate": 148.66
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "David Miller",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/David%20Miller.png",
+    "type": "BATSMAN",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SA",
+    "batsmanStats": {
+      "runs": 3077,
+      "matches": 141,
+      "battingAvg": 35.78,
+      "strikeRate": 138.6
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Abhishek Sharma",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Abhishek%20Sharma.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 1816,
+      "matches": 77,
+      "battingAvg": 27.1,
+      "strikeRate": 163.02
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Dewald Brevis",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Dewald%20Brevis.png",
+    "type": "BATSMAN",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SA",
+    "batsmanStats": {
+      "runs": 455,
+      "matches": 16,
+      "battingAvg": 28.44,
+      "strikeRate": 153.2
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Rajat Patidar",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Rajat%20Patidar.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 1111,
+      "matches": 42,
+      "battingAvg": 26.45,
+      "strikeRate": 154.31
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Vaibhav Suryavanshi",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Vaibhav%20Suryavanshi.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 252,
+      "matches": 7,
+      "battingAvg": 36.0,
+      "strikeRate": 206.56
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Rachin Ravindra",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Rachin%20Ravindra.png",
+    "type": "BATSMAN",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "NZ",
+    "batsmanStats": {
+      "runs": 328,
+      "matches": 13,
+      "battingAvg": 27.33,
+      "strikeRate": 150.46
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Priyansh Arya",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Priyansh%20Arya.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 475,
+      "matches": 17,
+      "battingAvg": 27.94,
+      "strikeRate": 179.25
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Ayush Mhatre",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Ayush%20Mhatre.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 240,
+      "matches": 7,
+      "battingAvg": 34.29,
+      "strikeRate": 188.98
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Devdutt Padikkal",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Devdutt%20Padikkal.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 1806,
+      "matches": 74,
+      "battingAvg": 25.44,
+      "strikeRate": 125.8
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Mayank Agarwal",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Mayank%20Agarwal.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 2756,
+      "matches": 131,
+      "battingAvg": 22.97,
+      "strikeRate": 133.53
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Manish Pandey",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Manish%20Pandey.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 3942,
+      "matches": 174,
+      "battingAvg": 29.42,
+      "strikeRate": 121.52
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Rahul Tripathi",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Rahul%20Tripathi.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 2291,
+      "matches": 100,
+      "battingAvg": 26.33,
+      "strikeRate": 137.85
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Nehal Wadhera",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Nehal%20Wadhera.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 719,
+      "matches": 36,
+      "battingAvg": 26.63,
+      "strikeRate": 142.94
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Sherfane Rutherford",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Sherfane%20Rutherford.png",
+    "type": "BATSMAN",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "WI",
+    "batsmanStats": {
+      "runs": 397,
+      "matches": 23,
+      "battingAvg": 24.81,
+      "strikeRate": 137.37
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Angkrish Raghuvanshi",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Angkrish%20Raghuvanshi.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 463,
+      "matches": 22,
+      "battingAvg": 28.94,
+      "strikeRate": 144.7
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Tim David",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Tim%20David.png",
+    "type": "BATSMAN",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AUS",
+    "batsmanStats": {
+      "runs": 846,
+      "matches": 50,
+      "battingAvg": 32.54,
+      "strikeRate": 173.4
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Ashutosh Sharma",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Ashutosh%20Sharma.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 393,
+      "matches": 24,
+      "battingAvg": 28.07,
+      "strikeRate": 163.8
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Aniket Verma",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Aniket%20Verma.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 236,
+      "matches": 14,
+      "battingAvg": 26.22,
+      "strikeRate": 166.2
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Naman Dhir",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Naman%20Dhir.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 392,
+      "matches": 23,
+      "battingAvg": 28.0,
+      "strikeRate": 180.65
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Karun Nair",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Karun%20Nair.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 1694,
+      "matches": 84,
+      "battingAvg": 23.86,
+      "strikeRate": 131.73
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Urvil Patel",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Urvil%20Patel.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 68,
+      "matches": 3,
+      "battingAvg": 22.67,
+      "strikeRate": 212.5
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Abdul Samad",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Abdul%20Samad.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 741,
+      "matches": 63,
+      "battingAvg": 19.5,
+      "strikeRate": 151.84
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Shimron Hetmyer",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Shimron%20Hetmyer.png",
+    "type": "BATSMAN",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "WI",
+    "batsmanStats": {
+      "runs": 1482,
+      "matches": 86,
+      "battingAvg": 29.06,
+      "strikeRate": 151.84
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Venkatesh Iyer",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Venkatesh%20Iyer.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 1468,
+      "matches": 62,
+      "battingAvg": 29.96,
+      "strikeRate": 137.32
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Prithvi Shaw",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Prithvi%20Shaw.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 1892,
+      "matches": 79,
+      "battingAvg": 23.95,
+      "strikeRate": 147.47
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Sameer Rizvi",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Sameer%20Rizvi.png",
+    "type": "BATSMAN",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 172,
+      "matches": 13,
+      "battingAvg": 24.57,
+      "strikeRate": 140.98
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Jasprit Bumrah",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Jasprit%20Bumrah.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 183,
+      "matches": 145,
+      "economy": 7.25,
+      "bestFigure": "5/10"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Mohammed Shami",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Mohammad%20Shami.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 133,
+      "matches": 120,
+      "economy": 8.63,
+      "bestFigure": "3/15"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Prasidh Krishna",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Prasidh%20Krishna.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 74,
+      "matches": 66,
+      "economy": 8.77,
+      "bestFigure": "4/30"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Mitchell Starc",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Mitchell%20Starc.png",
+    "type": "BOWLER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AUS",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 65,
+      "matches": 52,
+      "economy": 8.61,
+      "bestFigure": "4/15"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Bhuvneshwar Kumar",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Bhuvneshwar%20Kumar.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 198,
+      "matches": 190,
+      "economy": 7.69,
+      "bestFigure": "5/19"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Harshal Patel",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Harshal%20Patel.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 151,
+      "matches": 118,
+      "economy": 8.86,
+      "bestFigure": "5/27"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Yuzvendra Chahal",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Yuzvendra%20Chahal.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 221,
+      "matches": 174,
+      "economy": 7.96,
+      "bestFigure": "5/40"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Deepak Chahar",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Deepak%20Chahar.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 88,
+      "matches": 95,
+      "economy": 8.14,
+      "bestFigure": "4/13"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Mohit Sharma",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Mohit%20Sharma.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 119,
+      "matches": 120,
+      "economy": 8.45,
+      "bestFigure": "5/10"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Kagiso Rabada",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Kagiso%20Rabada.png",
+    "type": "BOWLER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SA",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 106,
+      "matches": 69,
+      "economy": 8.42,
+      "bestFigure": "4/21"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Josh Hazlewood",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Josh%20Hazlewood.png",
+    "type": "BOWLER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AUS",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 57,
+      "matches": 39,
+      "economy": 8.28,
+      "bestFigure": "4/25"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Kuldeep Yadav",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Kuldeep%20Yadav.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 102,
+      "matches": 98,
+      "economy": 8.04,
+      "bestFigure": "4/14"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Trent Boult",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Trent%20Boult.png",
+    "type": "BOWLER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "NZ",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 143,
+      "matches": 120,
+      "economy": 8.38,
+      "bestFigure": "4/18"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Sandeep Sharma",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Sandeep%20Sharma.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 146,
+      "matches": 137,
+      "economy": 8.03,
+      "bestFigure": "5/18"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Mohammed Siraj",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Mohammed%20Siraj.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 109,
+      "matches": 108,
+      "economy": 8.74,
+      "bestFigure": "4/17"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Jofra Archer",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Jofra%20Archer.png",
+    "type": "BOWLER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "WI",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 59,
+      "matches": 52,
+      "economy": 7.89,
+      "bestFigure": "3/15"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Varun Chakravarthy",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Varun%20Chakaravarthy.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 100,
+      "matches": 84,
+      "economy": 7.58,
+      "bestFigure": "5/20"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Matheesha Pathirana",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Matheesha%20Pathirana.png",
+    "type": "BOWLER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SL",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 47,
+      "matches": 32,
+      "economy": 8.68,
+      "bestFigure": "4/28"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Noor Ahmad",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Noor%20Ahmad.png",
+    "type": "BOWLER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AFG",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 48,
+      "matches": 37,
+      "economy": 8.08,
+      "bestFigure": "4/18"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Arshdeep Singh",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Arshdeep%20Singh.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 97,
+      "matches": 82,
+      "economy": 8.73,
+      "bestFigure": "5/32"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Khaleel Ahmed",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Khaleel%20Ahmed.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 89,
+      "matches": 71,
+      "economy": 8.98,
+      "bestFigure": "3/21"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Yash Dayal",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Yash%20Dayal.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 41,
+      "matches": 43,
+      "economy": 9.58,
+      "bestFigure": "3/20"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Mustafizur Rahman",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Mustafizur%20Rahman.png",
+    "type": "BOWLER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "BAN",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 65,
+      "matches": 60,
+      "economy": 8.13,
+      "bestFigure": "4/29"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "T Natarajan",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/T%20Natarajan.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 67,
+      "matches": 63,
+      "economy": 8.84,
+      "bestFigure": "4/19"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Ishant Sharma",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Ishant%20Sharma.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 96,
+      "matches": 117,
+      "economy": 8.36,
+      "bestFigure": "5/12"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Rahul Chahar",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Rahul%20Chahar.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 75,
+      "matches": 79,
+      "economy": 8.16,
+      "bestFigure": "3/23"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Jaydev Unadkat",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Jaydev%20Unadkat.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 91,
+      "matches": 94,
+      "economy": 8.89,
+      "bestFigure": "5/25"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Mukesh Kumar",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Mukesh%20Kumar.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 36,
+      "matches": 32,
+      "economy": 10.4,
+      "bestFigure": "4/33"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Sai Kishore",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Sai%20Kishore.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 32,
+      "matches": 25,
+      "economy": 8.86,
+      "bestFigure": "4/33"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Suyash Sharma",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Suyash%20Sharma.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 18,
+      "matches": 27,
+      "economy": 8.75,
+      "bestFigure": "3/17"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Lockie Ferguson",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Lockie%20Ferguson.png",
+    "type": "BOWLER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "NZ",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 51,
+      "matches": 49,
+      "economy": 8.97,
+      "bestFigure": "4/28"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Mayank Markande",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Mayank%20Markande.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 37,
+      "matches": 37,
+      "economy": 8.91,
+      "bestFigure": "4/15"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Ravi Bishnoi",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Ravi%20Bishnoi.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 72,
+      "matches": 77,
+      "economy": 8.22,
+      "bestFigure": "3/24"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Digvesh Rathi",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Digvesh%20Singh.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 14,
+      "matches": 13,
+      "economy": 8.25,
+      "bestFigure": "2/30"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Avesh Khan",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Avesh%20Khan.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 87,
+      "matches": 76,
+      "economy": 9.12,
+      "bestFigure": "4/24"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Vijaykumar Vyshak Kumar",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Vyshak%20Vijaykumar.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 17,
+      "matches": 16,
+      "economy": 10.38,
+      "bestFigure": "3/20"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Maheesh Theekshana",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Maheesh%20Theekshana.png",
+    "type": "BOWLER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SL",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 36,
+      "matches": 38,
+      "economy": 8.27,
+      "bestFigure": "4/33"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Harshit Rana",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Harshit%20Rana.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 40,
+      "matches": 34,
+      "economy": 9.51,
+      "bestFigure": "3/24"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Anshul Kamboj",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Anshul%20Kamboj.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 10,
+      "matches": 11,
+      "economy": 9.08,
+      "bestFigure": "3/13"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Vaibhav Arora",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Vaibhav%20Arora.png",
+    "type": "BOWLER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": {
+      "wickets": 36,
+      "matches": 32,
+      "economy": 9.55,
+      "bestFigure": "3/27"
+    },
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Sunil Narine",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Sunil%20Narine.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "WI",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 1780,
+      "matches": 189,
+      "strikeRate": 166.5,
+      "wickets": 192
+    }
+  },
+  {
+    "id": null,
+    "name": "Hardik Pandya",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Hardik%20Pandya.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 2749,
+      "matches": 152,
+      "strikeRate": 146.9,
+      "wickets": 78
+    }
+  },
+  {
+    "id": null,
+    "name": "Ravindra Jadeja",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Ravindra%20Jadeja.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 3260,
+      "matches": 254,
+      "strikeRate": 130.2,
+      "wickets": 170
+    }
+  },
+  {
+    "id": null,
+    "name": "Will Jacks",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Will%20Jacks.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "ENG",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 463,
+      "matches": 21,
+      "strikeRate": 157.8,
+      "wickets": 8
+    }
+  },
+  {
+    "id": null,
+    "name": "Cameron Green",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Cameron%20Green.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AUS",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 707,
+      "matches": 29,
+      "strikeRate": 153.7,
+      "wickets": 16
+    }
+  },
+  {
+    "id": null,
+    "name": "Rashid Khan",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Rashid%20Khan.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AFG",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 585,
+      "matches": 136,
+      "strikeRate": 160.3,
+      "wickets": 158
+    }
+  },
+  {
+    "id": null,
+    "name": "Marco Jansen",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Marco%20Jansen.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SA",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 141,
+      "matches": 35,
+      "strikeRate": 111.0,
+      "wickets": 36
+    }
+  },
+  {
+    "id": null,
+    "name": "N. K. Reddy",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Nitish%20Kumar%20Reddy.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 485,
+      "matches": 28,
+      "strikeRate": 142.0,
+      "wickets": 3
+    }
+  },
+  {
+    "id": null,
+    "name": "Riyan Parag",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Riyan%20Parag.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 1566,
+      "matches": 84,
+      "strikeRate": 141.85,
+      "wickets": 7
+    }
+  },
+  {
+    "id": null,
+    "name": "Moeen Ali",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Moeen%20Ali.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "ENG",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 1167,
+      "matches": 73,
+      "strikeRate": 140.0,
+      "wickets": 41
+    }
+  },
+  {
+    "id": null,
+    "name": "Andre Russell",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Andre%20Russell.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "WI",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 2651,
+      "matches": 140,
+      "strikeRate": 174.17,
+      "wickets": 123
+    }
+  },
+  {
+    "id": null,
+    "name": "Axar Patel",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Axar%20Patel.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 1916,
+      "matches": 162,
+      "strikeRate": 133.99,
+      "wickets": 128
+    }
+  },
+  {
+    "id": null,
+    "name": "Pat Cummins",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Pat%20Cummins.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AUS",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 612,
+      "matches": 72,
+      "strikeRate": 152.24,
+      "wickets": 79
+    }
+  },
+  {
+    "id": null,
+    "name": "Ravi Ashwin",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Ravichandran%20Ashwin.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 833,
+      "matches": 221,
+      "strikeRate": 118.16,
+      "wickets": 187
+    }
+  },
+  {
+    "id": null,
+    "name": "Glenn Maxwell",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Glenn%20Maxwell.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AUS",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 2819,
+      "matches": 141,
+      "strikeRate": 155.15,
+      "wickets": 41
+    }
+  },
+  {
+    "id": null,
+    "name": "Aiden Markram",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Aiden%20Markram.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SA",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 1440,
+      "matches": 57,
+      "strikeRate": 135.08,
+      "wickets": 6
+    }
+  },
+  {
+    "id": null,
+    "name": "Mitchell Marsh",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Mitchell%20Marsh.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AUS",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 1293,
+      "matches": 55,
+      "strikeRate": 143.0,
+      "wickets": 37
+    }
+  },
+  {
+    "id": null,
+    "name": "Krunal Pandya",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Krunal%20Pandya.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 1756,
+      "matches": 142,
+      "strikeRate": 132.4,
+      "wickets": 93
+    }
+  },
+  {
+    "id": null,
+    "name": "Sam Curran",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Sam%20Curran.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "ENG",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 997,
+      "matches": 64,
+      "strikeRate": 136.4,
+      "wickets": 59
+    }
+  },
+  {
+    "id": null,
+    "name": "Nitish Rana",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Nitish%20Rana.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 2853,
+      "matches": 118,
+      "strikeRate": 136.8,
+      "wickets": 10
+    }
+  },
+  {
+    "id": null,
+    "name": "Shivam Dube",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Shivam%20Dube.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 1859,
+      "matches": 79,
+      "strikeRate": 143.0,
+      "wickets": 5
+    }
+  },
+  {
+    "id": null,
+    "name": "Mitchell Santner",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Mitchell%20Santner.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "NZ",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 110,
+      "matches": 31,
+      "strikeRate": 106.0,
+      "wickets": 25
+    }
+  },
+  {
+    "id": null,
+    "name": "Washington Sundar",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Washington%20Sundar.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 275,
+      "matches": 66,
+      "strikeRate": 126.0,
+      "wickets": 39
+    }
+  },
+  {
+    "id": null,
+    "name": "Wanindu Hasaranga",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Wanindu%20Hasaranga.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SL",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 81,
+      "matches": 37,
+      "strikeRate": 92.1,
+      "wickets": 46
+    }
+  },
+  {
+    "id": null,
+    "name": "Azmatullah Omarzai",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Azmatullah%20Omarzai.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AFG",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 99,
+      "matches": 16,
+      "strikeRate": 133.8,
+      "wickets": 12
+    }
+  },
+  {
+    "id": null,
+    "name": "Shahrukh Khan",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Shahrukh%20Khan.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 732,
+      "matches": 55,
+      "strikeRate": 149.08,
+      "wickets": 1
+    }
+  },
+  {
+    "id": null,
+    "name": "Rahul Tewatia",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Rahul%20Tewatia.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 1112,
+      "matches": 108,
+      "strikeRate": 137.1,
+      "wickets": 32
+    }
+  },
+  {
+    "id": null,
+    "name": "Kamindu Mendis",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Kamindu%20Mendis.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SL",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 92,
+      "matches": 5,
+      "strikeRate": 133.3,
+      "wickets": 2
+    }
+  },
+  {
+    "id": null,
+    "name": "Shahbaz Ahmed",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Shahbaz%20Ahmed.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 545,
+      "matches": 57,
+      "strikeRate": 121.7,
+      "wickets": 22
+    }
+  },
+  {
+    "id": null,
+    "name": "Liam Livingstone",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Liam%20Livingstone.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "ENG",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 1051,
+      "matches": 49,
+      "strikeRate": 158.8,
+      "wickets": 13
+    }
+  },
+  {
+    "id": null,
+    "name": "Shreyas Gopal",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Shreyas%20Gopal.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 180,
+      "matches": 49,
+      "strikeRate": 106.5,
+      "wickets": 52
+    }
+  },
+  {
+    "id": null,
+    "name": "Vipraj Nigam",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Vipraj%20Nigam.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 142,
+      "matches": 14,
+      "strikeRate": 179.8,
+      "wickets": 11
+    }
+  },
+  {
+    "id": null,
+    "name": "Shardul Thakur",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Shardul%20Thakur.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 325,
+      "matches": 105,
+      "strikeRate": 139.5,
+      "wickets": 107
+    }
+  },
+  {
+    "id": null,
+    "name": "Vijay Shankar",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Vijay%20Shankar.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 1239,
+      "matches": 81,
+      "strikeRate": 130.3,
+      "wickets": 9
+    }
+  },
+  {
+    "id": null,
+    "name": "Harpreet Brar",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Harpreet%20Brar.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 244,
+      "matches": 49,
+      "strikeRate": 120.2,
+      "wickets": 35
+    }
+  },
+  {
+    "id": null,
+    "name": "Deepak Hooda",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Deepak%20Hooda.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 1496,
+      "matches": 125,
+      "strikeRate": 127.7,
+      "wickets": 10
+    }
+  },
+  {
+    "id": null,
+    "name": "Ayush Badoni",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Ayush%20Badoni.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 963,
+      "matches": 56,
+      "strikeRate": 148.2,
+      "wickets": 4
+    }
+  },
+  {
+    "id": null,
+    "name": "Romario Shepherd",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Romario%20Shepherd.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "WI",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 185,
+      "matches": 18,
+      "strikeRate": 212.6,
+      "wickets": 10
+    }
+  },
+  {
+    "id": null,
+    "name": "Arshad Khan",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Mohd%20Arshad%20Khan.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 124,
+      "matches": 19,
+      "strikeRate": 140.9,
+      "wickets": 12
+    }
+  },
+  {
+    "id": null,
+    "name": "Marcus Stoinis",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Marcus%20Stoinis.png",
+    "type": "ALL_ROUNDER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AUS",
+    "batsmanStats": null,
+    "bowlerStats": null,
+    "allRounderStats": {
+      "runs": 2026,
+      "matches": 109,
+      "strikeRate": 144.7,
+      "wickets": 44
+    }
+  },
+  {
+    "id": null,
+    "name": "Jos Buttler",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Jos%20Buttler.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "ENG",
+    "batsmanStats": {
+      "runs": 4120,
+      "matches": 121,
+      "battingAvg": 40.0,
+      "strikeRate": 149.38
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Rishabh Pant",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Rishabh%20Pant.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 3553,
+      "matches": 125,
+      "battingAvg": 34.16,
+      "strikeRate": 142.4
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Phil Salt",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Phil%20Salt.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "ENG",
+    "batsmanStats": {
+      "runs": 1056,
+      "matches": 34,
+      "battingAvg": 34.06,
+      "strikeRate": 175.7
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Jonny Bairstow",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Jonny%20Bairstow.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "ENG",
+    "batsmanStats": {
+      "runs": 1674,
+      "matches": 52,
+      "battingAvg": 34.9,
+      "strikeRate": 144.4
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Heinrich Klaasen",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Heinrich%20Klaasen.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SA",
+    "batsmanStats": {
+      "runs": 1481,
+      "matches": 49,
+      "battingAvg": 40.0,
+      "strikeRate": 169.7
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Prabhsimran Singh",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Prabhsimran%20Singh.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 1305,
+      "matches": 51,
+      "battingAvg": 25.6,
+      "strikeRate": 151.9
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Josh Inglis",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Josh%20Inglis.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AUS",
+    "batsmanStats": {
+      "runs": 278,
+      "matches": 11,
+      "battingAvg": 30.9,
+      "strikeRate": 162.6
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Ryan Rickelton",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Ryan%20Rickelton.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SA",
+    "batsmanStats": {
+      "runs": 388,
+      "matches": 14,
+      "battingAvg": 29.85,
+      "strikeRate": 151.0
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Rahmanullah Gurbaz",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Rahmanullah%20Gurbaz.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "AFG",
+    "batsmanStats": {
+      "runs": 528,
+      "matches": 20,
+      "battingAvg": 33.0,
+      "strikeRate": 156.4
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "MS Dhoni",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/MS%20Dhoni.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 5439,
+      "matches": 278,
+      "battingAvg": 38.3,
+      "strikeRate": 137.45
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "KL Rahul",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/K%20L%20Rahul.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 5222,
+      "matches": 145,
+      "battingAvg": 46.21,
+      "strikeRate": 136.03
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Tristan Stubbs",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Tristan%20Stubbs.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SA",
+    "batsmanStats": {
+      "runs": 705,
+      "matches": 32,
+      "battingAvg": 41.5,
+      "strikeRate": 163.2
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Quinton de Kock",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Quinton%20De%20Kock.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "SA",
+    "batsmanStats": {
+      "runs": 3309,
+      "matches": 115,
+      "battingAvg": 30.6,
+      "strikeRate": 134.0
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Nicholas Pooran",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Nicholas%20Pooran.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "WI",
+    "batsmanStats": {
+      "runs": 1769,
+      "matches": 76,
+      "battingAvg": 32.2,
+      "strikeRate": 162.3
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Sanju Samson",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Sanju%20Samson.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 2943,
+      "matches": 107,
+      "battingAvg": 27.2,
+      "strikeRate": 134.8
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Ishan Kishan",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Ishan%20Kishan.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 2998,
+      "matches": 119,
+      "battingAvg": 29.11,
+      "strikeRate": 137.65
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Devon Conway",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Devon%20Conway.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": true,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "NZ",
+    "batsmanStats": {
+      "runs": 1080,
+      "matches": 29,
+      "battingAvg": 43.2,
+      "strikeRate": 139.72
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Dhruv Jurel",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Dhruv%20Jurel.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 680,
+      "matches": 42,
+      "battingAvg": 28.33,
+      "strikeRate": 153.85
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Jitesh Sharma",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Jitesh%20Sharma.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": false,
+    "isUncapped": false,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 991,
+      "matches": 55,
+      "battingAvg": 25.41,
+      "strikeRate": 157.05
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  },
+  {
+    "id": null,
+    "name": "Abishek Porel",
+    "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Abishek%20Porel.png",
+    "type": "WICKET_KEEPER",
+    "isForeign": false,
+    "isUncapped": true,
+    "isLegend": false,
+    "country": "IND",
+    "batsmanStats": {
+      "runs": 661,
+      "matches": 31,
+      "battingAvg": 25.42,
+      "strikeRate": 149.9
+    },
+    "bowlerStats": null,
+    "allRounderStats": null
+  }
+]
