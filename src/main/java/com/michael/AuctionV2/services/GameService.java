@@ -4,6 +4,7 @@ import com.michael.AuctionV2.domain.dtos.TeamDTO;
 import com.michael.AuctionV2.domain.dtos.responses.GameLog;
 import com.michael.AuctionV2.domain.dtos.responses.PurchasedPlayer;
 import com.michael.AuctionV2.domain.dtos.responses.RefundConfirmation;
+import com.michael.AuctionV2.domain.dtos.websocket.BidRequest;
 import com.michael.AuctionV2.domain.dtos.websocket.WSEvent;
 import com.michael.AuctionV2.domain.dtos.websocket.WebSocketEvent;
 import com.michael.AuctionV2.domain.entities.*;
@@ -251,5 +252,32 @@ public class GameService {
         }
         List<GameTransaction> allTransactions = transactionRepository.findAllGameTransactionByGameIdOrderByIdDesc(gameId);
         return allTransactions.stream().map(gameLogMapper::toDTO).toList();
+    }
+
+    public void broadcastCurrentBid(BidRequest request,Integer gameId){
+        Game game = findById(gameId);
+        String bidingDestination = "/game/"+gameId+"/bids";
+        if(game.getStatus()!=GameStatus.ACTIVE){
+            WebSocketEvent<String> errorMessage = new WebSocketEvent<String>(
+                    WSEvent.ERROR,
+                    Instant.now(),
+                    "Can't get or send bids for non-existent game! Given game ID: "+gameId
+            );
+            messagingTemplate.convertAndSend(
+                    bidingDestination,
+                    errorMessage
+            );
+
+            return;
+        }
+        WebSocketEvent<BidRequest> event = new WebSocketEvent<>(
+                WSEvent.BID,
+                Instant.now(),
+                request
+        );
+        messagingTemplate.convertAndSend(
+                bidingDestination,
+                event
+        );
     }
 }
