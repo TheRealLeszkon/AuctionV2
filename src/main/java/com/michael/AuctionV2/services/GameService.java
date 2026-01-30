@@ -255,9 +255,22 @@ public class GameService {
     }
 
     public void broadcastCurrentBid(BidRequest request,Integer gameId){
-        Game game = findById(gameId);
         String bidingDestination = "/topic/game/"+gameId+"/bids";
-        if(game.getStatus()!=GameStatus.ACTIVE){
+        try{
+            Game game = findById(gameId);
+            if(game.getStatus() != GameStatus.ACTIVE){
+                WebSocketEvent<String> errorMessage = new WebSocketEvent<String>(
+                        WSEvent.ERROR,
+                        Instant.now(),
+                        "Game wtih ID:"+gameId+ " is not active! "
+                );
+                messagingTemplate.convertAndSend(
+                        bidingDestination,
+                        errorMessage
+                );
+                return;
+            }
+        }catch (IllegalArgumentException ex){
             WebSocketEvent<String> errorMessage = new WebSocketEvent<String>(
                     WSEvent.ERROR,
                     Instant.now(),
@@ -267,7 +280,6 @@ public class GameService {
                     bidingDestination,
                     errorMessage
             );
-
             return;
         }
         WebSocketEvent<BidRequest> event = new WebSocketEvent<>(
