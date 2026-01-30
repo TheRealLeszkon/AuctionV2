@@ -14,7 +14,7 @@ curl --location 'localhost:6769/game' \
 --data '{
     "setId":1,
     "name":"Mike'\''s Game",
-    "initialBalance":10000000,
+    "initialBalance":100000000,
     "playersPerTeam":12,
     "batsmenPerTeam":4,
     "bowlersPerTeam":4,

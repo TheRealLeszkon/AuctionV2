@@ -136,7 +136,7 @@ public class GameService {
                 .isUncapped(playerBioDetails.getIsUncapped())
                 .build();
 
-        transactionRepository.save(
+        GameTransaction transaction=transactionRepository.save(
                 GameTransaction.builder()
                         .game(game)
                         .player(playerBioDetails)
@@ -155,6 +155,11 @@ public class GameService {
         messagingTemplate.convertAndSend(
                 teamUpdatesDestination,
                 new WebSocketEvent<TeamDTO>(WSEvent.TEAM_UPDATE,Instant.now(),teamMapper.toDTO(team))
+        );
+        String gameAuditDestination = "/topic/game/"+gameId+"/audit";
+        messagingTemplate.convertAndSend(
+                gameAuditDestination,
+                new WebSocketEvent<GameLog>(WSEvent.AUDIT,Instant.now(),gameLogMapper.toDTO(transaction))
         );
         return purchasedPlayer;
     }
@@ -213,7 +218,7 @@ public class GameService {
                 "Refund was successful!"
         );
 
-        transactionRepository.save(
+        GameTransaction transaction =transactionRepository.save(
                 GameTransaction.builder()
                         .game(game)
                         .player(playerBioDetails)
@@ -232,6 +237,11 @@ public class GameService {
         messagingTemplate.convertAndSend(
                 teamUpdatesDestination,
                 new WebSocketEvent<TeamDTO>(WSEvent.TEAM_UPDATE,Instant.now(),teamMapper.toDTO(team))
+        );
+        String gameAuditDestination = "/topic/game/"+gameId+"/audit";
+        messagingTemplate.convertAndSend(
+                gameAuditDestination,
+                new WebSocketEvent<GameLog>(WSEvent.AUDIT,Instant.now(),gameLogMapper.toDTO(transaction))
         );
         return confirmation;
     }
