@@ -15,6 +15,7 @@ import com.michael.AuctionV2.services.PlayerService;
 import com.michael.AuctionV2.services.SetService;
 import com.michael.AuctionV2.services.TeamService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.Instant;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/game")
@@ -245,6 +247,7 @@ public class GameController {
     }
     @MessageMapping("/game/{gameId}/bids")
     public void sendCurrentBid(@DestinationVariable Integer gameId, BidRequest request){
+        log.info("[websocket]: Bid of {} recieved from game {}",request.getCurrentBid(),gameId);
         gameService.broadcastCurrentBid(request,gameId);
     }
     @GetMapping

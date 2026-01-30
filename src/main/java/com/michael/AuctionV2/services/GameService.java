@@ -268,6 +268,7 @@ public class GameService {
                         bidingDestination,
                         errorMessage
                 );
+                log.info("[Websocket]: Subscription {} => Game wtih ID: {} is not active! ",bidingDestination,gameId);
                 return;
             }
         }catch (IllegalArgumentException ex){
@@ -280,6 +281,7 @@ public class GameService {
                     bidingDestination,
                     errorMessage
             );
+            log.info("[Websocket]: Subscription {} => Can't get or send bids for non-existent game! Given game ID: {} ",bidingDestination,gameId);
             return;
         }
         WebSocketEvent<BidRequest> event = new WebSocketEvent<>(
@@ -291,6 +293,7 @@ public class GameService {
                 bidingDestination,
                 event
         );
+        log.info("[Websocket]: Subscription {} => successful bid broadcast for game ID: {}",bidingDestination,gameId );
     }
 
     public List<Game> getAllGames(){
