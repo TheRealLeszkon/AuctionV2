@@ -280,4 +280,8 @@ public class GameService {
                 event
         );
     }
+
+    public List<Game> getAllGames(){
+        return gameRepository.findAll();
+    }
 }

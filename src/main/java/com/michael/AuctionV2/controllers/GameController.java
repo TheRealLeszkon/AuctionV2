@@ -247,4 +247,8 @@ public class GameController {
     public void sendCurrentBid(@DestinationVariable Integer gameId, BidRequest request){
         gameService.broadcastCurrentBid(request,gameId);
     }
+    @GetMapping
+    public List<Game> showAllGames(){
+        return gameService.getAllGames();
+    }
 }
