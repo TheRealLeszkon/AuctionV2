@@ -22,7 +22,7 @@ public class Game { //TODO add fields here to add game constrains and presets
     private String name;
     private GameStatus status;
     //Game Constraints
-    private BigDecimal initialBalance;
+    private BigDecimal initialBalance ;
     private Integer playersPerTeam;
     private Integer batsmenPerTeam;
     private Integer bowlersPerTeam;

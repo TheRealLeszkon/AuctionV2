@@ -19,6 +19,7 @@ import com.michael.AuctionV2.domain.mappers.TeamMapper;
 import com.michael.AuctionV2.repositories.AuctionedPlayerRepository;
 import com.michael.AuctionV2.repositories.GameRepository;
 import com.michael.AuctionV2.repositories.GameTransactionRepository;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -28,6 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -43,8 +45,41 @@ public class GameService {
     private final GameLogMapper gameLogMapper;
     private final PlayerService playerService;
     public Game createGame(Game game){
+        applyDefaults(game);
         return gameRepository.save(game);
     }
+
+    private void applyDefaults(Game game) {
+        game.setInitialBalance(
+                Optional.ofNullable(game.getInitialBalance())
+                        .orElse(GameDefaults.INITIAL_BALANCE)
+        );
+        game.setPlayersPerTeam(
+                Optional.ofNullable(game.getPlayersPerTeam())
+                        .orElse(GameDefaults.PLAYERS_PER_TEAM)
+        );
+        game.setBatsmenPerTeam(
+                Optional.ofNullable(game.getBatsmenPerTeam())
+                        .orElse(GameDefaults.BATSMEN_PER_TEAM)
+        );
+        game.setBowlersPerTeam(
+                Optional.ofNullable(game.getBowlersPerTeam())
+                        .orElse(GameDefaults.BOWLERS_PER_TEAM)
+        );
+        game.setAllRounderPerTeam(
+                Optional.ofNullable(game.getAllRounderPerTeam())
+                        .orElse(GameDefaults.ALL_ROUNDER_PER_TEAM)
+        );
+        game.setWicketKeeperPerTeam(
+                Optional.ofNullable(game.getWicketKeeperPerTeam())
+                        .orElse(GameDefaults.WICKET_KEEPER_PER_TEAM)
+        );
+        game.setUnCappedPerTeam(
+                Optional.ofNullable(game.getUnCappedPerTeam())
+                        .orElse(GameDefaults.UNCAPPED_PER_TEAM)
+        );
+    }
+
 
     public boolean existsByName(String name){
         return gameRepository.existsByName(name);
