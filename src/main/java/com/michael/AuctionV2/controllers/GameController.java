@@ -220,6 +220,11 @@ public class GameController {
                 .toList();
         return requestedPlayers;
     }
+
+    @GetMapping("/{id}/players/unsold")
+    public List<CompletePlayer> showAllUnsold(@PathVariable("id") Integer gameId){
+        return gameService.getAllUnsoldPlayers(gameId);
+    }
     @PostMapping("/{id}/purchase")
     public PurchaseConfirmation purchaseAuctionedPlayer(@PathVariable("id")Integer gameId,@RequestBody PurchaseRequest purchaseRequest){
         try{

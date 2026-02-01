@@ -1,6 +1,7 @@
 package com.michael.AuctionV2.services;
 
 import com.michael.AuctionV2.domain.dtos.TeamDTO;
+import com.michael.AuctionV2.domain.dtos.responses.CompletePlayer;
 import com.michael.AuctionV2.domain.dtos.responses.GameLog;
 import com.michael.AuctionV2.domain.dtos.responses.PurchasedPlayer;
 import com.michael.AuctionV2.domain.dtos.responses.RefundConfirmation;
@@ -14,8 +15,7 @@ import com.michael.AuctionV2.domain.entities.enums.PlayerStatus;
 import com.michael.AuctionV2.domain.entities.enums.TransactionType;
 import com.michael.AuctionV2.domain.entities.keys.AuctionedPlayerId;
 import com.michael.AuctionV2.domain.entities.keys.SetPlayerId;
-import com.michael.AuctionV2.domain.mappers.GameLogMapper;
-import com.michael.AuctionV2.domain.mappers.TeamMapper;
+import com.michael.AuctionV2.domain.mappers.*;
 import com.michael.AuctionV2.repositories.AuctionedPlayerRepository;
 import com.michael.AuctionV2.repositories.GameRepository;
 import com.michael.AuctionV2.repositories.GameTransactionRepository;
@@ -44,6 +44,10 @@ public class GameService {
     private final  SetService setService;
     private final GameLogMapper gameLogMapper;
     private final PlayerService playerService;
+
+    private final AllRounderStatsMapper allRounderStatsMapper;
+    private final BatsmanStatsMapper batsmanStatsMapper;
+    private final BowlerStatsMapper bowlerStatsMapper;
     public Game createGame(Game game){
         applyDefaults(game);
         return gameRepository.save(game);
@@ -343,5 +347,36 @@ public class GameService {
 
     public List<Game> getAllGames(){
         return gameRepository.findAll();
+    }
+
+    public List<CompletePlayer> getAllUnsoldPlayers(Integer gameId) {
+        Game game = findById(gameId);
+        if(game.getStatus()!=GameStatus.ACTIVE){
+            throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
+        }
+        List<AuctionedPlayer> auctionRecords = auctionedPlayerRepository.findAllByPlayerStatusOrderByAuctionedPlayerId(PlayerStatus.UNSOLD);
+        return auctionRecords.stream().map(
+                record ->{
+                    Player playerBioData = playerService.findPlayerById(record.getAuctionedPlayerId().getPlayerId());
+                    SetPlayer playerDetails = setService.findPlayerDetailsInSetById(new SetPlayerId(game.getSetId(),record.getAuctionedPlayerId().getPlayerId()));
+                    return CompletePlayer.builder()
+                            .id(playerBioData.getId())
+                            .name(playerBioData.getName())
+                            .imageLink(playerBioData.getImageLink())
+                            .type(playerBioData.getType())
+                            .isLegend(playerBioData.getIsLegend())
+                            .isUncapped(playerBioData.getIsUncapped())
+                            .country(playerBioData.getCountry())
+                            .batsmanStats(batsmanStatsMapper.toDTO(playerBioData.getBatsmenStats()))
+                            .bowlerStats(bowlerStatsMapper.toDTO(playerBioData.getBowlerStats()))
+                            .allRounderStats(allRounderStatsMapper.toDTO(playerBioData.getAllRounderStats()))
+                            .setId(playerDetails.getId().getSetId())
+                            .price(playerDetails.getPrice())
+                            .points(playerDetails.getPoints())
+                            .order(playerDetails.getOrder())
+                            .status(record.getPlayerStatus())
+                            .build();
+                }
+        ).toList();
     }
 }
