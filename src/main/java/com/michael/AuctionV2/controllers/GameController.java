@@ -89,6 +89,11 @@ public class GameController {
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
+    @GetMapping("/{id}")
+    public GameDTO showGameDetails(@PathVariable("id") Integer gameId){
+        return gameMapper.toDTO(gameService.findById(gameId));
+    }
+
     @PostMapping("/{id}/start")
     public ResponseEntity<GameControlMessage> initializeGame(@PathVariable("id") Integer gameId, @RequestBody GameControlMessage controlMessage){ //TODO add END functionality later
         try{
@@ -108,6 +113,8 @@ public class GameController {
                 HttpStatus.CREATED
         );
     }
+
+
 
     @GetMapping("/{id}/team")
     public List<TeamDTO> fetchAllTeamsInGame(@PathVariable("id") Integer gameId){
@@ -223,7 +230,11 @@ public class GameController {
 
     @GetMapping("/{id}/players/unsold")
     public List<CompletePlayer> showAllUnsold(@PathVariable("id") Integer gameId){
-        return gameService.getAllUnsoldPlayers(gameId);
+        return gameService.getAllPlayersBySoldStatus(gameId,PlayerStatus.UNSOLD);
+    }
+    @GetMapping("/{id}/players/sold")
+    public List<CompletePlayer> showAllSold(@PathVariable("id") Integer gameId){
+        return gameService.getAllPlayersBySoldStatus(gameId,PlayerStatus.SOLD);
     }
     @PostMapping("/{id}/purchase")
     public PurchaseConfirmation purchaseAuctionedPlayer(@PathVariable("id")Integer gameId,@RequestBody PurchaseRequest purchaseRequest){
@@ -259,4 +270,6 @@ public class GameController {
     public List<Game> showAllGames(){
         return gameService.getAllGames();
     }
+
+
 }

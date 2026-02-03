@@ -1,5 +1,5 @@
 package com.michael.AuctionV2.domain.entities.enums;
 
 public enum PlayerStatus {
-    SOLD,UNSOLD,FOR_SALE
+    SOLD,UNSOLD
 }

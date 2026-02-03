@@ -1,10 +1,7 @@
 package com.michael.AuctionV2.services;
 
 import com.michael.AuctionV2.domain.dtos.TeamDTO;
-import com.michael.AuctionV2.domain.dtos.responses.CompletePlayer;
-import com.michael.AuctionV2.domain.dtos.responses.GameLog;
-import com.michael.AuctionV2.domain.dtos.responses.PurchasedPlayer;
-import com.michael.AuctionV2.domain.dtos.responses.RefundConfirmation;
+import com.michael.AuctionV2.domain.dtos.responses.*;
 import com.michael.AuctionV2.domain.dtos.websocket.BidRequest;
 import com.michael.AuctionV2.domain.dtos.websocket.WSEvent;
 import com.michael.AuctionV2.domain.dtos.websocket.WebSocketEvent;
@@ -28,8 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -109,7 +105,7 @@ public class GameService {
         List<AuctionedPlayer> playerToBeRegistered =setService.findAllPlayersOfSet(game.getSetId()).stream().map(setPlayer ->
                     AuctionedPlayer.builder()
                             .auctionedPlayerId(new AuctionedPlayerId(gameId,setPlayer.getId().getPlayerId()))
-                            .playerStatus(PlayerStatus.FOR_SALE)
+                            .playerStatus(PlayerStatus.UNSOLD)
                             .build()
         ).toList();
         auctionedPlayerRepository.saveAll(playerToBeRegistered);
@@ -137,10 +133,10 @@ public class GameService {
         if (foundPlayer.getPlayerStatus() == PlayerStatus.SOLD) {
             throw new IllegalStateException("Player already sold");
         }
-        if (foundPlayer.getPlayerStatus() != PlayerStatus.FOR_SALE
-                && foundPlayer.getPlayerStatus() != PlayerStatus.UNSOLD) {
-            throw new IllegalStateException("Player is not available for purchase");
-        }
+//        if (foundPlayer.getPlayerStatus() != PlayerStatus.FOR_SALE
+//                && foundPlayer.getPlayerStatus() != PlayerStatus.UNSOLD) {
+//            throw new IllegalStateException("Player is not available for purchase");
+//        }
 
 
         SetPlayer playerDetails =setService.findPlayerDetailsInSetById(new SetPlayerId(game.getSetId(),playerId));
@@ -349,12 +345,12 @@ public class GameService {
         return gameRepository.findAll();
     }
 
-    public List<CompletePlayer> getAllUnsoldPlayers(Integer gameId) {
+    public List<CompletePlayer> getAllPlayersBySoldStatus(Integer gameId,PlayerStatus status) {
         Game game = findById(gameId);
         if(game.getStatus()!=GameStatus.ACTIVE){
             throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
         }
-        List<AuctionedPlayer> auctionRecords = auctionedPlayerRepository.findAllByPlayerStatusOrderByAuctionedPlayerId(PlayerStatus.UNSOLD);
+        List<AuctionedPlayer> auctionRecords = auctionedPlayerRepository.findAllByPlayerStatusOrderByAuctionedPlayerId(status);
         return auctionRecords.stream().map(
                 record ->{
                     Player playerBioData = playerService.findPlayerById(record.getAuctionedPlayerId().getPlayerId());
@@ -379,4 +375,11 @@ public class GameService {
                 }
         ).toList();
     }
+
+
+    //Checks needed to be performed
+    // Check if team has more than 0 players
+    // CHeck if team has max number of players
+    //
+     // check if you get 3 teams
 }
