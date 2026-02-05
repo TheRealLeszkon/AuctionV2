@@ -1,5 +1,5 @@
 package com.michael.AuctionV2.domain.entities.enums;
 
 public enum GameStatus {
-    INACTIVE,ACTIVE,FINISHED
+    INACTIVE,ACTIVE,FINALIZED,ENDED
 }

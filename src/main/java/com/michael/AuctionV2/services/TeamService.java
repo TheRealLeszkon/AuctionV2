@@ -77,10 +77,6 @@ public class TeamService {
 
     ){
         Integer maxPlayerCount = game.getPlayersPerTeam();
-        Integer maxAllRounderCount =game.getAllRounderPerTeam();
-        Integer maxBatsmanCount =game.getBatsmenPerTeam();
-        Integer maxBowlerCount =game.getBowlersPerTeam();
-        Integer maxWicketKeeperCount =game.getWicketKeeperPerTeam();
         Integer maxUncappedCount =game.getUnCappedPerTeam();
         Integer maxLegendPlayers = game.getLegendsPerTeam();
         Integer maxSpecialPlayers = game.getSpecialPlayersPerTeam();
@@ -90,19 +86,13 @@ public class TeamService {
         }
         //Update Special player counts
         if(isLegend || isUncapped){
-            if(team.getSpecialCount()>=maxSpecialPlayers){
-                throw new IllegalStateException("Maximum number of special players already reached!");
-            }
+            if(team.getSpecialCount()>=maxSpecialPlayers) throw new IllegalStateException("Maximum number of special players already reached!");
 
             if(isUncapped){
-                if(team.getUncappedCount()>=maxUncappedCount){
-                    throw new IllegalStateException("Maximum number of uncapped Players Reached!");
-                }
+                if(team.getUncappedCount()>=maxUncappedCount) throw new IllegalStateException("Maximum number of uncapped Players Reached!");
             }
             if(isLegend){
-                if(team.getLegendCount()>=maxLegendPlayers){
-                    throw new IllegalStateException("Maximum number of legend Players Reached!");
-                }
+                if(team.getLegendCount()>=maxLegendPlayers) throw new IllegalStateException("Maximum number of legend Players Reached!");
             }
             team.setSpecialCount(team.getSpecialCount()+1);
         }
@@ -114,27 +104,15 @@ public class TeamService {
         //Update Players of type
         switch (playerType){
             case BATSMAN ->{
-                if (team.getBatsmanCount()>=maxBatsmanCount){
-                    throw new IllegalStateException("Maximum number of batsmen already reached!");
-                }
                 team.setBatsmanCount(team.getBatsmanCount()+1);
             }
             case BOWLER ->{
-                if(team.getBowlerCount()>=maxBowlerCount){
-                    throw  new IllegalStateException("Maximum number of bowlers already reached!");
-                }
                 team.setBowlerCount(team.getBowlerCount()+1);
             }
             case ALL_ROUNDER ->{
-                if(team.getAllRounderCount()>= maxAllRounderCount){
-                    throw new IllegalStateException("Maximum number of all rounders already reached!");
-                }
                 team.setAllRounderCount(team.getAllRounderCount()+1);
             }
             case WICKET_KEEPER ->{
-                if(team.getWicketKeeperCount()>=maxWicketKeeperCount){
-                    throw new IllegalStateException("Maximum number of wicket keepers already reached!");
-                }
                 team.setWicketKeeperCount(team.getWicketKeeperCount()+1);
             }
         }
@@ -202,5 +180,13 @@ public class TeamService {
     }
     public Team findTeamById(Integer teamId) {
         return teamRepository.findById(teamId).orElseThrow(() -> new IllegalArgumentException("Team not found!"));
+    }
+
+    public List<Team> getAllTeamsOfGameOrderedByPoints(Integer gameId){
+        return teamRepository.findAllByGameIdOrderByPointsDesc(gameId);
+    }
+
+    public Integer getNumberOfSelectionLockedTeams(Integer gameId){
+        return teamRepository.countByGameIdAndSelectionLockedTrue(gameId);
     }
 }

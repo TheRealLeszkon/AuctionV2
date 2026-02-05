@@ -1,6 +1,7 @@
 package com.michael.AuctionV2.services;
 
 import com.michael.AuctionV2.domain.dtos.TeamDTO;
+import com.michael.AuctionV2.domain.dtos.requests.SubstituteRemovalRequest;
 import com.michael.AuctionV2.domain.dtos.responses.*;
 import com.michael.AuctionV2.domain.dtos.websocket.BidRequest;
 import com.michael.AuctionV2.domain.dtos.websocket.WSEvent;
@@ -26,6 +27,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.*;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -146,6 +149,7 @@ public class GameService {
             throw new IllegalStateException("Player already sold");
         }
 
+        //Check if team has enough balance
         SetPlayer playerDetails =setService.findPlayerDetailsInSetById(new SetPlayerId(game.getSetId(),playerId));
         if(bidAmount.compareTo( playerDetails.getPrice())<0){
             throw new IllegalStateException("Can't sell player below base price!");
@@ -387,12 +391,112 @@ public class GameService {
         ).toList();
     }
 
+    public List<Ranking> getRankings(Integer gameId) {
+        Game game = findById(gameId);
+        if(game.getStatus()!=GameStatus.FINALIZED){
+            throw new IllegalStateException("Game of ID: "+gameId+" is not FINALIZED!");
+        }
+        List<Team> teams = teamService.getAllTeamsOfGame(gameId).stream().sorted(
+                Comparator.comparing(Team::isQualified).reversed()
+                        .thenComparingInt(Team::getPoints).reversed()
+                        .thenComparing(Team::getBalance,Comparator.reverseOrder())
+        ).toList();
+        int rank = 1;
+        List<Ranking> rankings = new ArrayList<>();
+        for(Team team:teams){
+            Ranking ranking = new Ranking();
+            List<String> purchases =getTeamPurchases(team,game).stream().map(PurchasedPlayer::getName).toList();
+            ranking.setPlace(rank++);
+            ranking.setTeamStats(teamMapper.toDTO(team));
+            ranking.setIsQualified(team.isQualified());
+            ranking.setPurchases(purchases);
+            rankings.add(ranking);
+        }
+        return rankings;
+    }
+
+    @Transactional
+    public void disqualify(Integer gameId) {
+        Game game = findById(gameId);
+        if(game.getStatus()!=GameStatus.ACTIVE){
+            throw new IllegalStateException("Game of ID: "+gameId+" is not ACTIVE!");
+        }
+        List<Team> teams = teamService.getAllTeamsOfGame(gameId);
+        for(Team team: teams){
+            team.setQualified(isTeamQualified(team,game));
+        }
+        game.setStatus(GameStatus.FINALIZED);
+    }
+    private boolean isTeamQualified(Team team, Game game) {
+        if (!Objects.equals(team.getPlayerCount(), game.getPlayersPerTeam())) return false;
+        if (team.getForeignCount() < game.getForeignPlayersPerTeam()) return false;
+        if (team.getLegendCount() < game.getLegendsPerTeam()) return false;
+        if (team.getUncappedCount() < game.getUnCappedPerTeam()) return false;
+        if (team.getSpecialCount() < game.getSpecialPlayersPerTeam()) return false;
+        if (team.getBatsmanCount() < game.getBatsmenPerTeam()) return false;
+        if (team.getBowlerCount() < game.getBowlersPerTeam()) return false;
+        if (team.getAllRounderCount() < game.getAllRounderPerTeam()) return false;
+        if (team.getWicketKeeperCount() < game.getWicketKeeperPerTeam()) return false;
+
+        return true;
+    }
+    @Transactional
+    public void removeSubstitutes(Integer gameId,SubstituteRemovalRequest removalRequest) {
+        Game game = findById(gameId);
+        Team team =teamService.getTeamOfAssociationInGame(gameId,removalRequest.getTeamAssociation());
+        if(game.getStatus()!=GameStatus.FINALIZED){
+            throw new IllegalStateException("Game of ID: "+gameId+" is not FINALIZED! Can't select players before auction ends!");
+        }
+        if(team.isSelectionLocked()){
+            return;
+        }
+        if(team.getPlayerCount()<=game.getPlayersPerTeam()){
+            team.setSelectionLocked(true);
+            log.info("Game #{} |: Team {} has Locked in their options!",gameId,removalRequest.getTeamAssociation());
+            return;
+        }
+        List<AuctionedPlayerId> playerIds = removalRequest.getSubstitutes().stream().map(
+                playerId -> {
+                    return new AuctionedPlayerId(gameId,playerId);
+                }
+        ).toList();
+        List<AuctionedPlayer> purchaseRecords = auctionedPlayerRepository.findAllByAuctionedPlayerIdInAndTeamId(playerIds,team.getId());
+
+        // -- Generated Does team really have this player check to avoid hacks and cheats ---
+        Set<AuctionedPlayerId> foundIds = purchaseRecords.stream()
+                .map(AuctionedPlayer::getAuctionedPlayerId)
+                .collect(Collectors.toSet());
+
+        for (AuctionedPlayerId requestedId : playerIds) {
+            if (!foundIds.contains(requestedId)) {
+                throw new SecurityException(
+                        "Player " + requestedId.getPlayerId() + " does not belong to this team"
+                );
+            }
+        }
+        // ---------------- --------------- --------------- -----------
 
 
+        for(AuctionedPlayer record: purchaseRecords){
+            SetPlayer playerGameDetails = setService.findPlayerDetailsInSetById(new SetPlayerId(game.getSetId(),record.getAuctionedPlayerId().getPlayerId()));
+            team.setPoints(team.getPoints()-playerGameDetails.getPoints());
+            record.setPlayerStatus(PlayerStatus.SUBSTITUTED);
+        }
+        team.setSelectionLocked(true);
+        log.info("Game #{} |: Team {} has Locked in their options!",gameId,removalRequest.getTeamAssociation());
 
-    //Checks needed to be performed
-    // Check if team has more than 0 players
-    // CHeck if team has max number of players
-    //
-     // check if you get 3 teams
+        if(teamService.getNumberOfSelectionLockedTeams(gameId) ==10){
+            log.info("Game #{} |: All Teams have locked in their options!",gameId);
+        }
+
+//        String gameAuditDestination = "/topic/game/"+gameId+"/audit/general";
+//        for (AuctionedPlayer record: purchaseRecords){
+//            messagingTemplate.convertAndSend(
+//                    gameAuditDestination,
+//                    new WebSocketEvent<GameLog>(WSEvent.AUDIT,Instant.now(),gameLogMapper.toDTO(transaction))
+//            );
+//        }
+        // Add auditing
+    }
+
 }

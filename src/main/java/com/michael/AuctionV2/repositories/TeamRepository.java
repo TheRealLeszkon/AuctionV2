@@ -10,5 +10,9 @@ import java.util.List;
 @Repository
 public interface TeamRepository extends JpaRepository<Team,Integer> {
     List<Team> findAllByGameId(Integer gameId);
+
+    List<Team> findAllByGameIdOrderByPointsDesc(Integer gameId);
+
+    Integer countByGameIdAndSelectionLockedTrue(Integer gameId);
     Team findByGameIdAndAssociation(Integer gameId, IPLAssociation association);
 }

@@ -1,5 +1,6 @@
 package com.michael.AuctionV2.controllers;
 
+import com.michael.AuctionV2.domain.dtos.requests.SubstituteRemovalRequest;
 import com.michael.AuctionV2.domain.dtos.responses.*;
 import com.michael.AuctionV2.domain.dtos.*;
 import com.michael.AuctionV2.domain.dtos.requests.PurchaseRequest;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -139,7 +141,7 @@ public class GameController {
     @GetMapping("/{id}/team/{association}/purchases")
     public List<PurchasedPlayer> showAllTeamPurchases(@PathVariable("id") Integer gameId, @PathVariable("association") String association){
         Game game = gameService.findById(gameId);
-        if(game.getStatus()!=GameStatus.ACTIVE){
+        if(game.getStatus() == GameStatus.INACTIVE){
             throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
         }
         try{
@@ -270,5 +272,46 @@ public class GameController {
         return gameService.getAllGames();
     }
 
+    @PostMapping("/{id}/finalize")
+    public GameControlMessage disqualifyTeams(@PathVariable("id") Integer gameId){
+        gameService.disqualify(gameId);
+        return GameControlMessage.builder()
+                .message("Game Finalized and Auction Has Ended! Allow Players to Select their teams!")
+                .command("")
+                .gameStatus(GameStatus.FINALIZED)
+                .build();
+    }
+
+    @PostMapping("/{id}/selection")
+    public GameControlMessage deleteSubstitutesInTeam(@PathVariable("id") Integer gameId, @RequestBody SubstituteRemovalRequest removalRequest){
+        gameService.removeSubstitutes(gameId,removalRequest);
+        return GameControlMessage.builder()
+                .gameStatus(GameStatus.FINALIZED)
+                .command("")
+                .message("Final Team Locked in!")
+                .build();
+    }
+
+    @GetMapping("/{id}/selection/locked-in")
+    public Map<String,Integer> showCountOfLockedInTeams(@PathVariable("id") Integer gameId){
+        return Map.of(
+            "LockedInTeams",teamService.getNumberOfSelectionLockedTeams(gameId)
+        );
+    }
+
+
+    @PostMapping("/{id}/end")
+    public List<Ranking> showFinalTeamRankings(@PathVariable("id") Integer gameId){
+        List<Ranking> rankings =gameService.getRankings(gameId);
+        log.info("Game #{} :| Game has concluded! {} is the winner. Hope they had a fun time.",gameId,rankings.get(0));
+        return rankings;
+    }
+
+//    @GetMapping("/{id}/results")
+
+//    @PostMapping("/{id}/results/publish")
+//    public void publishResultsToTeams(@PathVariable("id") Integer gameId){
+//        gameService.publishResults(gameId);
+//    }
 
 }

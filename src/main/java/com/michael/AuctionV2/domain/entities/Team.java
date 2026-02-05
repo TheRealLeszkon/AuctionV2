@@ -27,7 +27,8 @@ public class Team {
     private IPLAssociation association;
     private BigDecimal balance;
     private Integer points;
-
+    private boolean isQualified;
+    private boolean selectionLocked;
     //player counts
     private Integer playerCount;
     private Integer allRounderCount;
@@ -38,4 +39,5 @@ public class Team {
     private Integer legendCount;
     private Integer specialCount;
     private Integer foreignCount;
+
 }
