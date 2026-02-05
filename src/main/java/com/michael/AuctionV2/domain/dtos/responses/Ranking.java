@@ -14,6 +14,7 @@ import java.util.List;
 public class Ranking { //TODO name as rank
     private Integer place;
     private TeamDTO teamStats;
-    private List<String> purchases;
+    private List<String> finalTeam;
+    private List<String> substitutes;
     private Boolean isQualified;
 }

@@ -19,7 +19,7 @@ public class TeamDTO {
     private IPLAssociation association;
     private BigDecimal balance;
     private Integer points;
-
+    private boolean isQualified;
     //player counts
     private Integer playerCount;
     private Integer allRounderCount;

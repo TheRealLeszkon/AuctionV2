@@ -168,7 +168,10 @@ public class GameService {
                 game
         );
         teamService.updateTeamForPurchase(team,bidAmount,playerDetails.getPoints());
-
+        if(isTeamQualified(team,game)){
+            team.setQualified(true);
+            //TODO Could have a socket message to inform the team of this
+        }
 
         foundPlayer.setTeamId(team.getId());
         foundPlayer.setSoldPrice(bidAmount);
@@ -306,7 +309,7 @@ public class GameService {
 
     public List<GameLog> getAllGameLogs(Integer gameId){
         Game game = findById(gameId);
-        if(game.getStatus()!=GameStatus.ACTIVE){
+        if(game.getStatus()==GameStatus.INACTIVE){
             throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
         }
         List<GameTransaction> allTransactions = transactionRepository.findAllGameTransactionByGameIdOrderByIdDesc(gameId);
@@ -361,7 +364,7 @@ public class GameService {
 
     public List<CompletePlayer> getAllPlayersBySoldStatus(Integer gameId,PlayerStatus status) {
         Game game = findById(gameId);
-        if(game.getStatus()!=GameStatus.ACTIVE){
+        if(game.getStatus()==GameStatus.INACTIVE){
             throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
         }
         List<AuctionedPlayer> auctionRecords = auctionedPlayerRepository.findAllByPlayerStatusOrderByAuctionedPlayerId(status);
@@ -393,8 +396,8 @@ public class GameService {
 
     public List<Ranking> getRankings(Integer gameId) {
         Game game = findById(gameId);
-        if(game.getStatus()!=GameStatus.FINALIZED){
-            throw new IllegalStateException("Game of ID: "+gameId+" is not FINALIZED!");
+        if(game.getStatus()== GameStatus.ACTIVE || game.getStatus() == GameStatus.INACTIVE){
+            throw new IllegalStateException("Game of ID: "+gameId+" is not been FINALIZED or ENDED!");
         }
         List<Team> teams = teamService.getAllTeamsOfGame(gameId).stream().sorted(
                 Comparator.comparing(Team::isQualified).reversed()
@@ -405,17 +408,37 @@ public class GameService {
         List<Ranking> rankings = new ArrayList<>();
         for(Team team:teams){
             Ranking ranking = new Ranking();
-            List<String> purchases =getTeamPurchases(team,game).stream().map(PurchasedPlayer::getName).toList();
+            List<String> finalTeam =auctionedPlayerRepository.findByTeamId(team.getId()).stream().filter(purchaseRecord -> purchaseRecord.getPlayerStatus() == PlayerStatus.SOLD)
+                    .map(purchaseRecord ->{
+                        Player player = playerService.findPlayerById(purchaseRecord.getAuctionedPlayerId().getPlayerId());
+                        return player.getName();
+                    }).toList();
+            List<String> substitutes =auctionedPlayerRepository.findByTeamId(team.getId()).stream().filter(purchaseRecord -> purchaseRecord.getPlayerStatus() == PlayerStatus.SUBSTITUTED)
+                    .map(purchaseRecord ->{
+                        Player player = playerService.findPlayerById(purchaseRecord.getAuctionedPlayerId().getPlayerId());
+                        return player.getName();
+                    }).toList();
             ranking.setPlace(rank++);
             ranking.setTeamStats(teamMapper.toDTO(team));
             ranking.setIsQualified(team.isQualified());
-            ranking.setPurchases(purchases);
+            ranking.setFinalTeam(finalTeam);
+            ranking.setSubstitutes(substitutes);
             rankings.add(ranking);
         }
         return rankings;
     }
-
     @Transactional
+    public List<Ranking> endGame(Integer gameId){
+        List<Ranking> rankings =getRankings(gameId);
+        Game game = findById(gameId);
+        if(game.getStatus()==GameStatus.ENDED){
+            throw new IllegalStateException("Can't End a game that has already ended!");
+        }
+        game.setStatus(GameStatus.ENDED);
+        return rankings;
+    }
+
+    @Transactional //TODO Seems a bit redundant remove in next update
     public void disqualify(Integer gameId) {
         Game game = findById(gameId);
         if(game.getStatus()!=GameStatus.ACTIVE){
@@ -441,19 +464,19 @@ public class GameService {
         return true;
     }
     @Transactional
-    public void removeSubstitutes(Integer gameId,SubstituteRemovalRequest removalRequest) {
+    public String removeSubstitutes(Integer gameId,SubstituteRemovalRequest removalRequest) {
         Game game = findById(gameId);
         Team team =teamService.getTeamOfAssociationInGame(gameId,removalRequest.getTeamAssociation());
         if(game.getStatus()!=GameStatus.FINALIZED){
             throw new IllegalStateException("Game of ID: "+gameId+" is not FINALIZED! Can't select players before auction ends!");
         }
         if(team.isSelectionLocked()){
-            return;
+            return "Already Locked in Final Selections!";
         }
         if(team.getPlayerCount()<=game.getPlayersPerTeam()){
             team.setSelectionLocked(true);
             log.info("Game #{} |: Team {} has Locked in their options!",gameId,removalRequest.getTeamAssociation());
-            return;
+            return "Team has exact amount of players required! - Auto-Locked!";
         }
         List<AuctionedPlayerId> playerIds = removalRequest.getSubstitutes().stream().map(
                 playerId -> {
@@ -462,14 +485,14 @@ public class GameService {
         ).toList();
         List<AuctionedPlayer> purchaseRecords = auctionedPlayerRepository.findAllByAuctionedPlayerIdInAndTeamId(playerIds,team.getId());
 
-        // -- Generated Does team really have this player check to avoid hacks and cheats ---
+        // -- Generated: Does team really have this player check to avoid hacks and cheats ---
         Set<AuctionedPlayerId> foundIds = purchaseRecords.stream()
                 .map(AuctionedPlayer::getAuctionedPlayerId)
                 .collect(Collectors.toSet());
 
         for (AuctionedPlayerId requestedId : playerIds) {
             if (!foundIds.contains(requestedId)) {
-                throw new SecurityException(
+                throw new IllegalStateException(
                         "Player " + requestedId.getPlayerId() + " does not belong to this team"
                 );
             }
@@ -488,6 +511,7 @@ public class GameService {
         if(teamService.getNumberOfSelectionLockedTeams(gameId) ==10){
             log.info("Game #{} |: All Teams have locked in their options!",gameId);
         }
+        return "Current Selection Locked in. Best of Luck!";
 
 //        String gameAuditDestination = "/topic/game/"+gameId+"/audit/general";
 //        for (AuctionedPlayer record: purchaseRecords){
@@ -499,4 +523,46 @@ public class GameService {
         // Add auditing
     }
 
+    public void publishResults(Integer gameId) {
+        Game game = findById(gameId);
+        if(game.getStatus()!= GameStatus.ENDED) throw new IllegalStateException("Cant Publish The Result of a game that hasn't ended!");
+        List<Team> teams = teamService.getAllTeamsOfGame(gameId);
+        List<Ranking> rankings = getRankings(gameId);
+        for (Team team: teams){
+            String resultDestination= "/game/"+gameId+"/results/"+team.getAssociation();
+            Ranking ranking = rankings.stream().filter(rank -> rank.getTeamStats().getAssociation() == team.getAssociation()).toList().get(0);
+            messagingTemplate.convertAndSend(
+                    resultDestination,
+                    new WebSocketEvent<Ranking>(
+                            WSEvent.RESULT,
+                            Instant.now(),
+                            ranking
+                    )
+            );
+        }
+
+    }
+
+    public CompletePlayer findAuctionPlayerByName(String name,Integer gameId) {
+        Game game = findById(gameId);
+        Player playerBioData =playerService.findPlayerByName(name);
+        SetPlayer playerDetails = setService.findPlayerDetailsInSetById(new SetPlayerId(game.getSetId(),playerBioData.getId()));
+        return CompletePlayer.builder()
+                .id(playerBioData.getId())
+                .name(playerBioData.getName())
+                .imageLink(playerBioData.getImageLink())
+                .type(playerBioData.getType())
+                .isLegend(playerBioData.getIsLegend())
+                .isUncapped(playerBioData.getIsUncapped())
+                .isForeign(playerBioData.getIsForeign())
+                .country(playerBioData.getCountry())
+                .batsmanStats(batsmanStatsMapper.toDTO(playerBioData.getBatsmenStats()))
+                .bowlerStats(bowlerStatsMapper.toDTO(playerBioData.getBowlerStats()))
+                .allRounderStats(allRounderStatsMapper.toDTO(playerBioData.getAllRounderStats()))
+                .setId(game.getSetId())
+                .price(playerDetails.getPrice())
+                .points(playerDetails.getPoints())
+                .order(playerDetails.getOrder())
+                .build();
+    }
 }

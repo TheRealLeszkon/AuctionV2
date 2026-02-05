@@ -53,6 +53,10 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
+    public Player findPlayerByName(String name){
+        return playerRepository.findPlayerByName(name);
+    }
+
     @Transactional
     public List<Player> createMultiplePlayersWithStats(List<Player> players){
         List<Player> savedResults = new ArrayList<>();

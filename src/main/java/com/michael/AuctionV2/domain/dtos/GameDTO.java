@@ -23,6 +23,7 @@ public class GameDTO {
     private Integer bowlersPerTeam;
     private Integer allRounderPerTeam;
     private Integer wicketKeeperPerTeam;
+    private Integer maxPlayersPerTeam;
     private Integer unCappedPerTeam;
     private Integer legendsPerTeam;
     private Integer specialPlayersPerTeam;

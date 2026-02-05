@@ -8,7 +8,6 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface TeamMapper {
     TeamDTO toDTO(Team team);
-    @Mapping(target = "isQualified", ignore = true)
     @Mapping(target = "selectionLocked", ignore = true)
     Team fromDTO(TeamDTO teamDTO);
 }

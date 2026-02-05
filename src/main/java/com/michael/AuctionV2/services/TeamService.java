@@ -47,6 +47,8 @@ public class TeamService {
                                 .legendCount(0)
                                 .foreignCount(0)
                                 .specialCount(0)
+                                .isQualified(false)
+                                .selectionLocked(false)
                                 .balance(game.getInitialBalance())
                                 .build()
                 ));
@@ -76,7 +78,8 @@ public class TeamService {
             Game game
 
     ){
-        Integer maxPlayerCount = game.getPlayersPerTeam();
+
+        Integer maxPlayerCount = game.getMaxPlayersPerTeam();
         Integer maxUncappedCount =game.getUnCappedPerTeam();
         Integer maxLegendPlayers = game.getLegendsPerTeam();
         Integer maxSpecialPlayers = game.getSpecialPlayersPerTeam();

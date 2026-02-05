@@ -117,7 +117,7 @@ public class GameController {
 
     @GetMapping("/{id}/team")
     public List<TeamDTO> fetchAllTeamsInGame(@PathVariable("id") Integer gameId){
-        if(gameService.findById(gameId).getStatus()!=GameStatus.ACTIVE){
+        if(gameService.findById(gameId).getStatus()==GameStatus.INACTIVE){
             throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
         }
         return teamService.getAllTeamsOfGame(gameId).stream().map(teamMapper::toDTO).toList();
@@ -125,7 +125,7 @@ public class GameController {
 
     @GetMapping("/{id}/team/{association}")
     public TeamDTO fetchTeamOfAssociation(@PathVariable("id") Integer gameId,@PathVariable("association") String association){
-        if(gameService.findById(gameId).getStatus()!=GameStatus.ACTIVE){
+        if(gameService.findById(gameId).getStatus()==GameStatus.INACTIVE){
             throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
         }
         try{
@@ -157,7 +157,7 @@ public class GameController {
     @GetMapping("/{id}/players/{playerType}")
     public List<CompletePlayer> getAllPlayersOfType(@PathVariable("id")Integer gameId,@PathVariable("playerType") String playerType){
         Game game =gameService.findById(gameId);
-        if(game.getStatus()!=GameStatus.ACTIVE){
+        if(game.getStatus()==GameStatus.INACTIVE){
             throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
         }
         try{
@@ -199,7 +199,7 @@ public class GameController {
     @GetMapping("/{id}/players")
     public List<CompletePlayer> getAllPlayersOfType(@PathVariable("id")Integer gameId){
         Game game =gameService.findById(gameId);
-        if(game.getStatus()!=GameStatus.ACTIVE){
+        if(game.getStatus()==GameStatus.INACTIVE){
             throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
         }
         List<CompletePlayer> requestedPlayers = setService.findAllPlayersOfSet(game.getSetId()).stream()
@@ -284,11 +284,11 @@ public class GameController {
 
     @PostMapping("/{id}/selection")
     public GameControlMessage deleteSubstitutesInTeam(@PathVariable("id") Integer gameId, @RequestBody SubstituteRemovalRequest removalRequest){
-        gameService.removeSubstitutes(gameId,removalRequest);
+        String message =gameService.removeSubstitutes(gameId,removalRequest);
         return GameControlMessage.builder()
                 .gameStatus(GameStatus.FINALIZED)
                 .command("")
-                .message("Final Team Locked in!")
+                .message(message)
                 .build();
     }
 
@@ -302,16 +302,28 @@ public class GameController {
 
     @PostMapping("/{id}/end")
     public List<Ranking> showFinalTeamRankings(@PathVariable("id") Integer gameId){
-        List<Ranking> rankings =gameService.getRankings(gameId);
-        log.info("Game #{} :| Game has concluded! {} is the winner. Hope they had a fun time.",gameId,rankings.get(0));
+        if(teamService.getNumberOfSelectionLockedTeams(gameId)!= 10){
+            log.info("[ Auction ] Warning: Not All Teams have selected their final Player list!");
+            //TODO make it not possible without all locking next time
+        }
+        List<Ranking> rankings =gameService.endGame(gameId);
+        log.info("Game #{} :| Game has concluded! {} is the winner. Hope they had a fun time.",gameId,rankings.get(0).getTeamStats().getName());
         return rankings;
     }
 
-//    @GetMapping("/{id}/results")
+    @GetMapping("/{id}/results")
+    public List<Ranking> showGameResults(@PathVariable("id") Integer gameId){
+        return gameService.getRankings(gameId);
+    }
 
-//    @PostMapping("/{id}/results/publish")
-//    public void publishResultsToTeams(@PathVariable("id") Integer gameId){
-//        gameService.publishResults(gameId);
-//    }
+    @PostMapping("/{id}/results/publish")
+    public void publishResultsToTeams(@PathVariable("id") Integer gameId){
+        gameService.publishResults(gameId);
+    }
+
+    @GetMapping("/{id}/player/{name}")
+    public CompletePlayer findPlayerByName(@PathVariable("name") String name, @PathVariable("id") Integer gameId){
+        return gameService.findAuctionPlayerByName(name,gameId);
+    }
 
 }

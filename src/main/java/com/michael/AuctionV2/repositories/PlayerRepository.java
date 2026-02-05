@@ -12,4 +12,6 @@ public interface PlayerRepository extends JpaRepository<Player,Integer> {
     List<Player> findAllByType(PlayerType type);
     boolean existsByName(String fingerPrint);
 
+    Player findPlayerByName(String name);
+
 }
