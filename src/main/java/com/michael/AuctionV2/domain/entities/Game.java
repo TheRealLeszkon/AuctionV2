@@ -29,5 +29,8 @@ public class Game { //TODO add fields here to add game constrains and presets
     private Integer allRounderPerTeam;
     private Integer wicketKeeperPerTeam;
     private Integer unCappedPerTeam;
+    private Integer legendsPerTeam;
+    private Integer specialPlayersPerTeam;
+    private Integer foreignPlayersPerTeam;
 
 }

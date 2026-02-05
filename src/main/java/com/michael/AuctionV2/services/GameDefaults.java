@@ -12,4 +12,10 @@ public final class GameDefaults {
     public static final int ALL_ROUNDER_PER_TEAM = 3;
     public static final int WICKET_KEEPER_PER_TEAM = 1;
     public static final int UNCAPPED_PER_TEAM = 1;
+
+    public static final int FOREIGN_PER_TEAM = 2;
+
+    public static final int LEGENDS_PER_TEAM = 1;
+
+    public static final int SPECIAL_PER_TEAM = 2;
 }

@@ -20,5 +20,8 @@ curl --location 'localhost:6769/game' \
     "bowlersPerTeam":4,
     "allRounderPerTeam":3,
     "wicketKeeperPerTeam":1,
-    "unCappedPerTeam":1
+    "unCappedPerTeam":1,
+    "legendsPerTeam": 1,
+    "specialPlayersPerTeam": 2,
+    "foreignPlayersPerTeam":5
 }'

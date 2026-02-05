@@ -44,6 +44,9 @@ public class TeamService {
                                 .bowlerCount(0)
                                 .wicketKeeperCount(0)
                                 .uncappedCount(0)
+                                .legendCount(0)
+                                .foreignCount(0)
+                                .specialCount(0)
                                 .balance(game.getInitialBalance())
                                 .build()
                 ));
@@ -65,7 +68,12 @@ public class TeamService {
         team.setPoints(team.getPoints()+points);
     }
     public void checkConstraintsAndUpdateTeamCounts(
-            Team team, PlayerType playerType, boolean isUncapped, Game game
+            Team team,
+            PlayerType playerType,
+            boolean isUncapped,
+            boolean isLegend,
+            boolean isForeign,
+            Game game
 
     ){
         Integer maxPlayerCount = game.getPlayersPerTeam();
@@ -74,14 +82,36 @@ public class TeamService {
         Integer maxBowlerCount =game.getBowlersPerTeam();
         Integer maxWicketKeeperCount =game.getWicketKeeperPerTeam();
         Integer maxUncappedCount =game.getUnCappedPerTeam();
+        Integer maxLegendPlayers = game.getLegendsPerTeam();
+        Integer maxSpecialPlayers = game.getSpecialPlayersPerTeam();
+        Integer maxForeignPlayers = game.getForeignPlayersPerTeam();
         if(team.getPlayerCount()>=maxPlayerCount){
             throw new IllegalStateException("Maximum number of players Reached!");
         }
-        if(isUncapped){
-            if(team.getUncappedCount()>=maxUncappedCount){
-                throw new IllegalStateException("Maximum number of uncapped Players Reached!");
+        //Update Special player counts
+        if(isLegend || isUncapped){
+            if(team.getSpecialCount()>=maxSpecialPlayers){
+                throw new IllegalStateException("Maximum number of special players already reached!");
             }
+
+            if(isUncapped){
+                if(team.getUncappedCount()>=maxUncappedCount){
+                    throw new IllegalStateException("Maximum number of uncapped Players Reached!");
+                }
+            }
+            if(isLegend){
+                if(team.getLegendCount()>=maxLegendPlayers){
+                    throw new IllegalStateException("Maximum number of legend Players Reached!");
+                }
+            }
+            team.setSpecialCount(team.getSpecialCount()+1);
         }
+        if(isForeign){
+            if(team.getForeignCount()>=maxForeignPlayers) throw new IllegalStateException("Maximum number of foreign players already reached!");
+            team.setForeignCount(team.getForeignCount()+1);
+        }
+
+        //Update Players of type
         switch (playerType){
             case BATSMAN ->{
                 if (team.getBatsmanCount()>=maxBatsmanCount){
@@ -108,25 +138,40 @@ public class TeamService {
                 team.setWicketKeeperCount(team.getWicketKeeperCount()+1);
             }
         }
+
         if(isUncapped) team.setUncappedCount(team.getUncappedCount()+1);
+        if(isLegend) team.setLegendCount(team.getLegendCount()+1);
         team.setPlayerCount(team.getPlayerCount()+1);
-
-    }
-
-    public Team findTeamById(Integer teamId) {
-        return teamRepository.findById(teamId).orElseThrow(() -> new IllegalArgumentException("Team not found!"));
     }
     public void reduceTeamPlayerCounts(Team team,Player playerBioDetails) {
         if (team.getPlayerCount() <= 0) {
             throw new IllegalStateException("Team doesn't have any purchases to refund!");
         }
-
-        if(playerBioDetails.getIsUncapped()){
-            if (team.getUncappedCount() <= 0) {
-                throw new IllegalStateException("Uncapped count already zero");
+        //Update Special Counts
+        if(playerBioDetails.getIsUncapped()|| playerBioDetails.getIsLegend() ){
+            if(playerBioDetails.getIsLegend()){
+                if (team.getLegendCount() <= 0) {
+                    throw new IllegalStateException("Legend count already zero");
+                }
+                team.setLegendCount(team.getLegendCount( )-1);
             }
-            team.setUncappedCount(team.getUncappedCount()-1);
+            if(playerBioDetails.getIsUncapped()){
+                if (team.getUncappedCount() <= 0) {
+                    throw new IllegalStateException("Uncapped count already zero");
+                }
+                team.setUncappedCount(team.getUncappedCount()-1);
+            }
+            team.setSpecialCount(team.getSpecialCount()-1);
         }
+        //Update Foreign counts
+        if(playerBioDetails.getIsForeign()){
+            if (team.getForeignCount() <= 0) {
+                throw new IllegalStateException("Foreign Count count already zero");
+            }
+            team.setForeignCount(team.getForeignCount()-1);
+        }
+
+        //Update player Type counts
         switch(playerBioDetails.getType()){
             case BATSMAN ->{
                 if (team.getBatsmanCount() <= 0) {
@@ -154,5 +199,8 @@ public class TeamService {
             }
         }
         team.setPlayerCount(team.getPlayerCount()-1);
+    }
+    public Team findTeamById(Integer teamId) {
+        return teamRepository.findById(teamId).orElseThrow(() -> new IllegalArgumentException("Team not found!"));
     }
 }

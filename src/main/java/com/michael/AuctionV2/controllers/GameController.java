@@ -62,6 +62,7 @@ public class GameController {
                             .type(playerBioData.getType())
                             .isLegend(playerBioData.getIsLegend())
                             .isUncapped(playerBioData.getIsUncapped())
+                            .isForeign(playerBioData.getIsForeign())
                             .country(playerBioData.getCountry())
                             .batsmanStats(batsmanStatsMapper.toDTO(playerBioData.getBatsmenStats()))
                             .bowlerStats(bowlerStatsMapper.toDTO(playerBioData.getBowlerStats()))
@@ -101,8 +102,6 @@ public class GameController {
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(controlMessage.getCommand()+" is not a command! Did you mean "+GameCommand.START+"?");
         }
-
-
         Game game =gameService.InitializeGame(gameId);
         return new ResponseEntity<>(
                 GameControlMessage.builder()
@@ -113,8 +112,6 @@ public class GameController {
                 HttpStatus.CREATED
         );
     }
-
-
 
     @GetMapping("/{id}/team")
     public List<TeamDTO> fetchAllTeamsInGame(@PathVariable("id") Integer gameId){
@@ -177,6 +174,7 @@ public class GameController {
                             .imageLink(playerBioData.getImageLink())
                             .type(playerBioData.getType())
                             .isLegend(playerBioData.getIsLegend())
+                            .isForeign(playerBioData.getIsForeign())
                             .isUncapped(playerBioData.getIsUncapped())
                             .country(playerBioData.getCountry())
                             .batsmanStats(batsmanStatsMapper.toDTO(playerBioData.getBatsmenStats()))
@@ -213,6 +211,7 @@ public class GameController {
                             .type(playerBioData.getType())
                             .isLegend(playerBioData.getIsLegend())
                             .isUncapped(playerBioData.getIsUncapped())
+                            .isForeign(playerBioData.getIsForeign())
                             .country(playerBioData.getCountry())
                             .batsmanStats(batsmanStatsMapper.toDTO(playerBioData.getBatsmenStats()))
                             .bowlerStats(bowlerStatsMapper.toDTO(playerBioData.getBowlerStats()))

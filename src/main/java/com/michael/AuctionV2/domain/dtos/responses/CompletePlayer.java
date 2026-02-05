@@ -23,6 +23,7 @@ public class CompletePlayer {
     private PlayerType type;
     private Boolean isUncapped;
     private Boolean isLegend;
+    private Boolean isForeign;
     private String country;
     private BatsmanStatsDTO batsmanStats;
     private BowlerStatsDTO bowlerStats;

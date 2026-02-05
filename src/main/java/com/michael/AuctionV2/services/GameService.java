@@ -78,6 +78,18 @@ public class GameService {
                 Optional.ofNullable(game.getUnCappedPerTeam())
                         .orElse(GameDefaults.UNCAPPED_PER_TEAM)
         );
+        game.setLegendsPerTeam(
+                Optional.ofNullable(game.getLegendsPerTeam())
+                        .orElse(GameDefaults.LEGENDS_PER_TEAM)
+        );
+        game.setSpecialPlayersPerTeam(
+                Optional.ofNullable(game.getSpecialPlayersPerTeam())
+                        .orElse(GameDefaults.SPECIAL_PER_TEAM)
+        );
+        game.setForeignPlayersPerTeam(
+                Optional.ofNullable(game.getForeignPlayersPerTeam())
+                        .orElse(GameDefaults.FOREIGN_PER_TEAM)
+        );
     }
 
 
@@ -133,11 +145,6 @@ public class GameService {
         if (foundPlayer.getPlayerStatus() == PlayerStatus.SOLD) {
             throw new IllegalStateException("Player already sold");
         }
-//        if (foundPlayer.getPlayerStatus() != PlayerStatus.FOR_SALE
-//                && foundPlayer.getPlayerStatus() != PlayerStatus.UNSOLD) {
-//            throw new IllegalStateException("Player is not available for purchase");
-//        }
-
 
         SetPlayer playerDetails =setService.findPlayerDetailsInSetById(new SetPlayerId(game.getSetId(),playerId));
         if(bidAmount.compareTo( playerDetails.getPrice())<0){
@@ -152,6 +159,8 @@ public class GameService {
                 team,
                 playerBioDetails.getType(),
                 playerBioDetails.getIsUncapped(),
+                playerBioDetails.getIsLegend(),
+                playerBioDetails.getIsForeign(),
                 game
         );
         teamService.updateTeamForPurchase(team,bidAmount,playerDetails.getPoints());
@@ -181,6 +190,7 @@ public class GameService {
                         .type(TransactionType.PURCHASE)
                         .build()
         );
+
         String teamPurchaseUpdatesDestination ="/topic/game/"+gameId+"/purchases/"+teamAssociation;
         messagingTemplate.convertAndSend(
                 teamPurchaseUpdatesDestination,
@@ -362,6 +372,7 @@ public class GameService {
                             .type(playerBioData.getType())
                             .isLegend(playerBioData.getIsLegend())
                             .isUncapped(playerBioData.getIsUncapped())
+                            .isForeign(playerBioData.getIsForeign())
                             .country(playerBioData.getCountry())
                             .batsmanStats(batsmanStatsMapper.toDTO(playerBioData.getBatsmenStats()))
                             .bowlerStats(bowlerStatsMapper.toDTO(playerBioData.getBowlerStats()))
@@ -375,6 +386,8 @@ public class GameService {
                 }
         ).toList();
     }
+
+
 
 
     //Checks needed to be performed

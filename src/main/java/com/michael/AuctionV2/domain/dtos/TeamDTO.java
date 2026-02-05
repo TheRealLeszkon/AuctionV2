@@ -27,4 +27,7 @@ public class TeamDTO {
     private Integer bowlerCount;
     private Integer wicketKeeperCount;
     private Integer uncappedCount;
+    private Integer legendCount;
+    private Integer specialCount;
+    private Integer foreignCount;
 }
