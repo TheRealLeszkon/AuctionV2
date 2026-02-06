@@ -455,9 +455,9 @@ public class GameService {
         }
         game.setStatus(GameStatus.FINALIZED);
     }
-    public void unfinalizeGame(){
-
-    }
+//    public void unfinalizeGame(){
+//
+//    }
     private boolean isTeamQualified(Team team, Game game) {
         if (!Objects.equals(team.getPlayerCount(), game.getPlayersPerTeam())) return false;
         if (team.getForeignCount() < game.getForeignPlayersPerTeam()) return false;
