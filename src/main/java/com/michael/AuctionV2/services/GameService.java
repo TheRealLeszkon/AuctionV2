@@ -111,6 +111,9 @@ public class GameService {
         if(game.getStatus()== GameStatus.ACTIVE){
             throw new IllegalStateException("Game ID: "+gameId+" Game Name: "+game.getName()+ " is already active! Can't Initialize Active game!");
         }
+        if(game.getStatus()!=GameStatus.INACTIVE){
+            throw new IllegalStateException("Game ID: "+gameId+ " Game Name: "+game.getName()+ " has been "+game.getStatus()+ " It Can't be restarted!");
+        }
         game.setStatus(GameStatus.ACTIVE);
 
         //Create 10 Teams for the game
@@ -178,6 +181,7 @@ public class GameService {
         foundPlayer.setPlayerStatus(PlayerStatus.SOLD);
 
         PurchasedPlayer purchasedPlayer =PurchasedPlayer.builder()
+                .playerId(playerId)
                 .name(playerBioDetails.getName())
                 .playerType(playerBioDetails.getType())
                 .boughtFor(bidAmount)
@@ -227,6 +231,7 @@ public class GameService {
                     log.info("{} was fetched!",playerBioData.getName());
                     log.info("{} <- legend status",playerBioData.getIsLegend());
                     return PurchasedPlayer.builder()
+                            .playerId(playerId)
                             .playerType(playerBioData.getType())
                             .name(playerBioData.getName())
                             .boughtFor(purchaseEntry.getSoldPrice())
@@ -464,7 +469,7 @@ public class GameService {
         return true;
     }
     @Transactional
-    public String removeSubstitutes(Integer gameId,SubstituteRemovalRequest removalRequest) {
+    public String removeSubstitutes(Integer gameId,SubstituteRemovalRequest removalRequest) { //TODO add check for limiting amount of players for removal by checking teamTotal
         Game game = findById(gameId);
         Team team =teamService.getTeamOfAssociationInGame(gameId,removalRequest.getTeamAssociation());
         if(game.getStatus()!=GameStatus.FINALIZED){
@@ -475,6 +480,7 @@ public class GameService {
         }
         if(team.getPlayerCount()<=game.getPlayersPerTeam()){
             team.setSelectionLocked(true);
+            team.setQualified(isTeamQualified(team,game));
             log.info("Game #{} |: Team {} has Locked in their options!",gameId,removalRequest.getTeamAssociation());
             return "Team has exact amount of players required! - Auto-Locked!";
         }
@@ -505,6 +511,7 @@ public class GameService {
             team.setPoints(team.getPoints()-playerGameDetails.getPoints());
             record.setPlayerStatus(PlayerStatus.SUBSTITUTED);
         }
+        team.setQualified(isTeamQualified(team,game));
         team.setSelectionLocked(true);
         log.info("Game #{} |: Team {} has Locked in their options!",gameId,removalRequest.getTeamAssociation());
 

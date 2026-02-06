@@ -79,7 +79,7 @@ public class TeamService {
 
     ){
 
-        Integer maxPlayerCount = game.getMaxPlayersPerTeam();
+        Integer maxPlayerCount = game.getPlayersPerTeam() + game.getSubstitutesPerTeam();
         Integer maxUncappedCount =game.getUnCappedPerTeam();
         Integer maxLegendPlayers = game.getLegendsPerTeam();
         Integer maxSpecialPlayers = game.getSpecialPlayersPerTeam();

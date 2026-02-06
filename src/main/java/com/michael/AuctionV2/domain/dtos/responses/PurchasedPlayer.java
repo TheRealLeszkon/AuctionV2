@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 public class PurchasedPlayer {
+    private Integer playerId;
     private String name;
     private PlayerType playerType;
     private BigDecimal boughtFor;

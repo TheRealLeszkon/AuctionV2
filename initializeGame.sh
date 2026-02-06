@@ -20,7 +20,7 @@ curl --location 'localhost:6769/game' \
     "bowlersPerTeam":4,
     "allRounderPerTeam":2,
     "wicketKeeperPerTeam":1,
-    "maxPlayersPerTeam":15,
+    "substitutesPerTeam":15,
     "unCappedPerTeam":1,
     "legendsPerTeam": 1,
     "specialPlayersPerTeam": 2,
