@@ -292,11 +292,16 @@ public class GameController {
                 .build();
     }
 
+//    @GetMapping("/{id}/selection/locked-in")
+//    public Map<String,Integer> showCountOfLockedInTeams(@PathVariable("id") Integer gameId){
+//        return Map.of(
+//            "LockedInTeams",teamService.getNumberOfSelectionLockedTeams(gameId)
+//        );
+//    }
+
     @GetMapping("/{id}/selection/locked-in")
-    public Map<String,Integer> showCountOfLockedInTeams(@PathVariable("id") Integer gameId){
-        return Map.of(
-            "LockedInTeams",teamService.getNumberOfSelectionLockedTeams(gameId)
-        );
+    public LockedInUpdate showLockedInTeams(@PathVariable("id") Integer gameId){
+        return gameService.getLockedInStatus(gameId);
     }
 
 

@@ -93,6 +93,10 @@ public class GameService {
                 Optional.ofNullable(game.getForeignPlayersPerTeam())
                         .orElse(GameDefaults.FOREIGN_PER_TEAM)
         );
+        game.setSubstitutesPerTeam(
+                Optional.ofNullable(game.getSubstitutesPerTeam())
+                        .orElse(GameDefaults.SUBSTITUTES_PER_TEAM)
+        );
     }
 
 
@@ -372,7 +376,7 @@ public class GameService {
         if(game.getStatus()==GameStatus.INACTIVE){
             throw new IllegalArgumentException("Game of ID: "+gameId+" is not ACTIVE!");
         }
-        List<AuctionedPlayer> auctionRecords = auctionedPlayerRepository.findAllByPlayerStatusOrderByAuctionedPlayerId(status);
+        List<AuctionedPlayer> auctionRecords = auctionedPlayerRepository.findAllByAuctionedPlayerId_GameIdAndPlayerStatusOrderByAuctionedPlayerId_PlayerId(gameId,status);
         return auctionRecords.stream().map(
                 record ->{
                     Player playerBioData = playerService.findPlayerById(record.getAuctionedPlayerId().getPlayerId());
@@ -481,6 +485,10 @@ public class GameService {
         if(team.isSelectionLocked()){
             return "Already Locked in Final Selections!";
         }
+        int  teamCountAfterSubElimination =team.getPlayerCount() -removalRequest.getSubstitutes().size();
+        if(teamCountAfterSubElimination!=team.getPlayerCount()){
+            throw new IllegalArgumentException("Can't remove players below the minimum player required count!");
+        }
         if(team.getPlayerCount()<=game.getPlayersPerTeam()){
             team.setSelectionLocked(true);
             team.setQualified(isTeamQualified(team,game));
@@ -574,5 +582,16 @@ public class GameService {
                 .points(playerDetails.getPoints())
                 .order(playerDetails.getOrder())
                 .build();
+    }
+
+    public LockedInUpdate getLockedInStatus(Integer gameId) {
+        Game game = findById(gameId);
+        if(game.getStatus()== GameStatus.ACTIVE || game.getStatus() == GameStatus.INACTIVE){
+            throw new IllegalStateException("Game is not FINALIZED OR ENDED. Can't perform operation now.");
+        }
+        return new LockedInUpdate(
+                teamService.getNumberOfSelectionLockedTeams(gameId),
+                teamService.getAllLockedInTeamsOfGame(gameId).stream().map(team -> team.getAssociation().toString()).toList()
+        );
     }
 }

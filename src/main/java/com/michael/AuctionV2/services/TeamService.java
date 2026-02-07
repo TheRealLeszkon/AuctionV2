@@ -192,4 +192,7 @@ public class TeamService {
     public Integer getNumberOfSelectionLockedTeams(Integer gameId){
         return teamRepository.countByGameIdAndSelectionLockedTrue(gameId);
     }
+    public List<Team> getAllLockedInTeamsOfGame(Integer gameId){
+        return teamRepository.findAllByGameIdAndSelectionLocked(gameId,true);
+    }
 }

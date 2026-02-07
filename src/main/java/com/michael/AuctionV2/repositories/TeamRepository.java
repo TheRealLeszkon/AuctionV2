@@ -15,4 +15,5 @@ public interface TeamRepository extends JpaRepository<Team,Integer> {
 
     Integer countByGameIdAndSelectionLockedTrue(Integer gameId);
     Team findByGameIdAndAssociation(Integer gameId, IPLAssociation association);
+    List<Team> findAllByGameIdAndSelectionLocked(Integer gameId, Boolean isSelectionLocked);
 }
