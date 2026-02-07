@@ -274,7 +274,7 @@ public class GameController {
 
     @PostMapping("/{id}/finalize")
     public GameControlMessage disqualifyTeams(@PathVariable("id") Integer gameId){
-        gameService.disqualify(gameId);
+        gameService.finalizeGame(gameId);
         return GameControlMessage.builder()
                 .message("Game Finalized and Auction Has Ended! Allow Players to Select their teams!")
                 .command("")
@@ -282,6 +282,15 @@ public class GameController {
                 .build();
     }
 
+    @PostMapping("/{id}/resume")
+    public GameControlMessage resumeGame(@PathVariable("id") Integer gameId){ //UnFinalize game
+        gameService.unfinalizeGame(gameId);
+        return GameControlMessage.builder()
+                .message("Game Resumed!")
+                .command("")
+                .gameStatus(GameStatus.ACTIVE)
+                .build();
+    }
     @PostMapping("/{id}/selection")
     public GameControlMessage deleteSubstitutesInTeam(@PathVariable("id") Integer gameId, @RequestBody SubstituteRemovalRequest removalRequest){
         String message =gameService.removeSubstitutes(gameId,removalRequest);

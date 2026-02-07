@@ -175,10 +175,6 @@ public class GameService {
                 game
         );
         teamService.updateTeamForPurchase(team,bidAmount,playerDetails.getPoints());
-        if(isTeamQualified(team,game)){
-            team.setQualified(true);
-            //TODO Could have a socket message to inform the team of this
-        }
 
         foundPlayer.setTeamId(team.getId());
         foundPlayer.setSoldPrice(bidAmount);
@@ -408,11 +404,16 @@ public class GameService {
         if(game.getStatus()== GameStatus.ACTIVE || game.getStatus() == GameStatus.INACTIVE){
             throw new IllegalStateException("Game of ID: "+gameId+" is not been FINALIZED or ENDED!");
         }
-        List<Team> teams = teamService.getAllTeamsOfGame(gameId).stream().sorted(
-                Comparator.comparing(Team::isQualified).reversed()
-                        .thenComparingInt(Team::getPoints).reversed()
-                        .thenComparing(Team::getBalance,Comparator.reverseOrder())
-        ).toList();
+        List<Team> teams =
+                teamService.getAllTeamsOfGame(gameId)
+                        .stream()
+                        .sorted(
+                                Comparator.comparing(Team::isQualified).reversed()
+                                        .thenComparing(Comparator.comparingInt(Team::getPoints).reversed())
+                                        .thenComparing(Team::getBalance, Comparator.reverseOrder())
+                        )
+                        .toList();
+
         int rank = 1;
         List<Ranking> rankings = new ArrayList<>();
         for(Team team:teams){
@@ -438,8 +439,9 @@ public class GameService {
     }
     @Transactional
     public List<Ranking> endGame(Integer gameId){
-        List<Ranking> rankings =getRankings(gameId);
         Game game = findById(gameId);
+        disqualifyTeams(game);
+        List<Ranking> rankings =getRankings(gameId);
         if(game.getStatus()==GameStatus.ENDED){
             throw new IllegalStateException("Can't End a game that has already ended!");
         }
@@ -447,21 +449,33 @@ public class GameService {
         return rankings;
     }
 
-    @Transactional //TODO Seems a bit redundant remove in next update
-    public void disqualify(Integer gameId) {
-        Game game = findById(gameId);
-        if(game.getStatus()!=GameStatus.ACTIVE){
-            throw new IllegalStateException("Game of ID: "+gameId+" is not ACTIVE!");
-        }
-        List<Team> teams = teamService.getAllTeamsOfGame(gameId);
+    @Transactional
+    public void disqualifyTeams(Game game) {
+        List<Team> teams = teamService.getAllTeamsOfGame(game.getId());
         for(Team team: teams){
             team.setQualified(isTeamQualified(team,game));
         }
+    }
+
+    @Transactional
+    public void finalizeGame(Integer gameId){
+        Game game = findById(gameId);
+        if (game.getStatus() == GameStatus.ENDED) {
+            throw new IllegalStateException("Game of ID: "+gameId+" has already ENDED!");
+        }
+        if(game.getStatus()!=GameStatus.ACTIVE){
+            throw new IllegalStateException("Game of ID: "+gameId+" is not ACTIVE!");
+        }
         game.setStatus(GameStatus.FINALIZED);
     }
-//    public void unfinalizeGame(){
-//
-//    }
+    @Transactional
+    public void unfinalizeGame(Integer gameId){
+        Game game = findById(gameId);
+        if (game.getStatus() != GameStatus.FINALIZED) {
+            throw new IllegalStateException("Game of ID: " + gameId + " is not FINALIZED and cannot be resumed!");
+        }
+        game.setStatus(GameStatus.ACTIVE);
+    }
     private boolean isTeamQualified(Team team, Game game) {
         if (!Objects.equals(team.getPlayerCount(), game.getPlayersPerTeam())) return false;
         if (team.getForeignCount() < game.getForeignPlayersPerTeam()) return false;
