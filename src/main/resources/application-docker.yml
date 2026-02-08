@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/auctiondb
+    username: auction_user
+    password: auction_pass
+
+  jpa:
+    hibernate:
+      ddl-auto: update

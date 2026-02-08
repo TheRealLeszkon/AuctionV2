@@ -479,8 +479,6 @@ public class GameService {
     private boolean isTeamQualified(Team team, Game game) {
         if (!Objects.equals(team.getPlayerCount(), game.getPlayersPerTeam())) return false;
         if (team.getForeignCount() < game.getForeignPlayersPerTeam()) return false;
-        if (team.getLegendCount() < game.getLegendsPerTeam()) return false;
-        if (team.getUncappedCount() < game.getUnCappedPerTeam()) return false;
         if (team.getSpecialCount() < game.getSpecialPlayersPerTeam()) return false;
         if (team.getBatsmanCount() < game.getBatsmenPerTeam()) return false;
         if (team.getBowlerCount() < game.getBowlersPerTeam()) return false;
