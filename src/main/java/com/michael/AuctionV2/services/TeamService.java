@@ -195,4 +195,8 @@ public class TeamService {
     public List<Team> getAllLockedInTeamsOfGame(Integer gameId){
         return teamRepository.findAllByGameIdAndSelectionLocked(gameId,true);
     }
+
+    public void flushUpdates() {
+        teamRepository.flush();
+    }
 }

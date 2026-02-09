@@ -17,6 +17,8 @@ import com.michael.AuctionV2.domain.mappers.*;
 import com.michael.AuctionV2.repositories.AuctionedPlayerRepository;
 import com.michael.AuctionV2.repositories.GameRepository;
 import com.michael.AuctionV2.repositories.GameTransactionRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +36,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 public class GameService {
+    @PersistenceContext
+    private EntityManager entityManager;
     private final GameRepository gameRepository;
     private final TeamService teamService;
     private final TeamMapper teamMapper;
@@ -401,8 +405,8 @@ public class GameService {
 
     public List<Ranking> getRankings(Integer gameId) {
         Game game = findById(gameId);
-        if(game.getStatus()== GameStatus.ACTIVE || game.getStatus() == GameStatus.INACTIVE){
-            throw new IllegalStateException("Game of ID: "+gameId+" is not been FINALIZED or ENDED!");
+        if(game.getStatus()!=GameStatus.ENDED){
+            throw new IllegalStateException("Can't publish results of game before it has ended!");
         }
         List<Team> teams =
                 teamService.getAllTeamsOfGame(gameId)
@@ -418,6 +422,8 @@ public class GameService {
         List<Ranking> rankings = new ArrayList<>();
         for(Team team:teams){
             Ranking ranking = new Ranking();
+            TeamDTO teamDTO =teamMapper.toDTO(team);
+            teamDTO.setQualified(team.isQualified());
             List<String> finalTeam =auctionedPlayerRepository.findByTeamId(team.getId()).stream().filter(purchaseRecord -> purchaseRecord.getPlayerStatus() == PlayerStatus.SOLD)
                     .map(purchaseRecord ->{
                         Player player = playerService.findPlayerById(purchaseRecord.getAuctionedPlayerId().getPlayerId());
@@ -429,7 +435,7 @@ public class GameService {
                         return player.getName();
                     }).toList();
             ranking.setPlace(rank++);
-            ranking.setTeamStats(teamMapper.toDTO(team));
+            ranking.setTeamStats(teamDTO);
             ranking.setIsQualified(team.isQualified());
             ranking.setFinalTeam(finalTeam);
             ranking.setSubstitutes(substitutes);
@@ -441,15 +447,16 @@ public class GameService {
     public List<Ranking> endGame(Integer gameId){
         Game game = findById(gameId);
         disqualifyTeams(game);
-        List<Ranking> rankings =getRankings(gameId);
-        if(game.getStatus()==GameStatus.ENDED){
-            throw new IllegalStateException("Can't End a game that has already ended!");
+        entityManager.flush();
+
+        if(game.getStatus()!=GameStatus.FINALIZED){
+            throw new IllegalStateException("Can't End a game that isn't Finalized!");
         }
         game.setStatus(GameStatus.ENDED);
+        List<Ranking> rankings =getRankings(gameId);
         return rankings;
     }
 
-    @Transactional
     public void disqualifyTeams(Game game) {
         List<Team> teams = teamService.getAllTeamsOfGame(game.getId());
         for(Team team: teams){
@@ -477,6 +484,7 @@ public class GameService {
         game.setStatus(GameStatus.ACTIVE);
     }
     private boolean isTeamQualified(Team team, Game game) {
+        if(team.getPlayerCount() > game.getPlayersPerTeam()) return false;
         if (!Objects.equals(team.getPlayerCount(), game.getPlayersPerTeam())) return false;
         if (team.getForeignCount() < game.getForeignPlayersPerTeam()) return false;
         if (team.getSpecialCount() < game.getSpecialPlayersPerTeam()) return false;
@@ -488,71 +496,78 @@ public class GameService {
         return true;
     }
     @Transactional
-    public String removeSubstitutes(Integer gameId,SubstituteRemovalRequest removalRequest) { //TODO add check for limiting amount of players for removal by checking teamTotal
+    public void removeSubstitutes(Integer gameId, SubstituteRemovalRequest removalRequest) {
         Game game = findById(gameId);
-        Team team =teamService.getTeamOfAssociationInGame(gameId,removalRequest.getTeamAssociation());
-        if(game.getStatus()!=GameStatus.FINALIZED){
-            throw new IllegalStateException("Game of ID: "+gameId+" is not FINALIZED! Can't select players before auction ends!");
-        }
-        if(team.isSelectionLocked()){
-            return "Already Locked in Final Selections!";
-        }
-        int  teamCountAfterSubElimination =team.getPlayerCount() -removalRequest.getSubstitutes().size();
-        if(teamCountAfterSubElimination!=team.getPlayerCount()){
-            throw new IllegalArgumentException("Can't remove players below the minimum player required count!");
-        }
-        if(team.getPlayerCount()<=game.getPlayersPerTeam()){
-            team.setSelectionLocked(true);
-            team.setQualified(isTeamQualified(team,game));
-            log.info("Game #{} |: Team {} has Locked in their options!",gameId,removalRequest.getTeamAssociation());
-            return "Team has exact amount of players required! - Auto-Locked!";
-        }
-        List<AuctionedPlayerId> playerIds = removalRequest.getSubstitutes().stream().map(
-                playerId -> {
-                    return new AuctionedPlayerId(gameId,playerId);
-                }
-        ).toList();
-        List<AuctionedPlayer> purchaseRecords = auctionedPlayerRepository.findAllByAuctionedPlayerIdInAndTeamId(playerIds,team.getId());
+        Team team = teamService.getTeamOfAssociationInGame(gameId, removalRequest.getTeamAssociation());
 
-        // -- Generated: Does team really have this player check to avoid hacks and cheats ---
-        Set<AuctionedPlayerId> foundIds = purchaseRecords.stream()
-                .map(AuctionedPlayer::getAuctionedPlayerId)
-                .collect(Collectors.toSet());
-
-        for (AuctionedPlayerId requestedId : playerIds) {
-            if (!foundIds.contains(requestedId)) {
-                throw new IllegalStateException(
-                        "Player " + requestedId.getPlayerId() + " does not belong to this team"
-                );
-            }
+        // 1. Basic State Validations
+        if (game.getStatus() != GameStatus.FINALIZED) {
+            throw new IllegalStateException("Game is not FINALIZED! Auction must end first.");
         }
-        // ---------------- --------------- --------------- -----------
-
-
-        for(AuctionedPlayer record: purchaseRecords){
-            SetPlayer playerGameDetails = setService.findPlayerDetailsInSetById(new SetPlayerId(game.getSetId(),record.getAuctionedPlayerId().getPlayerId()));
-            team.setPoints(team.getPoints()-playerGameDetails.getPoints());
-            record.setPlayerStatus(PlayerStatus.SUBSTITUTED);
+        if (team.isSelectionLocked()) {
+            throw new IllegalStateException("Team selection is already locked!");
         }
-        team.setQualified(isTeamQualified(team,game));
-        team.setSelectionLocked(true);
-        log.info("Game #{} |: Team {} has Locked in their options!",gameId,removalRequest.getTeamAssociation());
 
-        if(teamService.getNumberOfSelectionLockedTeams(gameId) ==10){
-            log.info("Game #{} |: All Teams have locked in their options!",gameId);
+        List<Integer> requestedSubIds = removalRequest.getSubstitutes();
+        int currentCount = team.getPlayerCount();
+        int targetCount = game.getPlayersPerTeam();
+
+        // 2. Optimized Validation Logic
+        // Case A: Team is already at or below the limit and sent no subs
+        if (requestedSubIds.isEmpty() && currentCount <= targetCount) {
+            lockTeamSelection(team, game);
+            return;
         }
-        return "Current Selection Locked in. Best of Luck!";
 
-//        String gameAuditDestination = "/topic/game/"+gameId+"/audit/general";
-//        for (AuctionedPlayer record: purchaseRecords){
-//            messagingTemplate.convertAndSend(
-//                    gameAuditDestination,
-//                    new WebSocketEvent<GameLog>(WSEvent.AUDIT,Instant.now(),gameLogMapper.toDTO(transaction))
-//            );
-//        }
-        // Add auditing
+        // Case B: Validation of removal count
+        int countAfterRemoval = currentCount - requestedSubIds.size();
+        if (countAfterRemoval < targetCount) {
+            throw new IllegalArgumentException("Cannot remove players below the required count of " + targetCount);
+        }
+
+        // Ensure they are removing enough to meet the game's sub-quota rules
+        if (requestedSubIds.size() < game.getSubstitutesPerTeam() && countAfterRemoval > targetCount) {
+            throw new IllegalStateException("You must remove more substitutes to reach the roster limit.");
+        }
+
+        // 3. Bulk Fetch Records (Optimization)
+        List<AuctionedPlayerId> playerIds = requestedSubIds.stream()
+                .map(id -> new AuctionedPlayerId(gameId, id))
+                .toList();
+
+        List<AuctionedPlayer> purchaseRecords = auctionedPlayerRepository.findAllByAuctionedPlayerIdInAndTeamId(playerIds, team.getId());
+
+        // 4. Security Check
+        if (purchaseRecords.size() != requestedSubIds.size()) {
+            throw new IllegalStateException("One or more players selected do not belong to your team.");
+        }
+
+        // 5. Bulk Fetch Player Details (Performance: Reduces N+1)
+        // Assuming setService has a bulk lookup method; if not, consider adding one.
+        for (AuctionedPlayer record : purchaseRecords) {
+            processPlayerRemoval(team, record, game.getSetId());
+        }
+
+        // 6. Finalize
+        lockTeamSelection(team, game);
     }
 
+    private void processPlayerRemoval(Team team, AuctionedPlayer record, Integer setId) {
+        SetPlayer playerDetails = setService.findPlayerDetailsInSetById(
+                new SetPlayerId(setId, record.getAuctionedPlayerId().getPlayerId())
+        );
+        Player player = playerService.findPlayerById(playerDetails.getId().getPlayerId());
+
+        team.setPoints(team.getPoints() - playerDetails.getPoints());
+        teamService.reduceTeamPlayerCounts(team, player);
+        record.setPlayerStatus(PlayerStatus.SUBSTITUTED);
+    }
+
+    private void lockTeamSelection(Team team, Game game) {
+        team.setQualified(isTeamQualified(team, game));
+        team.setSelectionLocked(true);
+        log.info("Game #{} | Team {} has locked their selection.", game.getId(), team.getAssociation());
+    }
     public void publishResults(Integer gameId) {
         Game game = findById(gameId);
         if(game.getStatus()!= GameStatus.ENDED) throw new IllegalStateException("Cant Publish The Result of a game that hasn't ended!");

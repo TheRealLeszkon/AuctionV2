@@ -293,11 +293,11 @@ public class GameController {
     }
     @PostMapping("/{id}/selection")
     public GameControlMessage deleteSubstitutesInTeam(@PathVariable("id") Integer gameId, @RequestBody SubstituteRemovalRequest removalRequest){
-        String message =gameService.removeSubstitutes(gameId,removalRequest);
+        gameService.removeSubstitutes(gameId,removalRequest);
         return GameControlMessage.builder()
                 .gameStatus(GameStatus.FINALIZED)
                 .command("")
-                .message(message)
+                .message("Current Selection Locked in. Best of Luck!")
                 .build();
     }
 
