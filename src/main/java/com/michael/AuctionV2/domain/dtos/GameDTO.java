@@ -28,4 +28,5 @@ public class GameDTO {
     private Integer legendsPerTeam;
     private Integer specialPlayersPerTeam;
     private Integer foreignPlayersPerTeam;
+    private Integer maxForeignAllowed;
 }

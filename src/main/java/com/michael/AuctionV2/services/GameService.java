@@ -101,6 +101,10 @@ public class GameService {
                 Optional.ofNullable(game.getSubstitutesPerTeam())
                         .orElse(GameDefaults.SUBSTITUTES_PER_TEAM)
         );
+        game.setMaxForeignAllowed(
+                Optional.ofNullable(game.getMaxForeignAllowed())
+                        .orElse(GameDefaults.MAX_FOREIGN_ALLOWED)
+        );
     }
 
 

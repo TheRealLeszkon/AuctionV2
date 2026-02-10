@@ -33,5 +33,6 @@ public class Game { //TODO add fields here to add game constrains and presets
     private Integer legendsPerTeam;
     private Integer specialPlayersPerTeam;
     private Integer foreignPlayersPerTeam;
+    private Integer maxForeignAllowed;
 
 }

@@ -20,4 +20,6 @@ public final class GameDefaults {
     public static final int SPECIAL_PER_TEAM = 1;
 
     public static final int SUBSTITUTES_PER_TEAM = 3;
+
+    public static final int MAX_FOREIGN_ALLOWED = 3;
 }

@@ -83,7 +83,7 @@ public class TeamService {
         Integer maxUncappedCount =game.getUnCappedPerTeam();
         Integer maxLegendPlayers = game.getLegendsPerTeam();
         Integer maxSpecialPlayers = game.getSpecialPlayersPerTeam();
-        Integer maxForeignPlayers = game.getForeignPlayersPerTeam();
+        Integer maxForeignPlayers = game.getMaxForeignAllowed();
         if(team.getPlayerCount()>=maxPlayerCount){
             throw new IllegalStateException("Maximum number of players Reached!");
         }

@@ -15,14 +15,15 @@ curl --location 'localhost:6769/game' \
     "setId":1,
     "name":"Mike'\''s Game",
     "initialBalance":1200000000,
-    "playersPerTeam":1,
-    "batsmenPerTeam":1,
-    "bowlersPerTeam":0,
-    "allRounderPerTeam":0,
-    "wicketKeeperPerTeam":0,
-    "substitutesPerTeam":1,
+    "playersPerTeam":12,
+    "batsmenPerTeam":4,
+    "bowlersPerTeam":4,
+    "allRounderPerTeam":3,
+    "wicketKeeperPerTeam":1,
+    "substitutesPerTeam":3,
     "unCappedPerTeam":0,
     "legendsPerTeam": 0,
     "specialPlayersPerTeam": 0,
-    "foreignPlayersPerTeam":0
+    "foreignPlayersPerTeam":3,
+    "maxForeignAllowed":5
 }'
