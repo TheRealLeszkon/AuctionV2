@@ -625,4 +625,42 @@ public class GameService {
                 teamService.getAllLockedInTeamsOfGame(gameId).stream().map(team -> team.getAssociation().toString()).toList()
         );
     }
+
+    public List<CompletePlayer> getLockedInTeam(Integer gameId, IPLAssociation association) {
+        Game game = findById(gameId);
+        if(game.getStatus()==GameStatus.ACTIVE){
+            throw new IllegalStateException("Game has to be finalized to get selections!");
+        }
+        if(game.getStatus()==GameStatus.INACTIVE){
+            throw new IllegalStateException("Game has to be started and finalized before fetching selections");
+        }
+        Team team = teamService.getTeamOfAssociationInGame(gameId,association);
+        if(!team.isSelectionLocked()){
+            throw new IllegalStateException("Unable to fetch, since The team hasn't locked int their selection!");
+        }
+        return auctionedPlayerRepository.findByTeamId(team.getId()).stream().filter(record -> record.getPlayerStatus()==PlayerStatus.SOLD).map(record ->{
+            Player playerBioData = playerService.findPlayerById(record.getAuctionedPlayerId().getPlayerId());
+            SetPlayer playerDetails = setService.findPlayerDetailsInSetById(new SetPlayerId(game.getSetId(),record.getAuctionedPlayerId().getPlayerId()));
+            return CompletePlayer.builder()
+                    .id(playerBioData.getId())
+                    .name(playerBioData.getName())
+                    .imageLink(playerBioData.getImageLink())
+                    .type(playerBioData.getType())
+                    .isLegend(playerBioData.getIsLegend())
+                    .isUncapped(playerBioData.getIsUncapped())
+                    .isForeign(playerBioData.getIsForeign())
+                    .country(playerBioData.getCountry())
+                    .batsmanStats(batsmanStatsMapper.toDTO(playerBioData.getBatsmenStats()))
+                    .bowlerStats(bowlerStatsMapper.toDTO(playerBioData.getBowlerStats()))
+                    .allRounderStats(allRounderStatsMapper.toDTO(playerBioData.getAllRounderStats()))
+                    .setId(playerDetails.getId().getSetId())
+                    .price(playerDetails.getPrice())
+                    .points(playerDetails.getPoints())
+                    .order(playerDetails.getOrder())
+                    .status(record.getPlayerStatus())
+                    .build();
+                }
+        ).toList();
+
+    }
 }

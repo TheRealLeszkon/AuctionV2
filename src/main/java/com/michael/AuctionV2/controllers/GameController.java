@@ -340,4 +340,10 @@ public class GameController {
         return gameService.findAuctionPlayerByName(name,gameId);
     }
 
+    @GetMapping("/{id}/selection/{teamAssociation}")
+    public List<CompletePlayer> showSelectedTeam(@PathVariable("id") Integer gameId, @PathVariable("teamAssociation") String teamAssociation){
+        IPLAssociation association = IPLAssociation.valueOf(teamAssociation.toUpperCase());
+        return gameService.getLockedInTeam(gameId,association);
+    }
+
 }
