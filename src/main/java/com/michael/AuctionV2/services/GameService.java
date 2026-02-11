@@ -428,15 +428,21 @@ public class GameService {
             Ranking ranking = new Ranking();
             TeamDTO teamDTO =teamMapper.toDTO(team);
             teamDTO.setQualified(team.isQualified());
-            List<String> finalTeam =auctionedPlayerRepository.findByTeamId(team.getId()).stream().filter(purchaseRecord -> purchaseRecord.getPlayerStatus() == PlayerStatus.SOLD)
+            List<PlayerWithBid> finalTeam =auctionedPlayerRepository.findByTeamId(team.getId()).stream().filter(purchaseRecord -> purchaseRecord.getPlayerStatus() == PlayerStatus.SOLD)
                     .map(purchaseRecord ->{
                         Player player = playerService.findPlayerById(purchaseRecord.getAuctionedPlayerId().getPlayerId());
-                        return player.getName();
+                        return new PlayerWithBid(
+                                player.getName(),
+                                purchaseRecord.getSoldPrice()
+                        );
                     }).toList();
-            List<String> substitutes =auctionedPlayerRepository.findByTeamId(team.getId()).stream().filter(purchaseRecord -> purchaseRecord.getPlayerStatus() == PlayerStatus.SUBSTITUTED)
+            List<PlayerWithBid> substitutes =auctionedPlayerRepository.findByTeamId(team.getId()).stream().filter(purchaseRecord -> purchaseRecord.getPlayerStatus() == PlayerStatus.SUBSTITUTED)
                     .map(purchaseRecord ->{
                         Player player = playerService.findPlayerById(purchaseRecord.getAuctionedPlayerId().getPlayerId());
-                        return player.getName();
+                        return new PlayerWithBid(
+                                player.getName(),
+                                purchaseRecord.getSoldPrice()
+                        );
                     }).toList();
             ranking.setPlace(rank++);
             ranking.setTeamStats(teamDTO);
