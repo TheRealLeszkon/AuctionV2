@@ -22,4 +22,7 @@ public final class GameDefaults {
     public static final int SUBSTITUTES_PER_TEAM = 3;
 
     public static final int MAX_FOREIGN_ALLOWED = 3;
+
+    public static final String HOST_PASS = "gta6";
+    public static final String ADMIN_PASS = "password";
 }

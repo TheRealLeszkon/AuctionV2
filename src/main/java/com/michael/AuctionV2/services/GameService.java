@@ -12,9 +12,11 @@ import com.michael.AuctionV2.domain.entities.enums.IPLAssociation;
 import com.michael.AuctionV2.domain.entities.enums.PlayerStatus;
 import com.michael.AuctionV2.domain.entities.enums.TransactionType;
 import com.michael.AuctionV2.domain.entities.keys.AuctionedPlayerId;
+import com.michael.AuctionV2.domain.entities.keys.PasswordId;
 import com.michael.AuctionV2.domain.entities.keys.SetPlayerId;
 import com.michael.AuctionV2.domain.mappers.*;
 import com.michael.AuctionV2.repositories.AuctionedPlayerRepository;
+import com.michael.AuctionV2.repositories.GamePasswordRepository;
 import com.michael.AuctionV2.repositories.GameRepository;
 import com.michael.AuctionV2.repositories.GameTransactionRepository;
 import jakarta.persistence.EntityManager;
@@ -44,6 +46,7 @@ public class GameService {
     private final SimpMessagingTemplate messagingTemplate;
     private final AuctionedPlayerRepository auctionedPlayerRepository;
     private final GameTransactionRepository transactionRepository;
+    private final GamePasswordService gamePasswordService;
     private final  SetService setService;
     private final GameLogMapper gameLogMapper;
     private final PlayerService playerService;
@@ -105,6 +108,14 @@ public class GameService {
                 Optional.ofNullable(game.getMaxForeignAllowed())
                         .orElse(GameDefaults.MAX_FOREIGN_ALLOWED)
         );
+        game.setHostPassword(
+                Optional.ofNullable(game.getHostPassword())
+                        .orElse(GameDefaults.HOST_PASS)
+        );
+        game.setAdminPassword(
+                Optional.ofNullable(game.getAdminPassword())
+                        .orElse(GameDefaults.ADMIN_PASS)
+        );
     }
 
 
@@ -129,7 +140,10 @@ public class GameService {
         game.setStatus(GameStatus.ACTIVE);
 
         //Create 10 Teams for the game
-        teamService.createTeamsForGame(game);
+        List<Team> teams= teamService.createTeamsForGame(game);
+
+        //Create passwords for 10 teams
+        gamePasswordService.createPasswordsForTeams(gameId,teams);
 
         //Initalize the player list
         List<AuctionedPlayer> playerToBeRegistered =setService.findAllPlayersOfSet(game.getSetId()).stream().map(setPlayer ->
@@ -140,6 +154,10 @@ public class GameService {
         ).toList();
         auctionedPlayerRepository.saveAll(playerToBeRegistered);
         return game;
+    }
+
+    public List<PasswordPair> getGameTeamPasswords(Integer gameId){
+        return gamePasswordService.getPasswordsOfGame(gameId);
     }
 
     public AuctionedPlayer addAuctionedPlayer(AuctionedPlayer auctionedPlayer){

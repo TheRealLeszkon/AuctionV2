@@ -94,7 +94,9 @@ public class GameController {
 
     @GetMapping("/{id}")
     public GameDTO showGameDetails(@PathVariable("id") Integer gameId){
-        return gameMapper.toDTO(gameService.findById(gameId));
+        GameDTO gameDTO =gameMapper.toDTO(gameService.findById(gameId));
+        gameDTO.setTeamPasswords(gameService.getGameTeamPasswords(gameId));
+        return gameDTO;
     }
 
     @PostMapping("/{id}/start")

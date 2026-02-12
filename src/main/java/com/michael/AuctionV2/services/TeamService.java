@@ -29,7 +29,7 @@ public class TeamService {
             IPLAssociation.SRH,"Sunrisers Hyderabad"
     );
 
-    public void createTeamsForGame(Game game){
+    public List<Team> createTeamsForGame(Game game){
         List<Team> readyToSave = new ArrayList<>();
         associationMap.forEach(
                 (key,value)->readyToSave.add(
@@ -52,7 +52,7 @@ public class TeamService {
                                 .balance(game.getInitialBalance())
                                 .build()
                 ));
-        teamRepository.saveAll(readyToSave);
+        return teamRepository.saveAll(readyToSave);
     }
 
     public Team getTeamOfAssociationInGame(Integer gameId, IPLAssociation association){

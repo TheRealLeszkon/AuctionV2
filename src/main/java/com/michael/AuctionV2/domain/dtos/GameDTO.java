@@ -1,11 +1,13 @@
 package com.michael.AuctionV2.domain.dtos;
 
+import com.michael.AuctionV2.domain.dtos.responses.PasswordPair;
 import com.michael.AuctionV2.domain.entities.enums.GameStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -29,4 +31,9 @@ public class GameDTO {
     private Integer specialPlayersPerTeam;
     private Integer foreignPlayersPerTeam;
     private Integer maxForeignAllowed;
+
+    //passwords
+    private String adminPassword;
+    private String hostPassword;
+    private List<PasswordPair> teamPasswords;
 }

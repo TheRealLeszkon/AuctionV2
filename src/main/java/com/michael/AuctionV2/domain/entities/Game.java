@@ -35,4 +35,8 @@ public class Game { //TODO add fields here to add game constrains and presets
     private Integer foreignPlayersPerTeam;
     private Integer maxForeignAllowed;
 
+    //passwords
+    private String adminPassword;
+    private String hostPassword;
+
 }

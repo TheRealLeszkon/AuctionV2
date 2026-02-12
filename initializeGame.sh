@@ -25,5 +25,7 @@ curl --location 'localhost:6769/game' \
     "legendsPerTeam": 0,
     "specialPlayersPerTeam": 0,
     "foreignPlayersPerTeam":3,
-    "maxForeignAllowed":5
+    "maxForeignAllowed":5,
+    "adminPassword":"password",
+    "hostPassword":"gta6"
 }'

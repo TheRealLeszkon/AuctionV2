@@ -21,8 +21,16 @@ curl --location 'localhost:6769/game' \
     "allRounderPerTeam":3,
     "wicketKeeperPerTeam":1,
     "substitutesPerTeam":3,
-    "unCappedPerTeam":2,
-    "legendsPerTeam": 2,
-    "specialPlayersPerTeam": 3,
-    "foreignPlayersPerTeam":5
+    "unCappedPerTeam":0,
+    "legendsPerTeam": 0,
+    "specialPlayersPerTeam": 0,
+    "foreignPlayersPerTeam":3,
+    "maxForeignAllowed":5,
+    "adminPassword":"password",
+    "hostPassword":"gta6"
+}'
+curl --location 'localhost:6769/game/1/start' \
+--header 'Content-Type: application/json' \
+--data '{
+    "command":"START"
 }'
