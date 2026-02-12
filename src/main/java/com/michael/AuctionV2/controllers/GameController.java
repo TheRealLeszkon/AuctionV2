@@ -343,7 +343,7 @@ public class GameController {
     }
 
     @GetMapping("/{id}/selection/{teamAssociation}")
-    public List<CompletePlayer> showSelectedTeam(@PathVariable("id") Integer gameId, @PathVariable("teamAssociation") String teamAssociation){
+    public Ranking showSelectedTeam(@PathVariable("id") Integer gameId, @PathVariable("teamAssociation") String teamAssociation){
         IPLAssociation association = IPLAssociation.valueOf(teamAssociation.toUpperCase());
         return gameService.getLockedInTeam(gameId,association);
     }
