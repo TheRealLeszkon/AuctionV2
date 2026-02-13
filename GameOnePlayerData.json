@@ -2186,7 +2186,12 @@
     "isUncapped": false,
     "isLegend": false,
     "country": "IN",
-    "batsmanStats": null,
+    "batsmanStats": {
+      "runs": 4310,
+      "matches": 107,
+      "battingAvg": 27.2,
+      "strikeRate": 134.8
+    },
     "bowlerStats": null,
     "allRounderStats": null
   },
