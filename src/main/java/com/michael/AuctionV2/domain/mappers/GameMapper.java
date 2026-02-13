@@ -7,7 +7,9 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface GameMapper {
+
     Game fromDTO(GameDTO gameDTO);
-    @Mapping(target = "teamPasswords", ignore = true)
+    @Mapping(target = "hostPassword", ignore = true)
+    @Mapping(target = "adminPassword", ignore = true)
     GameDTO toDTO(Game game);
 }

@@ -912,7 +912,7 @@
     "bowlerStats": {
       "wickets": 183,
       "matches": 145,
-      "bestFigures": "5/10'",
+      "bestFigure": "5/10'",
       "economy": 7.25
     },
     "allRounderStats": null
@@ -930,7 +930,7 @@
     "bowlerStats": {
       "wickets": 133,
       "matches": 120,
-      "bestFigures": "3/15'",
+      "bestFigure": "3/15'",
       "economy": 8.63
     },
     "allRounderStats": null
@@ -948,7 +948,7 @@
     "bowlerStats": {
       "wickets": 74,
       "matches": 66,
-      "bestFigures": "4/30'",
+      "bestFigure": "4/30'",
       "economy": 8.77
     },
     "allRounderStats": null
@@ -966,7 +966,7 @@
     "bowlerStats": {
       "wickets": 65,
       "matches": 52,
-      "bestFigures": "4/15'",
+      "bestFigure": "4/15'",
       "economy": 8.61
     },
     "allRounderStats": null
@@ -984,7 +984,7 @@
     "bowlerStats": {
       "wickets": 198,
       "matches": 190,
-      "bestFigures": "5/19'",
+      "bestFigure": "5/19'",
       "economy": 7.69
     },
     "allRounderStats": null
@@ -1002,7 +1002,7 @@
     "bowlerStats": {
       "wickets": 151,
       "matches": 118,
-      "bestFigures": "5/27'",
+      "bestFigure": "5/27'",
       "economy": 8.86
     },
     "allRounderStats": null
@@ -1020,7 +1020,7 @@
     "bowlerStats": {
       "wickets": 221,
       "matches": 174,
-      "bestFigures": "5/40'",
+      "bestFigure": "5/40'",
       "economy": 7.96
     },
     "allRounderStats": null
@@ -1038,7 +1038,7 @@
     "bowlerStats": {
       "wickets": 88,
       "matches": 95,
-      "bestFigures": "4/13'",
+      "bestFigure": "4/13'",
       "economy": 8.14
     },
     "allRounderStats": null
@@ -1056,7 +1056,7 @@
     "bowlerStats": {
       "wickets": 119,
       "matches": 120,
-      "bestFigures": "5/10'",
+      "bestFigure": "5/10'",
       "economy": 8.45
     },
     "allRounderStats": null
@@ -1074,7 +1074,7 @@
     "bowlerStats": {
       "wickets": 106,
       "matches": 69,
-      "bestFigures": "4/21'",
+      "bestFigure": "4/21'",
       "economy": 8.42
     },
     "allRounderStats": null
@@ -1092,7 +1092,7 @@
     "bowlerStats": {
       "wickets": 57,
       "matches": 39,
-      "bestFigures": "4/25'",
+      "bestFigure": "4/25'",
       "economy": 8.28
     },
     "allRounderStats": null
@@ -1110,7 +1110,7 @@
     "bowlerStats": {
       "wickets": 102,
       "matches": 98,
-      "bestFigures": "4/14'",
+      "bestFigure": "4/14'",
       "economy": 8.04
     },
     "allRounderStats": null
@@ -1128,7 +1128,7 @@
     "bowlerStats": {
       "wickets": 143,
       "matches": 120,
-      "bestFigures": "4/18'",
+      "bestFigure": "4/18'",
       "economy": 8.38
     },
     "allRounderStats": null
@@ -1146,7 +1146,7 @@
     "bowlerStats": {
       "wickets": 146,
       "matches": 137,
-      "bestFigures": "5/18'",
+      "bestFigure": "5/18'",
       "economy": 8.03
     },
     "allRounderStats": null
@@ -1164,7 +1164,7 @@
     "bowlerStats": {
       "wickets": 109,
       "matches": 108,
-      "bestFigures": "4/17'",
+      "bestFigure": "4/17'",
       "economy": 8.74
     },
     "allRounderStats": null
@@ -1182,7 +1182,7 @@
     "bowlerStats": {
       "wickets": 59,
       "matches": 52,
-      "bestFigures": "3/15'",
+      "bestFigure": "3/15'",
       "economy": 7.89
     },
     "allRounderStats": null
@@ -1200,7 +1200,7 @@
     "bowlerStats": {
       "wickets": 100,
       "matches": 84,
-      "bestFigures": "5/20'",
+      "bestFigure": "5/20'",
       "economy": 7.58
     },
     "allRounderStats": null
@@ -1218,7 +1218,7 @@
     "bowlerStats": {
       "wickets": 47,
       "matches": 32,
-      "bestFigures": "4/28'",
+      "bestFigure": "4/28'",
       "economy": 8.68
     },
     "allRounderStats": null
@@ -1236,7 +1236,7 @@
     "bowlerStats": {
       "wickets": 48,
       "matches": 37,
-      "bestFigures": "4/18'",
+      "bestFigure": "4/18'",
       "economy": 8.08
     },
     "allRounderStats": null
@@ -1254,7 +1254,7 @@
     "bowlerStats": {
       "wickets": 97,
       "matches": 82,
-      "bestFigures": "5/32'",
+      "bestFigure": "5/32'",
       "economy": 8.73
     },
     "allRounderStats": null
@@ -1272,7 +1272,7 @@
     "bowlerStats": {
       "wickets": 89,
       "matches": 71,
-      "bestFigures": "3/21'",
+      "bestFigure": "3/21'",
       "economy": 8.98
     },
     "allRounderStats": null
@@ -1290,7 +1290,7 @@
     "bowlerStats": {
       "wickets": 41,
       "matches": 43,
-      "bestFigures": "3/20'",
+      "bestFigure": "3/20'",
       "economy": 9.58
     },
     "allRounderStats": null
@@ -1308,7 +1308,7 @@
     "bowlerStats": {
       "wickets": 65,
       "matches": 60,
-      "bestFigures": "4/29'",
+      "bestFigure": "4/29'",
       "economy": 8.13
     },
     "allRounderStats": null
@@ -1326,7 +1326,7 @@
     "bowlerStats": {
       "wickets": 67,
       "matches": 63,
-      "bestFigures": "4/19'",
+      "bestFigure": "4/19'",
       "economy": 8.84
     },
     "allRounderStats": null
@@ -1344,7 +1344,7 @@
     "bowlerStats": {
       "wickets": 96,
       "matches": 117,
-      "bestFigures": "5/12'",
+      "bestFigure": "5/12'",
       "economy": 8.36
     },
     "allRounderStats": null
@@ -1362,7 +1362,7 @@
     "bowlerStats": {
       "wickets": 75,
       "matches": 79,
-      "bestFigures": "3/23'",
+      "bestFigure": "3/23'",
       "economy": 8.16
     },
     "allRounderStats": null
@@ -1380,7 +1380,7 @@
     "bowlerStats": {
       "wickets": 91,
       "matches": 94,
-      "bestFigures": "5/25'",
+      "bestFigure": "5/25'",
       "economy": 8.89
     },
     "allRounderStats": null
@@ -1398,7 +1398,7 @@
     "bowlerStats": {
       "wickets": 36,
       "matches": 32,
-      "bestFigures": "4/33'",
+      "bestFigure": "4/33'",
       "economy": 10.4
     },
     "allRounderStats": null
@@ -1416,7 +1416,7 @@
     "bowlerStats": {
       "wickets": 32,
       "matches": 25,
-      "bestFigures": "4/33'",
+      "bestFigure": "4/33'",
       "economy": 8.86
     },
     "allRounderStats": null
@@ -1434,7 +1434,7 @@
     "bowlerStats": {
       "wickets": 18,
       "matches": 27,
-      "bestFigures": "3/17'",
+      "bestFigure": "3/17'",
       "economy": 8.75
     },
     "allRounderStats": null
@@ -1452,7 +1452,7 @@
     "bowlerStats": {
       "wickets": 51,
       "matches": 49,
-      "bestFigures": "4/28'",
+      "bestFigure": "4/28'",
       "economy": 8.97
     },
     "allRounderStats": null
@@ -1470,7 +1470,7 @@
     "bowlerStats": {
       "wickets": 37,
       "matches": 37,
-      "bestFigures": "4/15'",
+      "bestFigure": "4/15'",
       "economy": 8.91
     },
     "allRounderStats": null
@@ -1488,7 +1488,7 @@
     "bowlerStats": {
       "wickets": 72,
       "matches": 77,
-      "bestFigures": "3/24'",
+      "bestFigure": "3/24'",
       "economy": 8.22
     },
     "allRounderStats": null
@@ -1506,7 +1506,7 @@
     "bowlerStats": {
       "wickets": 14,
       "matches": 13,
-      "bestFigures": "2/30'",
+      "bestFigure": "2/30'",
       "economy": 8.25
     },
     "allRounderStats": null
@@ -1524,7 +1524,7 @@
     "bowlerStats": {
       "wickets": 87,
       "matches": 76,
-      "bestFigures": "4/24'",
+      "bestFigure": "4/24'",
       "economy": 9.12
     },
     "allRounderStats": null
@@ -1542,7 +1542,7 @@
     "bowlerStats": {
       "wickets": 17,
       "matches": 16,
-      "bestFigures": "3/20'",
+      "bestFigure": "3/20'",
       "economy": 10.38
     },
     "allRounderStats": null
@@ -1560,7 +1560,7 @@
     "bowlerStats": {
       "wickets": 36,
       "matches": 38,
-      "bestFigures": "4/33'",
+      "bestFigure": "4/33'",
       "economy": 8.27
     },
     "allRounderStats": null
@@ -1578,7 +1578,7 @@
     "bowlerStats": {
       "wickets": 40,
       "matches": 34,
-      "bestFigures": "3/24'",
+      "bestFigure": "3/24'",
       "economy": 9.51
     },
     "allRounderStats": null
@@ -1596,7 +1596,7 @@
     "bowlerStats": {
       "wickets": 10,
       "matches": 11,
-      "bestFigures": "3/13'",
+      "bestFigure": "3/13'",
       "economy": 9.08
     },
     "allRounderStats": null
@@ -1614,7 +1614,7 @@
     "bowlerStats": {
       "wickets": 36,
       "matches": 32,
-      "bestFigures": "3/27'",
+      "bestFigure": "3/27'",
       "economy": 9.55
     },
     "allRounderStats": null
@@ -1632,7 +1632,7 @@
     "bowlerStats": {
       "wickets": 119,
       "matches": 121,
-      "bestFigures": "4/24'",
+      "bestFigure": "4/24'",
       "economy": 8.46
     },
     "allRounderStats": null
@@ -1650,7 +1650,7 @@
     "bowlerStats": {
       "wickets": 62,
       "matches": 50,
-      "bestFigures": "3/33'",
+      "bestFigure": "3/33'",
       "economy": 9.17
     },
     "allRounderStats": null
@@ -1668,7 +1668,7 @@
     "bowlerStats": {
       "wickets": 29,
       "matches": 26,
-      "bestFigures": "5/25'",
+      "bestFigure": "5/25'",
       "economy": 9.4
     },
     "allRounderStats": null
@@ -1686,7 +1686,7 @@
     "bowlerStats": {
       "wickets": 18,
       "matches": 18,
-      "bestFigures": "4/46'",
+      "bestFigure": "4/46'",
       "economy": 10.14
     },
     "allRounderStats": null
@@ -1704,7 +1704,7 @@
     "bowlerStats": {
       "wickets": 33,
       "matches": 18,
-      "bestFigures": "4/10'",
+      "bestFigure": "4/10'",
       "economy": 8.71
     },
     "allRounderStats": null
@@ -1722,7 +1722,7 @@
     "bowlerStats": {
       "wickets": 90,
       "matches": 96,
-      "bestFigures": "4/16'",
+      "bestFigure": "4/16'",
       "economy": 8.39
     },
     "allRounderStats": null
@@ -1740,7 +1740,7 @@
     "bowlerStats": {
       "wickets": 21,
       "matches": 21,
-      "bestFigures": "3/27'",
+      "bestFigure": "3/27'",
       "economy": 8.49
     },
     "allRounderStats": null
@@ -1758,7 +1758,7 @@
     "bowlerStats": {
       "wickets": 20,
       "matches": 21,
-      "bestFigures": "3/31'",
+      "bestFigure": "3/31'",
       "economy": 8.79
     },
     "allRounderStats": null
@@ -1776,7 +1776,7 @@
     "bowlerStats": {
       "wickets": 42,
       "matches": 30,
-      "bestFigures": "5/17'",
+      "bestFigure": "5/17'",
       "economy": 8.59
     },
     "allRounderStats": null
@@ -1794,7 +1794,7 @@
     "bowlerStats": {
       "wickets": 27,
       "matches": 21,
-      "bestFigures": "5/5'",
+      "bestFigure": "5/5'",
       "economy": 10.26
     },
     "allRounderStats": null
@@ -1812,7 +1812,7 @@
     "bowlerStats": {
       "wickets": 35,
       "matches": 33,
-      "bestFigures": "3/10'",
+      "bestFigure": "3/10'",
       "economy": 7.78
     },
     "allRounderStats": null
@@ -1830,7 +1830,7 @@
     "bowlerStats": {
       "wickets": 31,
       "matches": 22,
-      "bestFigures": "6/19'",
+      "bestFigure": "6/19'",
       "economy": 8.38
     },
     "allRounderStats": null
@@ -1848,7 +1848,7 @@
     "bowlerStats": {
       "wickets": 192,
       "matches": 192,
-      "bestFigures": "4/17'",
+      "bestFigure": "4/17'",
       "economy": 7.96
     },
     "allRounderStats": null
@@ -1866,7 +1866,7 @@
     "bowlerStats": {
       "wickets": 170,
       "matches": 122,
-      "bestFigures": "5/13'",
+      "bestFigure": "5/13'",
       "economy": 7.14
     },
     "allRounderStats": null
@@ -1884,7 +1884,7 @@
     "bowlerStats": {
       "wickets": 166,
       "matches": 154,
-      "bestFigures": "5/17'",
+      "bestFigure": "5/17'",
       "economy": 7.36
     },
     "allRounderStats": null
@@ -1902,7 +1902,7 @@
     "bowlerStats": {
       "wickets": 97,
       "matches": 95,
-      "bestFigures": "3/11'",
+      "bestFigure": "3/11'",
       "economy": 6.92
     },
     "allRounderStats": null
@@ -1920,7 +1920,7 @@
     "bowlerStats": {
       "wickets": 102,
       "matches": 100,
-      "bestFigures": "4/17'",
+      "bestFigure": "4/17'",
       "economy": 7.59
     },
     "allRounderStats": null
@@ -2773,7 +2773,7 @@
   },
   {
     "id": null,
-    "name": "Azmatullah Omar",
+    "name": "Omarzai",
     "imageLink": "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/playerimages/Azmatullah%20Omar",
     "type": "ALL_ROUNDER",
     "isForeign": true,
