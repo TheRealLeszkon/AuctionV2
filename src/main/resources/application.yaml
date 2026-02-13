@@ -27,5 +27,6 @@ logging:
           servlet:
             DispatcherServlet: DEBUG
 script:
-  path: /Users/kevin/WorkSpaces/Projects/AuctionRevamped/backend/initContainer.sh
+  path: /app/initContainer.sh
+#  path: /Users/kevin/WorkSpaces/Projects/AuctionRevamped/backend/initContainer.sh
 
