@@ -8,7 +8,7 @@ curl --location 'localhost:6769/set' \
 }'
 curl --location 'localhost:6769/set/1/bulk' \
 --header 'Content-Type: application/json' \
---data @TestSet.json
+--data @GameOneSet.json
 curl --location 'localhost:6769/game' \
 --header 'Content-Type: application/json' \
 --data '{

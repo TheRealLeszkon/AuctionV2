@@ -1,6 +1,6 @@
 curl --location 'localhost:6769/players/bulk' \
 --header 'Content-Type: application/json' \
---data @TestPlayerData.json
+--data @GameOnePlayerData.json
 curl --location 'localhost:6769/set' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -8,7 +8,7 @@ curl --location 'localhost:6769/set' \
 }'
 curl --location 'localhost:6769/set/1/bulk' \
 --header 'Content-Type: application/json' \
---data @TestSet.json
+--data @GameOneSet.json
 curl --location 'localhost:6769/game' \
 --header 'Content-Type: application/json' \
 --data '{
