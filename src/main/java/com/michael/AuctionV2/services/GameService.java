@@ -451,7 +451,8 @@ public class GameService {
                         Player player = playerService.findPlayerById(purchaseRecord.getAuctionedPlayerId().getPlayerId());
                         return new PlayerWithBid(
                                 player.getName(),
-                                purchaseRecord.getSoldPrice()
+                                purchaseRecord.getSoldPrice(),
+                                player.getType()
                         );
                     }).toList();
             List<PlayerWithBid> substitutes =auctionedPlayerRepository.findByTeamId(team.getId()).stream().filter(purchaseRecord -> purchaseRecord.getPlayerStatus() == PlayerStatus.SUBSTITUTED)
@@ -459,7 +460,8 @@ public class GameService {
                         Player player = playerService.findPlayerById(purchaseRecord.getAuctionedPlayerId().getPlayerId());
                         return new PlayerWithBid(
                                 player.getName(),
-                                purchaseRecord.getSoldPrice()
+                                purchaseRecord.getSoldPrice(),
+                                player.getType()
                         );
                     }).toList();
             ranking.setPlace(rank++);
@@ -670,7 +672,8 @@ public class GameService {
                     Player player = playerService.findPlayerById(purchaseRecord.getAuctionedPlayerId().getPlayerId());
                     return new PlayerWithBid(
                             player.getName(),
-                            purchaseRecord.getSoldPrice()
+                            purchaseRecord.getSoldPrice(),
+                            player.getType()
                     );
                 }).toList();
         List<PlayerWithBid> substitutes =auctionedPlayerRepository.findByTeamId(team.getId()).stream().filter(purchaseRecord -> purchaseRecord.getPlayerStatus() == PlayerStatus.SUBSTITUTED)
@@ -678,7 +681,8 @@ public class GameService {
                     Player player = playerService.findPlayerById(purchaseRecord.getAuctionedPlayerId().getPlayerId());
                     return new PlayerWithBid(
                             player.getName(),
-                            purchaseRecord.getSoldPrice()
+                            purchaseRecord.getSoldPrice(),
+                            player.getType()
                     );
                 }).toList();
             ranking.setTeamStats(teamDTO);
