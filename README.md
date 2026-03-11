@@ -26,11 +26,17 @@ Spring Boot backend for AuctionRevamped, a real-time IPL auction platform. Handl
 ./mvnw spring-boot:run
 ```
 
-Server starts on `http://localhost:8080`. No context path is configured — all paths are relative to the root.
+Server starts on `http://localhost:6769`. No context path is configured — all paths are relative to the root.
 
 ### Environment
 
 A `.env` file is used for configuration. Refer to `.env` for required variables.
+
+```
+DB_URL=jdbc:postgresql://localhost:5432/kevin
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
 
 ---
 
@@ -47,10 +53,10 @@ All errors follow a consistent envelope:
 }
 ```
 
-| HTTP Status | Triggered by |
-|---|---|
+| HTTP Status       | Triggered by               |
+| ----------------- | -------------------------- |
 | `400 Bad Request` | `IllegalArgumentException` |
-| `409 Conflict` | `IllegalStateException` |
+| `409 Conflict`    | `IllegalStateException`    |
 
 ---
 
@@ -61,6 +67,7 @@ All errors follow a consistent envelope:
 Validates credentials for a given game. The `username` field accepts `"host"`, `"admin"`, or an IPL team association (e.g. `"CSK"`).
 
 **Request body:**
+
 ```json
 {
   "gameId": 1,
@@ -70,6 +77,7 @@ Validates credentials for a given game. The `username` field accepts `"host"`, `
 ```
 
 **Response `200 OK`:**
+
 ```json
 {
   "message": "CSK Login Successful!"
@@ -82,18 +90,19 @@ Validates credentials for a given game. The `username` field accepts `"host"`, `
 
 ## Players
 
-| Method | Path | Description |
-|---|---|---|
-| `GET` | `/players` | Get all players |
-| `POST` | `/players` | Create a player |
-| `POST` | `/players/bulk` | Bulk create players |
-| `GET` | `/players/{type}` | Get players by type |
+| Method | Path              | Description         |
+| ------ | ----------------- | ------------------- |
+| `GET`  | `/players`        | Get all players     |
+| `POST` | `/players`        | Create a player     |
+| `POST` | `/players/bulk`   | Bulk create players |
+| `GET`  | `/players/{type}` | Get players by type |
 
 Player types: `WICKET_KEEPER`, `BATSMAN`, `BOWLER`, `ALL_ROUNDER`
 
 ### `POST /players` — Create a Player
 
 **Request body:**
+
 ```json
 {
   "name": "Virat Kohli",
@@ -123,6 +132,7 @@ Player types: `WICKET_KEEPER`, `BATSMAN`, `BOWLER`, `ALL_ROUNDER`
 **Response `200 OK`:** `PlayerDTO[]`
 
 **Error `400`** if type is invalid. Returns a descriptive map:
+
 ```json
 {
   "error": "Invalid player type in URL!",
@@ -137,22 +147,24 @@ Player types: `WICKET_KEEPER`, `BATSMAN`, `BOWLER`, `ALL_ROUNDER`
 
 Sets are groupings of players used in a game. Each entry carries metadata (base price, auction order, and points).
 
-| Method | Path | Description |
-|---|---|---|
-| `POST` | `/set` | Create a set |
-| `GET` | `/set` | List all sets |
-| `POST` | `/set/{id}` | Add a player to a set |
+| Method | Path             | Description               |
+| ------ | ---------------- | ------------------------- |
+| `POST` | `/set`           | Create a set              |
+| `GET`  | `/set`           | List all sets             |
+| `POST` | `/set/{id}`      | Add a player to a set     |
 | `POST` | `/set/{id}/bulk` | Bulk add players to a set |
-| `GET` | `/set/{id}` | Get all players in a set |
+| `GET`  | `/set/{id}`      | Get all players in a set  |
 
 ### `POST /set` — Create a Set
 
 **Request body:**
+
 ```json
 { "name": "IPL 2026 Set" }
 ```
 
 **Response `201 Created`:**
+
 ```json
 { "setId": 1, "name": "IPL 2026 Set" }
 ```
@@ -162,6 +174,7 @@ Sets are groupings of players used in a game. Each entry carries metadata (base 
 The `setId` in the path overrides any value in the body.
 
 **Request body:**
+
 ```json
 {
   "playerId": 42,
@@ -180,7 +193,7 @@ The `setId` in the path overrides any value in the body.
 ```json
 [
   { "playerId": 42, "points": 120, "price": 500000, "order": 1 },
-  { "playerId": 43, "points": 95,  "price": 200000, "order": 2 }
+  { "playerId": 43, "points": 95, "price": 200000, "order": 2 }
 ]
 ```
 
@@ -198,22 +211,23 @@ INACTIVE → (start) → ACTIVE → (finalize) → FINALIZED → (end) → ENDED
                          └──────── (resume) ──────┘
 ```
 
-| Method | Path | Description |
-|---|---|---|
-| `GET` | `/game` | List all games |
-| `POST` | `/game` | Create a game (`status` forced to `INACTIVE`) |
-| `GET` | `/game/{id}` | Get game details (includes team passwords) |
-| `GET` | `/game/{id}/preview` | Preview all players in the game's set |
-| `POST` | `/game/{id}/start` | Activate the game, create 10 teams |
-| `POST` | `/game/{id}/finalize` | Finalize auction, lock bids |
-| `POST` | `/game/{id}/resume` | Un-finalize, resume auction |
-| `POST` | `/game/{id}/end` | End game and compute rankings |
-| `GET` | `/game/{id}/results` | Get final rankings (game must be `ENDED`) |
+| Method | Path                         | Description                                           |
+| ------ | ---------------------------- | ----------------------------------------------------- |
+| `GET`  | `/game`                      | List all games                                        |
+| `POST` | `/game`                      | Create a game (`status` forced to `INACTIVE`)         |
+| `GET`  | `/game/{id}`                 | Get game details (includes team passwords)            |
+| `GET`  | `/game/{id}/preview`         | Preview all players in the game's set                 |
+| `POST` | `/game/{id}/start`           | Activate the game, create 10 teams                    |
+| `POST` | `/game/{id}/finalize`        | Finalize auction, lock bids                           |
+| `POST` | `/game/{id}/resume`          | Un-finalize, resume auction                           |
+| `POST` | `/game/{id}/end`             | End game and compute rankings                         |
+| `GET`  | `/game/{id}/results`         | Get final rankings (game must be `ENDED`)             |
 | `POST` | `/game/{id}/results/publish` | Broadcast results to all team WebSocket subscriptions |
 
 ### `POST /game` — Create a Game
 
 **Request body:**
+
 ```json
 {
   "name": "Auction 2026",
@@ -242,11 +256,13 @@ All slot limit fields are optional and fall back to server defaults if omitted. 
 ### `POST /game/{id}/start` — Start a Game
 
 **Request body:**
+
 ```json
 { "command": "START" }
 ```
 
 **Response `201 Created`:**
+
 ```json
 {
   "message": "The game is now active! Team view will now be available.",
@@ -260,6 +276,7 @@ All slot limit fields are optional and fall back to server defaults if omitted. 
 No request body required.
 
 **Response `200 OK`:**
+
 ```json
 {
   "message": "Game Finalized and Auction Has Ended! Allow Players to Select their teams!",
@@ -273,6 +290,7 @@ No request body required.
 No request body required.
 
 **Response `200 OK`:**
+
 ```json
 {
   "message": "Game Resumed!",
@@ -285,15 +303,16 @@ No request body required.
 
 ### Teams
 
-| Method | Path | Description |
-|---|---|---|
-| `GET` | `/game/{id}/team` | All teams in the game |
-| `GET` | `/game/{id}/team/{association}` | Specific team (`CSK`, `MI`, etc.) |
-| `GET` | `/game/{id}/team/{association}/purchases` | Players purchased by a team |
+| Method | Path                                      | Description                       |
+| ------ | ----------------------------------------- | --------------------------------- |
+| `GET`  | `/game/{id}/team`                         | All teams in the game             |
+| `GET`  | `/game/{id}/team/{association}`           | Specific team (`CSK`, `MI`, etc.) |
+| `GET`  | `/game/{id}/team/{association}/purchases` | Players purchased by a team       |
 
 > All team endpoints require the game to be `ACTIVE` or later; returns `400` if `INACTIVE`.
 
 **Example `GET /game/1/team/CSK` response:**
+
 ```json
 {
   "id": 5,
@@ -319,17 +338,18 @@ No request body required.
 
 ### Players in Game
 
-| Method | Path | Description |
-|---|---|---|
-| `GET` | `/game/{id}/players` | All players with auction status |
-| `GET` | `/game/{id}/players/{playerType}` | Filtered by type |
-| `GET` | `/game/{id}/players/unsold` | Only unsold players |
-| `GET` | `/game/{id}/players/sold` | Only sold players |
-| `GET` | `/game/{id}/player/{name}` | Lookup by player name |
+| Method | Path                              | Description                     |
+| ------ | --------------------------------- | ------------------------------- |
+| `GET`  | `/game/{id}/players`              | All players with auction status |
+| `GET`  | `/game/{id}/players/{playerType}` | Filtered by type                |
+| `GET`  | `/game/{id}/players/unsold`       | Only unsold players             |
+| `GET`  | `/game/{id}/players/sold`         | Only sold players               |
+| `GET`  | `/game/{id}/player/{name}`        | Lookup by player name           |
 
 All endpoints return `CompletePlayer[]` (or a single `CompletePlayer` for the name lookup). Requires game to be `ACTIVE`.
 
 **`CompletePlayer` shape:**
+
 ```json
 {
   "id": 1,
@@ -340,7 +360,12 @@ All endpoints return `CompletePlayer[]` (or a single `CompletePlayer` for the na
   "isLegend": true,
   "isForeign": false,
   "country": "India",
-  "batsmanStats": { "runs": 7263, "matches": 237, "battingAvg": 52.73, "strikeRate": 131.6 },
+  "batsmanStats": {
+    "runs": 7263,
+    "matches": 237,
+    "battingAvg": 52.73,
+    "strikeRate": 131.6
+  },
   "bowlerStats": null,
   "allRounderStats": null,
   "setId": 1,
@@ -355,17 +380,18 @@ All endpoints return `CompletePlayer[]` (or a single `CompletePlayer` for the na
 
 ### Auction Actions
 
-| Method | Path | Description |
-|---|---|---|
+| Method | Path                  | Description                     |
+| ------ | --------------------- | ------------------------------- |
 | `POST` | `/game/{id}/purchase` | Mark a player as sold to a team |
-| `POST` | `/game/{id}/refund` | Refund a purchased player |
-| `GET` | `/game/{id}/audit` | Game audit log |
+| `POST` | `/game/{id}/refund`   | Refund a purchased player       |
+| `GET`  | `/game/{id}/audit`    | Game audit log                  |
 
 ### `POST /game/{id}/purchase` — Purchase a Player
 
 Validates slot constraints and balance. Broadcasts purchase, team update, and audit events over WebSocket.
 
 **Request body:**
+
 ```json
 {
   "playerId": 42,
@@ -375,6 +401,7 @@ Validates slot constraints and balance. Broadcasts purchase, team update, and au
 ```
 
 **Response `200 OK`:**
+
 ```json
 {
   "playerStatus": "SOLD",
@@ -384,6 +411,7 @@ Validates slot constraints and balance. Broadcasts purchase, team update, and au
 ```
 
 **Common errors:**
+
 - `400` — Bid amount is zero or negative
 - `400` — Game not `ACTIVE`
 - `409` — Player already sold
@@ -394,11 +422,13 @@ Validates slot constraints and balance. Broadcasts purchase, team update, and au
 Reverses a purchase: restores team balance, points, and slot counts. Broadcasts refund, team update, and audit events over WebSocket.
 
 **Request body:**
+
 ```json
 { "playerId": 42 }
 ```
 
 **Response `200 OK`:**
+
 ```json
 {
   "playerName": "Virat Kohli",
@@ -419,17 +449,18 @@ Returns all purchase and refund transactions for a game in reverse chronological
 
 After finalization, each team must remove substitutes to lock in their final roster.
 
-| Method | Path | Description |
-|---|---|---|
-| `POST` | `/game/{id}/selection` | Submit substitute removals for a team |
-| `GET` | `/game/{id}/selection/locked-in` | Check how many teams have locked in |
-| `GET` | `/game/{id}/selection/{teamAssociation}` | Get a team's final locked-in selection |
+| Method | Path                                     | Description                            |
+| ------ | ---------------------------------------- | -------------------------------------- |
+| `POST` | `/game/{id}/selection`                   | Submit substitute removals for a team  |
+| `GET`  | `/game/{id}/selection/locked-in`         | Check how many teams have locked in    |
+| `GET`  | `/game/{id}/selection/{teamAssociation}` | Get a team's final locked-in selection |
 
 ### `POST /game/{id}/selection` — Submit Substitute Removal
 
 Game must be `FINALIZED`. Team must not have already locked in.
 
 **Request body:**
+
 ```json
 {
   "teamAssociation": "CSK",
@@ -440,6 +471,7 @@ Game must be `FINALIZED`. Team must not have already locked in.
 The `substitutes` array contains player IDs to be marked as `SUBSTITUTED`. If the team is already at or below the roster limit, send an empty array.
 
 **Response `200 OK`:**
+
 ```json
 {
   "message": "Current Selection Locked in. Best of Luck!",
@@ -453,6 +485,7 @@ The `substitutes` array contains player IDs to be marked as `SUBSTITUTED`. If th
 Requires game to be `FINALIZED` or `ENDED`.
 
 **Response `200 OK`:**
+
 ```json
 {
   "lockedInCount": 4,
@@ -472,12 +505,12 @@ Real-time events are broadcast over STOMP. Connect via SockJS or a raw WebSocket
 ### Connecting (JavaScript / SockJS example)
 
 ```javascript
-const socket = new SockJS('http://localhost:8080/ws');
+const socket = new SockJS("http://localhost:8080/ws");
 const stompClient = Stomp.over(socket);
 
 stompClient.connect({}, () => {
   // Subscribe to bid updates for game 1
-  stompClient.subscribe('/topic/game/1/bids', (frame) => {
+  stompClient.subscribe("/topic/game/1/bids", (frame) => {
     const event = JSON.parse(frame.body);
     console.log(event.eventType, event.payload);
   });
@@ -500,11 +533,12 @@ All WebSocket messages use this wrapper:
 
 ### Sending Messages (Client → Server)
 
-| Destination | Payload | Description |
-|---|---|---|
+| Destination               | Payload      | Description                                         |
+| ------------------------- | ------------ | --------------------------------------------------- |
 | `/app/game/{gameId}/bids` | `BidRequest` | Broadcast the current bid amount to all subscribers |
 
 **`BidRequest` body:**
+
 ```json
 { "currentBid": 750000 }
 ```
@@ -515,18 +549,19 @@ All WebSocket messages use this wrapper:
 
 ### Subscriptions (Server → Client)
 
-| Topic | Payload Type | `eventType` | Triggered by |
-|---|---|---|---|
-| `/topic/game/{gameId}/bids` | `BidRequest` | `BID` or `ERROR` | Client sends bid via `/app/...` |
-| `/topic/game/{gameId}/purchases/{association}` | `PurchasedPlayer` | `PURCHASE` | `POST /game/{id}/purchase` |
-| `/topic/game/{gameId}/refunds/{association}` | `RefundConfirmation` | `REFUND` | `POST /game/{id}/refund` |
-| `/topic/game/{gameId}/team/{association}` | `TeamDTO` | `TEAM_UPDATE` | Purchase or refund |
-| `/topic/game/{gameId}/audit` | `GameLog` | `AUDIT` | Purchase or refund |
-| `/game/{gameId}/results/{association}` | `Ranking` | `RESULT` | `POST /game/{id}/results/publish` |
+| Topic                                          | Payload Type         | `eventType`      | Triggered by                      |
+| ---------------------------------------------- | -------------------- | ---------------- | --------------------------------- |
+| `/topic/game/{gameId}/bids`                    | `BidRequest`         | `BID` or `ERROR` | Client sends bid via `/app/...`   |
+| `/topic/game/{gameId}/purchases/{association}` | `PurchasedPlayer`    | `PURCHASE`       | `POST /game/{id}/purchase`        |
+| `/topic/game/{gameId}/refunds/{association}`   | `RefundConfirmation` | `REFUND`         | `POST /game/{id}/refund`          |
+| `/topic/game/{gameId}/team/{association}`      | `TeamDTO`            | `TEAM_UPDATE`    | Purchase or refund                |
+| `/topic/game/{gameId}/audit`                   | `GameLog`            | `AUDIT`          | Purchase or refund                |
+| `/game/{gameId}/results/{association}`         | `Ranking`            | `RESULT`         | `POST /game/{id}/results/publish` |
 
 > ⚠️ **Note:** The results topic (`/game/{gameId}/results/{association}`) does **not** use the `/topic/` prefix. This is a known inconsistency in the current implementation.
 
 **`PurchasedPlayer` payload example:**
+
 ```json
 {
   "playerId": 42,
@@ -541,6 +576,7 @@ All WebSocket messages use this wrapper:
 ```
 
 **`GameLog` (audit) payload example:**
+
 ```json
 {
   "playerName": "Virat Kohli",
@@ -555,14 +591,14 @@ All WebSocket messages use this wrapper:
 
 ## Enums Reference
 
-| Enum | Values |
-|---|---|
-| `GameStatus` | `INACTIVE`, `ACTIVE`, `FINALIZED`, `ENDED` |
-| `GameCommand` | `START` |
-| `PlayerType` | `WICKET_KEEPER`, `BATSMAN`, `BOWLER`, `ALL_ROUNDER` |
-| `PlayerStatus` | `SOLD`, `UNSOLD`, `SUBSTITUTED` |
-| `IPLAssociation` | `CSK`, `DC`, `GT`, `KKR`, `LSG`, `MI`, `PBKS`, `RR`, `RCB`, `SRH` |
-| `TransactionType` | `PURCHASE`, `REFUND` |
+| Enum              | Values                                                            |
+| ----------------- | ----------------------------------------------------------------- |
+| `GameStatus`      | `INACTIVE`, `ACTIVE`, `FINALIZED`, `ENDED`                        |
+| `GameCommand`     | `START`                                                           |
+| `PlayerType`      | `WICKET_KEEPER`, `BATSMAN`, `BOWLER`, `ALL_ROUNDER`               |
+| `PlayerStatus`    | `SOLD`, `UNSOLD`, `SUBSTITUTED`                                   |
+| `IPLAssociation`  | `CSK`, `DC`, `GT`, `KKR`, `LSG`, `MI`, `PBKS`, `RR`, `RCB`, `SRH` |
+| `TransactionType` | `PURCHASE`, `REFUND`                                              |
 
 ---
 
