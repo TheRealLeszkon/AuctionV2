@@ -1,4 +1,4 @@
-# AuctionRevamped — Backend
+AuctionRevamped — Backend
 
 Spring Boot backend for AuctionRevamped, a real-time IPL auction platform. Handles game lifecycle management, player bidding, team tracking, and live WebSocket events.
 
@@ -10,6 +10,10 @@ Spring Boot backend for AuctionRevamped, a real-time IPL auction platform. Handl
 - **WebSocket** via STOMP over SockJS
 - **REST API** for all game and player management
 - JSON over HTTP with a consistent error envelope
+
+## Database Schema
+<img width="1271" height="721" alt="AuctionV2FinalTableStructure drawio" src="https://github.com/user-attachments/assets/c81a37f6-00d7-4567-bd41-69c2dbe5826f" />
+
 
 ---
 
@@ -266,6 +270,7 @@ No request body required.
   "command": "",
   "gameStatus": "FINALIZED"
 }
+
 ```
 
 ### `POST /game/{id}/resume` — Resume a Finalized Game
