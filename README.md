@@ -1,6 +1,8 @@
-AuctionRevamped — Backend
+# AuctionRevamped — Backend
 
 Spring Boot backend for AuctionRevamped, a real-time IPL auction platform. Handles game lifecycle management, player bidding, team tracking, and live WebSocket events.
+
+Also check out the [Frontend](https://github.com/geniusjoelraj/AuctionV2Frontend) built for this API for Ideas on how you can make use of it
 
 ---
 
@@ -12,8 +14,8 @@ Spring Boot backend for AuctionRevamped, a real-time IPL auction platform. Handl
 - JSON over HTTP with a consistent error envelope
 
 ## Database Schema
-<img width="1271" height="721" alt="AuctionV2FinalTableStructure drawio" src="https://github.com/user-attachments/assets/c81a37f6-00d7-4567-bd41-69c2dbe5826f" />
 
+<img width="1271" height="721" alt="AuctionV2FinalTableStructure drawio" src="https://github.com/user-attachments/assets/c81a37f6-00d7-4567-bd41-69c2dbe5826f" />
 
 ---
 
@@ -23,11 +25,28 @@ Spring Boot backend for AuctionRevamped, a real-time IPL auction platform. Handl
 
 - Java 17+
 - Maven wrapper included (`./mvnw`)
+- PostgreSQL DB
 
 ### Run Locally
 
 ```bash
+# Clone the repository
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+
+# Verify prerequisites
+java -version
+mvn -version
+
+# Build the project
+./mvnw clean install
+
+# Run the Spring Boot application
 ./mvnw spring-boot:run
+
+# (Optional) Package and run the JAR
+./mvnw clean package
+java -jar target/app-name.jar
 ```
 
 Server starts on `http://localhost:6769`. No context path is configured — all paths are relative to the root.
@@ -287,7 +306,6 @@ No request body required.
   "command": "",
   "gameStatus": "FINALIZED"
 }
-
 ```
 
 ### `POST /game/{id}/resume` — Resume a Finalized Game
