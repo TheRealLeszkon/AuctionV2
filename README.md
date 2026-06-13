@@ -230,7 +230,7 @@ The core of the API. A game ties together a set of players, 10 IPL teams, and au
 
 ```
 INACTIVE → (start) → ACTIVE → (finalize) → FINALIZED → (end) → ENDED
-                         ↑                       |
+                         ↑                        |
                          └──────── (resume) ──────┘
 ```
 
